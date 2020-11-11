@@ -1,6 +1,7 @@
 const connection = require("../db");
 const express = require("express");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const getAllUsers = (req, res) => {
   const command = `SELECT * FROM users`;
@@ -31,12 +32,19 @@ const login = (req, res) => {
   let r = [];
   connection.query(query, data, async (err, result) => {
     if (err) throw err;
-    console.log("result :", result[0].password);
+    // console.log("result :", result[0].password);
     if (result.length) {
       if (await bcrypt.compare(password, result[0].password)) {
-        res.json("correct");
-      }else{
-        // res.json("not correct"); 
+        const payload = {
+          email: result[0].email,
+        };
+
+        const options = {
+          expiresIn: process.env.TOKEN_EXPIRATION,
+        };
+
+        const token = jwt.sign(payload, process.env.SECRET, options);
+        res.json(token);
       }
     }
   });
