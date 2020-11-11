@@ -1,0 +1,64 @@
+body{
+    background-color: khaki;
+}
+.PostTitle{
+    font-size: 15px;
+    font-style: italic;
+    text-align: center;
+}
+.PostTitle input[type=text]{
+
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.A{
+    display: flex;
+    padding: 0px 90px;
+}
+.Description{
+    padding:  10px 10px;
+}
+.Description textarea{
+    width: 260px;
+    height: 80px;
+}
+.DateRange{
+    padding: 13px 10px;
+}
+
+.B{
+    display: flex;
+    padding: 0px 90px;
+}
+.Locations{
+    padding: 15px 20px 0px 10px;
+}
+.PhoneNumber{
+    padding: 15px 20px;
+}
+.C{
+    display: flex;
+    padding: 0px 90px;
+}
+.Price{
+    padding: 15px 20px 0px 10px;
+    
+}
+.Price input[type=Number]{
+    width: 20%;
+    height: 60%;
+}
+.Price input[type=text]{
+    width: 20%;
+    height: 60%;
+}
+.D{
+    display: flex;
+    padding: 0px 90px;
+}
+.IMG{
+    padding: 15px 20px 0px 10px;
+    
+}
