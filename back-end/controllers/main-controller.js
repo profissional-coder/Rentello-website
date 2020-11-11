@@ -36,7 +36,7 @@ const login = (req, res) => {
       if (await bcrypt.compare(password, result[0].password)) {
         res.json("correct");
       }else{
-        res.json("not correct"); 
+        // res.json("not correct"); 
       }
     }
   });
