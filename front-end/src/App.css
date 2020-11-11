@@ -1,64 +1,75 @@
 body{
     background-color: khaki;
 }
-.PostTitle{
-    font-size: 15px;
-    font-style: italic;
+.ChooseaDepartment{
     text-align: center;
 }
-.PostTitle input[type=text]{
+.section{
+    width: 100%;
+    padding: 15px 190px;
+}
+.section select{
+     margin: 10px;
+}
+ .Details{
+     text-align: center;
+     padding: 1px;
+ }
+ .A{
+     display: flex;
+     padding: 10px;
+ }
+.Title{
+    
+    display: grid;
+    padding: 20px 50px;
+}
+.Title textarea{
+    margin: 9px;
+    width: 247px;
+    height: 39px;
+    font-size: 10px;
+}
+.Title input[type=text]{
+    margin: 9px;
+    width: 247px;
+    height: 20px;
+}
 
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+.Location{
+    padding: 17px;
 }
-.A{
-    display: flex;
-    padding: 0px 90px;
+.Location select{
+   width: 200px;
+   margin: 9px;
 }
-.Description{
-    padding:  10px 10px;
-}
-.Description textarea{
-    width: 260px;
-    height: 80px;
+.Location input{
+    width: 45px;
+    margin: 11px 5px;
 }
 .DateRange{
-    padding: 13px 10px;
+    text-align: center;
+    
 }
-
-.B{
+.Date{
     display: flex;
-    padding: 0px 90px;
+    padding: 20px 36px;
+    margin: 9px 15px;
 }
-.Locations{
-    padding: 15px 20px 0px 10px;
+.Date input[type=datetime-local]{
+    margin: 0px 29px;
+}
+.contactInformation{
+    text-align: center;
 }
 .PhoneNumber{
-    padding: 15px 20px;
+    padding: 10px 50px;
+    margin: 5px 3px;
 }
-.C{
-    display: flex;
-    padding: 0px 90px;
+.PhoneNumber input[type=tel]{
+    width: 150px;
+    margin: 25px 4px;
 }
-.Price{
-    padding: 15px 20px 0px 10px;
-    
-}
-.Price input[type=Number]{
-    width: 20%;
-    height: 60%;
-}
-.Price input[type=text]{
-    width: 20%;
-    height: 60%;
-}
-.D{
-    display: flex;
-    padding: 0px 90px;
-}
-.IMG{
-    padding: 15px 20px 0px 10px;
-    
+.Save{
+    text-align: center;
 }
