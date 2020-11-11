@@ -14,11 +14,14 @@ const addUser = (req, res) => {
   const { Fullname, email, password, city, address, dob } = req.body;
   const data = [Fullname, email, password, city, address, dob];
   connection.query(query, data, (err, result) => {
-    if (err) throw err;
-    console.log("RESULT: ", result);
-    res.json(result);
+    if (err) {
+      res.json(email + ` is already register.`);
+    }
+    // console.log("RESULT: ", result);
+    res.json(`Thanks for registration.Try to login Now`);
   });
 };
+
 
 module.exports = {
   getAllUsers,
