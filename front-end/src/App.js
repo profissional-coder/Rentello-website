@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Register from "./components/Register";
 
 // Class component
 export default class App extends Component {
@@ -10,7 +11,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <h1>HELLO WORLD</h1>
+        <Register />
       </div>
     );
   }
