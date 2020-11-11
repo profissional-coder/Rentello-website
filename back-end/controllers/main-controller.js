@@ -12,10 +12,10 @@ const getAllUsers = (req, res) => {
   });
 };
 const register = async (req, res) => {
-  const query = `INSERT INTO users (Fullname, email,password,city,address,RegDate,dob) VALUES (?, ?, ?, ?,?,now(),?)`;
-  let { Fullname, email, password, city, address, dob } = req.body;
+  const query = `INSERT INTO users (role_id,Fullname, email,password,city,address,RegDate,dob) VALUES (?, ?, ?,?, ?,?,now(),?)`;
+  let { role_id,Fullname, email, password, city, address, dob } = req.body;
   password = await bcrypt.hashSync(password, Number(process.env.SALT));
-  const data = [Fullname, email, password, city, address, dob];
+  const data = [role_id,Fullname, email, password, city, address, dob];
   connection.query(query, data, (err, result) => {
     if (err) {
       res.json(email + ` is already register.`);
@@ -26,17 +26,22 @@ const register = async (req, res) => {
 };
 
 const login = (req, res) => {
-  const query = `SELECT email ,password FROM users WHERE email=?`;
+  const query = `SELECT * FROM users  WHERE email=?`;
   const { email, password } = req.body;
   const data = [email, password];
-  let r = [];
   connection.query(query, data, async (err, result) => {
     if (err) throw err;
-    // console.log("result :", result[0].password);
+    console.log("result :", result[0]);
     if (result.length) {
       if (await bcrypt.compare(password, result[0].password)) {
+        const {role_id,email,Fullname,city,address,dob}=result[0]
         const payload = {
-          email: result[0].email,
+            role_id,
+            email:email,
+          Fullname:Fullname,
+          city:city,
+          address:address,
+          dob:dob,
         };
 
         const options = {
