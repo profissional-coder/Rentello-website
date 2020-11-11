@@ -8,4 +8,5 @@ mainRouter.get("/", (req, res) => {
 
 mainRouter.get("/user", getAllUsers);
 mainRouter.post("/register", addUser);
+
 module.exports = mainRouter;
