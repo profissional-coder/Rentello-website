@@ -1,28 +1,37 @@
 body{
     background-color: khaki;
 }
+.A{    
+    padding: 10px;
+    border-bottom: 2px solid red;
+}
 .ChooseaDepartment{
     text-align: center;
 }
 .section{
+    padding: 10px 195px;
     width: 100%;
-    padding: 15px 190px;
 }
 .section select{
      margin: 10px;
 }
+.B{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    border-bottom: 2px solid red;
+}
  .Details{
      text-align: center;
-     padding: 1px;
- }
- .A{
-     display: flex;
      padding: 10px;
  }
+ 
 .Title{
-    
     display: grid;
-    padding: 20px 50px;
+    padding: 20px;
+}
+.Location{
+    padding: 17px;
 }
 .Title textarea{
     margin: 9px;
@@ -35,40 +44,50 @@ body{
     width: 247px;
     height: 20px;
 }
-
-.Location{
-    padding: 17px;
-}
 .Location select{
    width: 200px;
-   margin: 9px;
+   margin: 10px 10px;
 }
 .Location input{
     width: 45px;
     margin: 11px 5px;
 }
+.C{
+    border-bottom: 2px solid red;
+}
 .DateRange{
     text-align: center;
-    
+    padding: 10px;
 }
 .Date{
+    width: 100%;
     display: flex;
-    padding: 20px 36px;
-    margin: 9px 15px;
+    padding: 10px 40px;
 }
 .Date input[type=datetime-local]{
-    margin: 0px 29px;
+    margin: 0px 10px;
+}
+.D{
+    border-bottom: 2px solid red;
 }
 .contactInformation{
     text-align: center;
+    padding: 10px;
 }
 .PhoneNumber{
+    display: flex;
     padding: 10px 50px;
-    margin: 5px 3px;
 }
 .PhoneNumber input[type=tel]{
     width: 150px;
     margin: 25px 4px;
+}
+.PhoneNumber input[type=text]{
+    width: 150px;
+    margin: 25px 4px;
+}
+.E{
+    border-bottom: 2px solid red;
 }
 .Save{
     text-align: center;
