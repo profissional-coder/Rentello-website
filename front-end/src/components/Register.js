@@ -12,15 +12,19 @@ const Register = () => {
   });
 
   const handleChange = (e) => {
+    console.log(e);
     setValues({
       ...values,
       [e.target.name]: e.target.value,
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="Register-container">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h1>Register User</h1>
         <div>
           <label>Username </label>
