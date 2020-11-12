@@ -51,7 +51,17 @@ const login = (req, res) => {
 
         const token = jwt.sign(payload, process.env.SECRET, options);
         res.json(token);
+      } else {
+        res.status(422);
+        res.json({
+          message: "Invalid login check your password",
+        });
       }
+    } else {
+      res.status(404);
+      res.json({
+        message: "Invalid login check your email",
+      });
     }
   });
 };
