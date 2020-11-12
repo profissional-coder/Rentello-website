@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-
 const getAllUsers = (req, res) => {
   const command = `SELECT * FROM users WHERE is_deleted=0`;
   connection.query(command, (err, result) => {
@@ -67,28 +66,25 @@ const login = (req, res) => {
     }
   });
 };
-const deleteAccount=(req,res)=>{
-  const command=`UPDATE users SET is_deleted = 1 WHERE user_id = ?`
-  
+const deleteAccount = (req, res) => {
+  const command = `UPDATE users SET is_deleted = 1 WHERE user_id = ?`;
+
   // console.log('req.params',req.params.user_id);
-  
-  const arrData=[req.params.user_id]
-  connection.query(command,arrData,(err, result) => {
+
+  const arrData = [req.params.user_id];
+  connection.query(command, arrData, (err, result) => {
     if (err) throw err;
     // console.log('RESULT: ', result);
     res.status(200);
-      res.json({
-        message: "successfully deleted account",
-      });
+    res.json({
+      message: "successfully deleted account",
+    });
   });
-}
-
-
-
+};
 
 module.exports = {
   getAllUsers,
   register,
   login,
-  deleteAccount
+  deleteAccount,
 };
