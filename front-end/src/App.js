@@ -4,48 +4,38 @@ import './App.css';
 
 
 const App = () => {
-  const [Post, setPost] = useState([]);
+  const [post, setPost] = useState([]);
+  const [price, setprice] = useState(0)
   const [Category, setCategory] = useState('')
   const [Title, setTitle] = useState('')
   const [Description, setDescription] = useState('')
   const [Location, setLocation] = useState('')
-  const [Price1, setPrice1] = useState('')
-  const [Price2, setPrice2] = useState('')
   const [IMG, setIMG] = useState('')
   const [StartDate, setStartDate] = useState('')
   const [EndDate, setEndDate] = useState('')
   const [Name, setName] = useState('')
-  const [PhoneNumber, setPhoneNumber] = useState('')
+  const [PhoneNumber, setPhoneNumber] = useState(0)
 
-
-  const getAllPost = () => {
+  const CreateAllPost = (infoArgumnt) => {
+    console.log(infoArgumnt)
+    
     axios
-      .get('http://localhost:5000/tasks')
+      .post('http://localhost:5000/posts/create', infoArgumnt)
       .then((response) => {
-        console.log('DATA: ', response.data);
-        setPost(response.data);
-      })
-      .catch((err) => {
-        console.log('RESULT: ', err);
-      });
-  };
-  const CreateAllPost = () => {
-    const newus = { Category:Category,Title:Title,Description:Description,Location:Location,Price1:Price1,Price2:Price2,IMG:IMG,StartDate:StartDate,EndDate:EndDate,Name:Name,PhoneNumber:PhoneNumber }
-    axios
-      .post('http://localhost:5000/Post', newus)
-      .then((response) => {
-        const newArray = [...Post];
+        console.log("response",response)
+        const newArray = [...post];
         newArray.push(response.data)
         setPost(newArray);
-
       })
       .catch((err) => {
         console.log('RESULT: ', err);
       });
   };
-  
+
   const SavePost= () => {
-    CreateAllPost([Category.data,Title.data,Description.data,Location.data,Price1.data,Price2.data,IMG.data,StartDate.data,EndDate.data,Name.data,PhoneNumber.data])
+    
+    CreateAllPost({price:price, category:Category,title:Title,description:Description,location:Location,fromdate:StartDate,todate:EndDate,name:Name,PhoneNumber:PhoneNumber,img_url:IMG})
+    
   };
   return (
     <div>
@@ -84,7 +74,7 @@ const App = () => {
              <div className='Location'>
               <label for="Locations">Location </label>
               <select onChange={(e) => {setLocation(e.target.value)}}>
-                <option>Amman</option>
+                <option value='1'>Amman</option>
                 <option>Zarqa</option>
                 <option>Irbid</option>
                 <option>Karak</option>
@@ -92,8 +82,8 @@ const App = () => {
              </select>
           <div className='Price'>
               <label>Price </label>
-              <input onChange={(e) => {setPrice1(e.target.value)}} type="Number" placeholder="10"></input> 
-              <input onChange={(e) => {setPrice2(e.target.value)}} type="text" placeholder="hr"></input>
+              <input onChange={(e) => {setprice(e.target.value)}} type="Number" placeholder="10"></input> 
+              <input  type="text" placeholder="hr"></input>
           </div>
           <div className='IMG'>
             <input onChange={(e) => {setIMG(e.target.value)}}  type="file" name="image"></input>
