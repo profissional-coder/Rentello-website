@@ -37,8 +37,10 @@ const test1={
     post_date:'2018-10-20',
     location:"zarqa",
     from_date:'2018-10-20',
-    to_date:'2018-10-20'
+    to_date:'2018-10-20',
+    image_url:""
 }
+// addPost(test1)  
 const showPosts=(req,res)=>{
     connection.query(`select * from posts`,(err,result)=>{
 if (err) throw err
@@ -46,8 +48,30 @@ console.log(result);
 // res.json(result)
     })
 }
-showPosts()
-// addPost(test1)  
+
+// showPosts()
+
+const createTable=()=>{
+    connection.query(`create table image (
+        image_id int AUTO_INCREMENT NOT NULL,
+        image blob,
+        PRIMARY KEY (image_id)
+    )`,(err,result)=>{
+if (err) throw err
+console.log(result);
+    })
+} 
+
+// createTable()
+const addImage=(pic)=>{
+    connection.query(`INSERT INTO image (image) values("${pic}")
+    `,(err,result)=>{
+if (err) throw err
+console.log(result); 
+    })
+}  
+// addImage("D:/JCA/project/Rentello-website/back-end/schemas/Thinking-of-getting-a-cat.jpg")
+// addImage(" https://www.google.com/url?sa=i&url=https%3A%2F%2Ficatcare.org%2Fadvice%2Fthinking-of-getting-a-cat%2F&psig=AOvVaw2XBwg06EBnZc7M9kNwFsq8&ust=1605262528556000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPDgkcaV_ewCFQAAAAAdAAAAABAD")
 const deleteAllPosts=()=>{
     connection.query(`delete from posts WHARE `,(err,res)=>{
 if (err) throw err
