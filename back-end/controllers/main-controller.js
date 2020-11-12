@@ -22,7 +22,7 @@ const register = async (req, res) => {
       res.json(email + ` is already register.`);
     }
     // console.log("RESULT: ", result);
-    res.json(`Thanks for registration.Try to login Now`);
+    res.json(`Thanks for registration. ${Fullname} Try to login Now`);
   });
 };
 
@@ -81,6 +81,7 @@ const deleteAccount = (req, res) => {
     });
   });
 };
+
 
 module.exports = {
   getAllUsers,
