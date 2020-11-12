@@ -17,6 +17,7 @@ CREATE TABLE users (
     RegDate DATETIME,
     dob VARCHAR (100) NOT NULL,
     UNIQUE KEY unique_email (email),
+    is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (user_id), 
     FOREIGN KEY (role_id) REFERENCES roles (role_id)
 );
