@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import validate from "./handleError";
+import axios from "axios";
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -23,8 +24,18 @@ const Register = () => {
   };
 
   const handleSubmit = (e) => {
+    console.log("aaa", values);
+
     e.preventDefault();
     setErrors(validate(values));
+    axios
+      .post("http://localhost:3000", values)
+      .then((result) => {
+        console.log("success");
+      })
+      .catch((err) => {
+        console.log("ERR : ", err);
+      });
   };
 
   return (
