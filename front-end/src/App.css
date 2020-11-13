@@ -1,94 +1,69 @@
 body{
+    text-align: center;
     background-image: url('../src/images/b4.jpg');
+    background-size:cover;
+    background-attachment: fixed;
 }
-.A{    
-    padding: 10px;
-    border-bottom: 2px solid red;
-}
-.ChooseaDepartment{
-    text-align: center;
-}
-.section{
-    padding: 10px 195px;
-    width: 100%;
-}
-.section select{
-     margin: 10px;
-}
-.B{
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    border-bottom: 2px solid red;
-}
- .Details{
-     text-align: center;
-     padding: 10px;
- }
- 
-.Title{
-    display: grid;
-    padding: 20px;
-}
-.Location{
-    padding: 17px;
-}
-.Title textarea{
-    margin: 9px;
-    width: 247px;
-    height: 39px;
-    font-size: 10px;
-}
-.Title input[type=text]{
-    margin: 9px;
-    width: 247px;
-    height: 20px;
-}
-.Location select{
-   width: 200px;
-   margin: 10px 10px;
-}
-.Location input{
-    width: 45px;
-    margin: 11px 5px;
-}
-.C{
-    border-bottom: 2px solid red;
-}
-.DateRange{
-    text-align: center;
-    padding: 10px;
-}
-.Date{
-    width: 100%;
-    display: flex;
-    padding: 10px 40px;
-}
-.Date input[type=datetime-local]{
-    margin: 0px 10px;
-}
-.D{
-    border-bottom: 2px solid red;
-}
-.contactInformation{
-    text-align: center;
-    padding: 10px;
-}
-.PhoneNumber{
-    display: flex;
-    padding: 10px 50px;
-}
-.PhoneNumber input[type=tel]{
-    width: 150px;
-    margin: 25px 4px;
-}
-.PhoneNumber input[type=text]{
-    width: 150px;
-    margin: 25px 4px;
-}
-.E{
-    border-bottom: 2px solid red;
-}
-.Save{
-    text-align: center;
-}
+
+.design{
+    width:36%;
+    margin: 0px 130px auto;
+    }
+    
+    .mail-form-agile {
+        padding: 50px 40px;
+        text-align: center;
+        margin:0px;
+        color: #000;
+        margin:0 auto;
+    }
+    
+    
+    ::-webkit-input-placeholder { 
+      color:#fff;
+    }
+    ::-moz-placeholder { 
+       color:#fff;
+    }
+    ::-ms-input-placeholder { 
+       color:#fff;
+    }
+    ::-moz-placeholder { 
+       color:#fff;
+    }
+    .mail-form-agile input[type="text"], .mail-form-agile input[type="tel"] ,.mail-form-agile input[type="datetime-local"], .mail-form-agile input[type="Number"], .mail-form-agile select,textarea{
+    padding: 15px 10px;
+    width: 200.5%;
+    font-size: 8px;
+    outline: none;
+    background:transparent;
+    border:0px;
+    border-bottom: 1px solid #fff;
+    border-radius: 0px;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing:1.6px;
+    color:#fff;
+    }
+    
+    .mail-form-agile input[type="submit"]{
+    font-size: 18px;
+    padding: 10px 20px;
+    letter-spacing:1.2px;
+    border: none;
+    text-transform: capitalize;
+    outline: none;
+    background: #03A9F4;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px 0px 0px 115px;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-transition-duration: 0.9s;
+    transition-duration: 0.9s;
+    }
+    .mail-form-agile input[type="submit"]:hover {
+     -webkit-transition-duration: 0.9s;
+     transition-duration: 0.9s;
+     background:rgba(91, 157, 214, 0.76);
+    }
+    
+
