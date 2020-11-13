@@ -25,11 +25,11 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     console.log("aaa", values);
-
     e.preventDefault();
     setErrors(validate(values));
     axios
-      .post("http://localhost:3000", values)
+      // Bath from BE
+      .post("http://localhost:3000/register", values)
       .then((result) => {
         console.log("success");
       })
