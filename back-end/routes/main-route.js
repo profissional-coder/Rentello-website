@@ -1,17 +1,15 @@
-const express = require("express");
+
+const express = require('express');
+const {createPost,getAllpost,PostAndUsers}=require('../controllers/main-controller')
 const mainRouter = express.Router();
 const { getAllUsers, register,login,deleteAccount } = require("../controllers/main-controller");
-const { getAllpost, createPost,deleteALL,getpost ,deletePost,updatePost} = require("../controllers/main-createpost");
 
 
-mainRouter.post("/posts/create", createPost);
-mainRouter.get("/posts", getAllpost);
-mainRouter.get("/post/:name",getpost);
-mainRouter.delete("/posts/delete-all",deleteALL);
-mainRouter.delete("/delete/:post_id",deletePost);
-mainRouter.put("/posts/update",updatePost);
 
-/************************************************************ */
+mainRouter.get('/post/get',getAllpost);
+mainRouter.post('/post/create', createPost);
+mainRouter.post('/userAndPost', PostAndUsers);
+
 mainRouter.get("/user", getAllUsers);
 mainRouter.post("/register", register);
 mainRouter.post("/login",login);
