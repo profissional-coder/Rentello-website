@@ -24,7 +24,7 @@ const Login = () => {
     setErrors(validate(values));
     axios
       // Bath from BE
-      .post("http://localhost:3000/login", values)
+      .post("http://localhost:5000/login", values)
       .then((result) => {
         console.log(result);
         if (result.data) {

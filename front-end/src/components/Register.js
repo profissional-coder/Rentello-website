@@ -4,13 +4,13 @@ import axios from "axios";
 
 const Register = () => {
   const [values, setValues] = useState({
-    username: "",
+    Fullname: "",
     email: "",
     password: "",
     password2: "",
     city: "",
     address: "",
-    DOB: "",
+    dob: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -29,7 +29,7 @@ const Register = () => {
     setErrors(validate(values));
     axios
       // Bath from BE
-      .post("http://localhost:3000/register", values)
+      .post("http://localhost:5000/register", values)
       .then((result) => {
         console.log("success");
       })
@@ -47,12 +47,12 @@ const Register = () => {
           <br />
           <input
             type="text"
-            name="username"
-            placeholder="enter your username"
-            value={values.username}
+            name="Fullname"
+            placeholder="enter your Fullname"
+            value={values.Fullname}
             onChange={handleChange}
           ></input>
-          {errors.username && <p> {errors.username} </p>}
+          {errors.Fullname && <p> {errors.Fullname} </p>}
         </div>
         <br />
         <div className="form-input">
