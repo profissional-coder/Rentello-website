@@ -1,9 +1,10 @@
 USE itemrental;
-​
+
 CREATE TABLE roles (
     role_id INT AUTO_INCREMENT NOT NULL,
     type VARCHAR(50) NOT NULL,
     PRIMARY KEY (role_id)
+
 );
 ​
 CREATE TABLE users (
@@ -21,7 +22,7 @@ CREATE TABLE users (
     PRIMARY KEY (user_id),
     FOREIGN KEY (role_id) REFERENCES roles (role_id)
 );
-​
+
 CREATE TABLE post (
     post_id INT AUTO_INCREMENT NOT NULL,
     user_id INT(5),
@@ -42,9 +43,10 @@ CREATE TABLE post (
     FOREIGN KEY (user_id) REFERENCES users (user_id),
     FOREIGN KEY (category_id) REFERENCES category (category_id)
 );
-​
+
 CREATE TABLE category (
     category_id INT AUTO_INCREMENT NOT NULL,
     nameCategory VARCHAR (100),
      PRIMARY KEY (category_id)
+
 );
