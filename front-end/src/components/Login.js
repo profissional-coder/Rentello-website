@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import validate from "./handleError";
+import validate from "./handleErrorLogin";
 import axios from "axios";
 
 const Login = () => {
@@ -24,9 +24,12 @@ const Login = () => {
     setErrors(validate(values));
     axios
       // Bath from BE
-      .post("http://localhost:3000/register", values)
+      .post("http://localhost:3000/login", values)
       .then((result) => {
-        console.log("success");
+        console.log(result);
+        if (result.data) {
+          localStorage.setItem("token", result.data);
+        }
       })
       .catch((err) => {
         console.log("ERR : ", err);
@@ -47,6 +50,7 @@ const Login = () => {
             value={values.email}
             onChange={handleChange}
           ></input>
+          {errors.email && <p> {errors.email} </p>}
         </div>
         <br />
         <div className="form-input">
@@ -59,6 +63,7 @@ const Login = () => {
             value={values.password}
             onChange={handleChange}
           ></input>
+          {errors.password && <p> {errors.password} </p>}
         </div>
 
         <button type="submit">Login</button>
