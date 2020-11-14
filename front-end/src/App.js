@@ -4,6 +4,8 @@ import "./App.css";
 import Header from "./components/Header";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import Home from "./components/Home";
+
 // Class component
 export default class App extends Component {
   constructor(props) {
@@ -16,7 +18,7 @@ export default class App extends Component {
         <div className="App">
           <Header />
           <Route path="/home">
-            <h>hi</h>
+          <Home/>
           </Route>
           <Route path="/register">
         <Register/>

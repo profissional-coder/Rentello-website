@@ -61,3 +61,14 @@
   .btnAdd{
     margin: 0 100px 5px ;
   }
+  .div_img{
+text-align: center;
+  }
+  .img{
+width: 100px;
+
+  }
+  .btn{
+display: block;
+margin: 0 auto;
+  }
