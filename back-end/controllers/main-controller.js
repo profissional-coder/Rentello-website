@@ -13,16 +13,17 @@ const getAllUsers = (req, res) => {
   });
 };
 const register = async (req, res) => {
-  const query = `INSERT INTO users (role_id,Fullname, email,password,city,address,RegDate,dob) VALUES (?, ?, ?,?, ?,?,now(),?)`;
-  let { role_id, Fullname, email, password, city, address, dob } = req.body;
+  const query = `INSERT INTO users (role_id,Fullname, email,password,city,address,RegDate,dob) VALUES (2, ?, ?,?, ?,?,now(),?)`;
+  let {  Fullname, email, password, city, address, dob } = req.body;
   password = await bcrypt.hashSync(password, Number(process.env.SALT));
-  const data = [role_id, Fullname, email, password, city, address, dob];
+  const data = [ Fullname, email, password, city, address, dob];
   connection.query(query, data, (err, result) => {
     if (err) {
       res.json(email + ` is already register.`);
     }
     // console.log("RESULT: ", result);
-    res.json(`Thanks for registration. ${Fullname} Try to login Now`);
+    // res.json(`Thanks for registration. ${Fullname} Try to login Now`);
+    res.json(data)
   });
 };
 
@@ -53,13 +54,13 @@ const login = (req, res) => {
         const token = jwt.sign(payload, process.env.SECRET, options);
         res.json(token);
       } else {
-        res.status(422);
+        // res.status(422);
         res.json({
           message: "Invalid login check your password",
         });
       }
     } else {
-      res.status(404);
+      // res.status(404);
       res.json({
         message: "Invalid login check your email",
       });
