@@ -1,13 +1,12 @@
 const express = require('express');
-const {createPost}=require('../controllers/main-controller')
+const {createPost,getAllpost,getAllUsers,PostAndUsers}=require('../controllers/main-controller')
 const mainRouter = express.Router();
 
-mainRouter.get('/', (req, res) => {
-  res.json('HELLO WORLD');
-});
 
 
-mainRouter.post("/posts/create", createPost);
-
+mainRouter.get('/post/get',getAllpost);
+mainRouter.post('/post/create', createPost);
+mainRouter.get('/user/get', getAllUsers);
+mainRouter.post('/userAndPost', PostAndUsers);
 
 module.exports = mainRouter;
