@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Home from "./components/Home";
-
+import Additem from "./components/Additem"
 // Class component
 export default class App extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ export default class App extends Component {
           </Route>
 
           <Route path="/add">
-        
+        <Additem/>
           </Route>
 
           
