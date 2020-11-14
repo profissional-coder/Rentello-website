@@ -61,14 +61,18 @@
   .btnAdd{
     margin: 0 100px 5px ;
   }
+  .search{
+    margin-top: 40px;
+    margin-left: 40px;
+  }
   .div_img{
 text-align: center;
   }
   .img{
 width: 100px;
-
+margin-top: 10px;
   }
   .btn{
-display: block;
-margin: 0 auto;
-  }
+    display: block;
+    margin: 10px auto;
+      }

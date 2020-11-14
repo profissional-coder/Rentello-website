@@ -1,10 +1,22 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
 export  default class Home extends Component {
+   
+   
+   
+    additem=()=>{
+    
+      
+
+    }
+   
+   
     render() {
-return(
+
+        return(
             <div className="container">
-<div className=" ">
+<div className="search ">
     <input type="text" placeholder="search"/>
     <input type="submit"/>
 
@@ -16,7 +28,6 @@ return(
            <img className="img" src= "https://cdn.al-ain.com/images/2020/2/16/102-103623-a-new-nikon-camer_700x400.jpg"/>
           
            </div>
-           <button className="btn">Add item</button>
            </div>
         )
     }

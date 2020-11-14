@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Route, BrowserRouter as Router } from "react-router-dom";
-import "./App.css";
+import { Route, BrowserRouter as Router , Redirect,Link} from "react-router-dom";
+import "./App.css"
 import Header from "./components/Header";
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -12,6 +12,16 @@ export default class App extends Component {
     super(props);
     this.state = {};
   }
+
+  createNewItem=()=>{
+    console.log('hiiiiiiiiiiiiiiiiiiiiiiiiii');
+  }
+
+
+
+
+
+
   render() {
     return (
       <Router>
@@ -19,10 +29,23 @@ export default class App extends Component {
           <Header />
           <Route path="/home">
           <Home/>
+          <Link className="link" to="/add">
+          <button className="btn" onClick={this.createNewItem}>Add item</button>
+           </Link>
           </Route>
+
+          <Route path="/add">
+        
+          </Route>
+
+          
+
+
           <Route path="/register">
         <Register/>
           </Route>
+
+
           <Route path="/login">
         <Login/>
           </Route>
