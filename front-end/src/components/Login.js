@@ -29,6 +29,8 @@ const Login = () => {
         console.log(result);
         if (result.data) {
           localStorage.setItem("token", result.data);
+        } else {
+          setErrors({ errors: "Invalid Email or Password" });
         }
       })
       .catch((err) => {
@@ -37,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <form onSubmit={handleSubmit}>
         <h1>Login</h1>
         <div className="form-input">
@@ -65,7 +67,7 @@ const Login = () => {
           ></input>
           {errors.password && <p> {errors.password} </p>}
         </div>
-
+        <br />
         <button type="submit">Login</button>
       </form>
     </div>

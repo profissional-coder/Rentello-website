@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import validate from "./handleError";
+import validate from "./handleErrorRegister";
 import axios from "axios";
 
 const Register = () => {
