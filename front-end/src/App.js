@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import { Route,BrowserRouter as Router } from 'react-router-dom';
-import './App.css';
-
+import React, { Component } from "react";
+import { Route, BrowserRouter as Router } from "react-router-dom";
+import "./App.css";
+import Header from "./components/Header";
+import Register from "./components/Register";
+import Login from "./components/Login";
 // Class component
 export default class App extends Component {
   constructor(props) {
@@ -11,12 +13,18 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-      <div className="App">
-    
-       <Route path="/" >
-<h>fdcvgbhnm</h>
-       </Route>
-      </div>
+        <div className="App">
+          <Header />
+          <Route path="/home">
+            <h>hi</h>
+          </Route>
+          <Route path="/register">
+        <Register/>
+          </Route>
+          <Route path="/login">
+        <Login/>
+          </Route>
+        </div>
       </Router>
     );
   }
