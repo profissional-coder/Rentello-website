@@ -76,17 +76,29 @@ const deleteAccount = (req, res) => {
   connection.query(command, arrData, (err, result) => {
     if (err) throw err;
     // console.log('RESULT: ', result);
-    res.status(200);
+    // res.status(200);
     res.json({
       message: "successfully deleted account",
     });
   });
 };
-
+const createPost = async (req, res) => {
+  const query = `INSERT INTO post (price,name,
+    post_date,category,location,from_date,to_date,img_url)
+    VALUES (?,?,now(),?,?,?,?,?)`;
+  let {price,name,category,location,from_date,to_date,img_url}= req.body;
+  const data = [price,name,category,location,from_date,to_date,img_url];
+  connection.query(query, data, (err, result) => {
+    if (err) throw err
+    // console.log("RESULT: ", result);
+    res.json(data);
+  });
+};
 
 module.exports = {
   getAllUsers,
   register,
   login,
   deleteAccount,
+  createPost
 };

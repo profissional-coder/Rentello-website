@@ -5,6 +5,7 @@ import "./App.css";
 
 const Additem = () => {
   const [post, setPost] = useState([]);
+  const [Name, setName] = useState("");
   const [price, setprice] = useState(0);
   const [Category, setCategory] = useState("");
   const [Title, setTitle] = useState("");
@@ -13,14 +14,13 @@ const Additem = () => {
   const [IMG, setIMG] = useState("");
   const [StartDate, setStartDate] = useState("");
   const [EndDate, setEndDate] = useState("");
-  const [Name, setName] = useState("");
   const [PhoneNumber, setPhoneNumber] = useState(0);
 
   const CreateAllPost = (infoArgumnt) => {
     console.log(infoArgumnt);
 
     axios
-      .post("http://localhost:5000/posts/create", infoArgumnt)
+      .post("http://localhost:5000/post/create", infoArgumnt)
       .then((response) => {
         console.log("response", response);
         const newArray = [...post];
@@ -34,6 +34,7 @@ const Additem = () => {
 
   const SavePost = () => {
     CreateAllPost({
+      name:Name,
       price: price,
       category: Category,
       title: Title,
@@ -41,7 +42,6 @@ const Additem = () => {
       location: Location,
       fromdate: StartDate,
       todate: EndDate,
-      name: Name,
       PhoneNumber: PhoneNumber,
       img_url: IMG,
     });

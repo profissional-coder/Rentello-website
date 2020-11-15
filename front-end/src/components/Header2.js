@@ -27,7 +27,7 @@ const Header2 = () => {
             {"   "}
             <li>
               <Link className="link" to="/home">
-                sign up
+              logout
               </Link>
             </li>
             {"    "}
