@@ -48,5 +48,6 @@ CREATE TABLE category (
     nameCategory VARCHAR (100),
      PRIMARY KEY (category_id)
 );
+-- after login to user and use right schema use this 
 ALTER TABLE users
 ADD img_url VARCHAR(255);

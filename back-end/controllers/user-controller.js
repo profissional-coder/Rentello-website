@@ -21,6 +21,7 @@ const getUserById = (req, res) => {
       
     });
   };
+// add new coulom img_url 
 const register = async (req, res) => {
   const query = `INSERT INTO users (Fullname, email,password,city,address,RegDate,dob,img_url) VALUES (?, ?, ?,?, ?,now(),?,?)`;
   let {Fullname, email, password, city, address, dob,img_url } = req.body;
