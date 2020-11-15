@@ -2,8 +2,11 @@ import React, { Component, useState } from 'react'
 import axios from 'axios';
 import { useHistory } from 'react-router';
 
-    const Profile = () => {
+    const Profile = () => { 
       const [info, setInfo] = useState([]);
+      const [infoPosts, setInfoPosts] = useState([]);
+      const [userPic, setUserPic] = useState("");
+      const [postPic, setPostPic] = useState("");
       const [address, setAddress] = useState("");
       const [Fullname, setFullname] = useState("");
       const [dob, doBset] = useState("");
@@ -21,10 +24,9 @@ import { useHistory } from 'react-router';
       // const [Location, setLocation] = useState("");
       // const [StartDate, setStartDate] = useState("");
       // const [EndDate, setEndDate] = useState("");
+      // const [postdate, setPostdate] = useState("");
       // const [PhoneNumber, setPhoneNumber] = useState("");
- 
-      
-      
+      // const [category, setCategory] = useState("");
       const getUser =async (infoArgumnt) => {
             console.log(infoArgumnt)
             axios
@@ -34,7 +36,7 @@ import { useHistory } from 'react-router';
                 // alert(response)
                 setLoading(true)
                  setInfo(response.data)
-                if(info.length===0){
+                if(info.length===[]){
                   setLoading(false)
                   alert("no user found")
                 }
@@ -42,6 +44,36 @@ import { useHistory } from 'react-router';
                 setFullname(response.data[0].Fullname)
                 doBset(response.data[0].dob)
                 setEmail(response.data[0].email)
+                setUserPic(response.data[0].img_url)
+                
+                setLoading(false)
+
+              })
+              .catch((err) => {
+                console.log('RESULT: ', err);
+              });
+          };
+          const getPosts =async (infoArgumnt) => {
+            console.log(infoArgumnt)
+            axios
+              .get(`http://localhost:5000/posts`)
+              .then(async (response) => {
+                console.log("response",response)
+                // alert(response)
+                setLoading(true)
+                 setInfoPosts(response.data)
+                //  setLocation(response.data)
+                //  setTitle(response.data)
+                //  setPhoneNumber(response.data)
+                //  setPostdate(response.data)
+                //  setStartDate(response.data)
+                //  setEndDate(response.data)
+                //  setCategory(response.data)
+                //  setDescription(response.data)
+                if(infoPosts.length===[]){
+                  setLoading(false)
+                  alert("no posts found")
+                }
                 
                 setLoading(false)
 
@@ -53,24 +85,28 @@ import { useHistory } from 'react-router';
         const userId = (e)=>{
           setId(e.target.value)
         }
-      
-        const newArr = arr.map((elem,index)=><li  num={index+1} key={index}>
-          <div>Post {index} {elem.Name} </div>
+        const newArr = infoPosts.map((elem,index)=><li  num={index+1} key={index}>
+          <div className="postTitle" >Post {index+1} || {elem.name} || posted at : {elem.postdate}</div>
           <div>Title : {elem.Title}</div>
-          <div>Location : {elem.Location}</div>
+          <div>Category : {elem.category}</div>
+          <div> {elem.img_url}</div>
+          <div>Location : {elem.location}</div>
           <div>PhoneNumber :{elem.PhoneNumber}</div>
-          <div>StartDate : {elem.StartDate}</div>
-          <div>EndDate : {elem.EndDate}</div>
-          <div>Description : ||{elem.Description}||</div>
+          <div>Price :{elem.price}</div>
+          <div>StartDate : {elem.fromdate}</div>
+          <div>EndDate : {elem.todate}</div>
+          <div>Description : ||{elem.description}||</div>
           </li> )
     
       return (
      <div className="profile">
-<nav className="pNav" > Profile</nav >
+       <img src={userPic} alt="profile pic"  className="pPic"></img>
+<nav className="pNav" >{Fullname} Profile</nav >
 <div className='pPosts'>
-  my posts
+  {Fullname} posts    <button onClick={()=>getPosts()} >get posts info</button> 
+
 <ul className='pPostsList'>
-{newArr}
+{newArr} 
 </ul>
 <button onClick >POST</button>
 </div>
