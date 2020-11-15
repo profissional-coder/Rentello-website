@@ -1,0 +1,112 @@
+body{
+    text-align: center;
+    /* background-image: url('../src/images/b4.jpg'); */
+    background-size:cover;
+    background-attachment: fixed;
+}
+
+.design{
+    width:36%;
+    margin: 0px 130px auto;
+    }
+    
+    .mail-form-agile {
+        padding: 50px 40px;
+        text-align: center;
+        margin:0px;
+        color: #000;
+        margin:0 auto;
+    }
+    
+    
+    ::-webkit-input-placeholder { 
+      color:#fff;
+    }
+    ::-moz-placeholder { 
+       color:#fff;
+    }
+    ::-ms-input-placeholder { 
+       color:#fff;
+    }
+    ::-moz-placeholder { 
+       color:#fff;
+    }
+    .mail-form-agile input[type="text"], .mail-form-agile input[type="tel"] ,.mail-form-agile input[type="datetime-local"], .mail-form-agile input[type="Number"], .mail-form-agile select,textarea{
+    padding: 15px 10px;
+    width: 200.5%;
+    font-size: 8px;
+    outline: none;
+    background:transparent;
+    border:0px;
+    border-bottom: 1px solid #fff;
+    border-radius: 0px;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing:1.6px;
+    color:#fff;
+    }
+    
+    .mail-form-agile input[type="submit"]{
+    font-size: 18px;
+    padding: 10px 20px;
+    letter-spacing:1.2px;
+    border: none;
+    text-transform: capitalize;
+    outline: none;
+    background: #03A9F4;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px 0px 0px 115px;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-transition-duration: 0.9s;
+    transition-duration: 0.9s;
+    }
+    .mail-form-agile input[type="submit"]:hover {
+     -webkit-transition-duration: 0.9s;
+     transition-duration: 0.9s;
+     background:rgba(91, 157, 214, 0.76);
+    }
+    .profile{
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      display: grid;
+       background-image:  radial-gradient(rgb(47, 163, 172), rgb(5, 39, 83), rgb(8, 5, 194));
+      grid-template-areas: "nav nav" "a b" " a b"   ;
+      margin-top: 30px;
+      border-bottom: solid gray 30px
+  }
+  .pPosts{ grid-area: b; border-left: solid gray 30px ; padding-top: 16px;
+  }
+  .pPostsList{ border-top: grey solid 8px; list-style: lower-roman;}
+  .pPostsList li{ border-bottom: grey solid 8px;}
+  .pInfo{ grid-area: a;}
+  .pNav{grid-area: nav;   
+    height: auto;
+
+    grid-template-rows: 30px;
+     text-transform: capitalize;  
+        font-size: 60px;
+        border-bottom: solid gray 30px
+  }
+       
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid blue;
+      border-right: 16px solid green;
+      border-bottom: 16px solid red;
+      border-left: 16px solid pink;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+    
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
