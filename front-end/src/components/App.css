@@ -1,152 +1,152 @@
-.header{
+.header {
   background-color: rgb(94, 152, 206);
   color: aliceblue;
   height: 10vh;
   padding: 10px;
 }
 
-.main-nav{
+.main-nav {
   list-style-type: none;
   text-align: center;
   margin: 5px;
-
-  
 }
-.main-nav li{
+.main-nav li {
   display: inline-block;
-
-  
-} 
-.link{
+}
+.link {
   color: #f2f2f2;
   text-decoration: none;
 }
- .link:hover{
-   color: black;
- }
+.link:hover {
+  color: black;
+}
 
 #students {
-    text-align: center;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    border: 3px solid #ddd;
-    width: 100%;
-    margin-top: 10px;
-  }
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 3px solid #ddd;
+  width: 100%;
+  margin-top: 10px;
+}
 
-  #students td, #students th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
+#students td,
+#students th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
 
-  #students tr:nth-child(even){background-color: #f2f2f2;}
+#students tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
+#students th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4cacaf;
+  color: white;
+}
 
-  #students th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    background-color: #4cacaf;
-    color: white;
-  }
+.label {
+  border: 5px rgb(75, 72, 72) solid;
+}
+.style_label {
+  margin: 10px;
+}
 
-  .label{
-   border: 5px rgb(75, 72, 72) solid;
-  
-  }
-  .style_label{
-    margin: 10px;
-  }
+.btnAdd {
+  margin: 0 100px 5px;
+}
+.search {
+  margin-top: 40px;
+  margin-left: 40px;
+}
+.div_img {
+  text-align: center;
+}
+.img {
+  width: 100px;
+  height: 50px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.btn {
+  display: block;
+  margin: 10px auto;
+}
+body {
+  text-align: center;
+  background-image: url("https://image.freepik.com/free-vector/leaves-background-color-year_23-2148380575.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
 
-  .btnAdd{
-    margin: 0 100px 5px ;
-  }
-  .search{
-    margin-top: 40px;
-    margin-left: 40px;
-  }
-  .div_img{
-text-align: center;
-  }
-  .img{
-width: 100px;
-height: 50px;
-margin-top: 10px;
-margin-left: 20px;
-  }
-  .btn{
-    display: block;
-    margin: 10px auto;
-      }
-      body{
-        text-align: center;
-        background-image: url('https://image.freepik.com/free-vector/leaves-background-color-year_23-2148380575.jpg');
-        background-size:cover;
-        background-attachment: fixed;
-    }
-    
-    .design{
-        width:36%;
-        margin: 0px 130px auto;
-        }
-        
-        .mail-form-agile {
-            padding: 50px 40px;
-            text-align: center;
-            margin:0px;
-            color: #000;
-            margin:0 auto;
-        }
-        
-        
-        ::-webkit-input-placeholder { 
-          color:#fff;
-        }
-        ::-moz-placeholder { 
-           color:#fff;
-        }
-        ::-ms-input-placeholder { 
-           color:#fff;
-        }
-        ::-moz-placeholder { 
-           color:#fff;
-        }
-        .mail-form-agile input[type="text"], .mail-form-agile input[type="tel"] ,.mail-form-agile input[type="datetime-local"], .mail-form-agile input[type="Number"], .mail-form-agile select,textarea{
-        padding: 15px 10px;
-        width: 200.5%;
-        font-size: 8px;
-        outline: none;
-        background:transparent;
-        border:0px;
-        border-bottom: 1px solid #fff;
-        border-radius: 0px;
-        font-family: 'Open Sans', sans-serif;
-        letter-spacing:1.6px;
-        color:#fff;
-        }
-        
-        .mail-form-agile input[type="submit"]{
-        font-size: 18px;
-        padding: 10px 20px;
-        letter-spacing:1.2px;
-        border: none;
-        text-transform: capitalize;
-        outline: none;
-        background: #03A9F4;
-        color: #fff;
-        cursor: pointer;
-        margin: 20px 0px 0px 115px;
-        font-family: 'Open Sans', sans-serif;
-        -webkit-transition-duration: 0.9s;
-        transition-duration: 0.9s;
-        }
-        .mail-form-agile input[type="submit"]:hover {
-         -webkit-transition-duration: 0.9s;
-         transition-duration: 0.9s;
-         background:rgba(91, 157, 214, 0.76);
-        }
-        .user_icon{
-          width: 20px;
-          padding-left: 100px;
-         
-           }
+.design {
+  width: 36%;
+  margin: 0px 130px auto;
+}
+
+.mail-form-agile {
+  padding: 50px 40px;
+  text-align: center;
+  margin: 0px;
+  color: #000;
+  margin: 0 auto;
+}
+
+::-webkit-input-placeholder {
+  color: #fff;
+}
+::-moz-placeholder {
+  color: #fff;
+}
+::-ms-input-placeholder {
+  color: #fff;
+}
+::-moz-placeholder {
+  color: #fff;
+}
+.mail-form-agile input[type="text"],
+.mail-form-agile input[type="tel"],
+.mail-form-agile input[type="datetime-local"],
+.mail-form-agile input[type="Number"],
+.mail-form-agile select,
+textarea {
+  padding: 15px 10px;
+  width: 200.5%;
+  font-size: 8px;
+  outline: none;
+  background: transparent;
+  border: 0px;
+  border-bottom: 1px solid #fff;
+  border-radius: 0px;
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 1.6px;
+  color: #fff;
+}
+
+.mail-form-agile input[type="submit"] {
+  font-size: 18px;
+  padding: 10px 20px;
+  letter-spacing: 1.2px;
+  border: none;
+  text-transform: capitalize;
+  outline: none;
+  background: #03a9f4;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px 0px 0px 115px;
+  font-family: "Open Sans", sans-serif;
+  -webkit-transition-duration: 0.9s;
+  transition-duration: 0.9s;
+}
+.mail-form-agile input[type="submit"]:hover {
+  -webkit-transition-duration: 0.9s;
+  transition-duration: 0.9s;
+  background: rgba(91, 157, 214, 0.76);
+}
+.user_icon {
+  width: 20px;
+  padding-left: 100px;
+}

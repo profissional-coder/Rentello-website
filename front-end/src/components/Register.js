@@ -24,11 +24,8 @@ const Register = () => {
   };
 
   const handleSubmit = (e) => {
-    
-
     console.log("aaa", values);
     setErrors(validate(values));
-
 
     e.preventDefault();
     // setErrors(validate(values));
@@ -41,9 +38,6 @@ const Register = () => {
         console.log("ERR : ", err);
       });
   };
-
-
-
 
   return (
     <div className="Register-container">
@@ -137,7 +131,7 @@ const Register = () => {
           ></input>
         </div>
         <br />
-        <button   type="submit">Register</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
