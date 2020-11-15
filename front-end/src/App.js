@@ -6,24 +6,17 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Additem from "./components/Additem"
+import Render from "./components/Render"
+import Header2 from "./components/Header2"
 // Class component
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Token:""
     };
   }
 
-  createNewItem=()=>{
-  //  console.log('localStorage.setItem',localStorage.getItem("token"));
-   if (!!localStorage.getItem("token")){
-     this.setState({Token:true})
-   }else{
-    this.setState({Token:false})
-   }
-    
-  }
+
 
 
   render() {
@@ -33,29 +26,47 @@ export default class App extends Component {
       <Router>
         
         <div className="App">
+        <Route  exact path="/">
           <Header />
+          </Route>
+         
+         
           <Route path="/home">
-     
-          {/* {?(<Redirect to ="/add"/> ):(<Redirect to ="/home"/>)} */}
+           <Header/>
          <Home/>
           </Route>
-         <Link className="link" to="/add">
-        <button className="btn" onClick={this.createNewItem}>Add item</button>
-
-     </Link>
+         
+         
           <Route path="/add">
+          <Header2/>
         <Additem/>
           </Route>
 
+   
+          <Route path="/showpost">
+          <Header2/>
+          <Render/>
+          </Route>
+         
+          <Route path="/items"> 
+          <Header2/>
+         
+          <p>Safely profit from all items you own</p>
+          <Link className="link" to="/add">
+<button>Add Item</button>
+</Link>
+          </Route>
+         
           
-
-
+          
           <Route path="/register">
+          <Header />
         <Register/>
           </Route>
 
 
           <Route path="/login">
+          <Header />
         <Login/>
           </Route>
         </div>

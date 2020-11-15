@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from "react-router-dom";
 import axios from 'axios';
 import './App.css';
 
@@ -38,9 +39,9 @@ const Additem = () => {
     
   };
   return (
-    <div class="padding-all">
-		<div class="design">
-			<div class="mail-form-agile">
+    <div className="padding-all">
+		<div className="design">
+			<div className="mail-form-agile">
 				
              <input onChange={(e) =>{setTitle(e.target.value)}} type='text' placeholder="Write Post Title Here"></input>
 
@@ -64,9 +65,11 @@ const Additem = () => {
              <input onChange={(e) => {setPhoneNumber(e.target.value)}} type='tel' placeholder ='Phone Number'></input>
              <textarea placeholder='Description' onChange={(e) => {setDescription(e.target.value)}}></textarea>
              <input onChange={(e) => {setIMG(e.target.value)}}  type="file" name="image"></input>
-				     <input onClick={SavePost} type="submit" value='Save'></input>
+             <Link className="link" to="/showpost">
+             <input onClick={SavePost} type="submit" value='Save'></input>
+             </Link>
       </div>
-		  <div class="clear"> </div>
+		  <div className="clear"> </div>
 		</div>
     </div>
     
