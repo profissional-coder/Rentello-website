@@ -1,5 +1,6 @@
 USE itemrental;
 
+
 CREATE TABLE roles (
     role_id INT AUTO_INCREMENT NOT NULL,
     type VARCHAR(50) NOT NULL,
@@ -36,6 +37,7 @@ CREATE TABLE post (
     location VARCHAR (100),
     fromdate VARCHAR (100),
     todate VARCHAR (100),
+    name VARCHAR (100),
     PhoneNumber INT (100),
     img_url VARCHAR (255),
     PRIMARY KEY (post_id),
@@ -49,3 +51,5 @@ CREATE TABLE category (
      PRIMARY KEY (category_id)
 
 );
+
+

@@ -12,6 +12,21 @@ const getAllUsers = (req, res) => {
     res.json(result);
   });
 };
+
+
+
+  const PostAndUsers = (req, res) => {
+    const query=`SELECT post.post_id,users.user_id 
+                 from users INNER JOIN post ON post.user_id=users.user_id `;
+                 let {price,category,title,description,location,fromdate,todate,name,PhoneNumber,img_url}= req.body;
+                 const data = [price,category,title,description,location,fromdate,todate,name,PhoneNumber,img_url];
+            connection.query(query,data,(err,result)=>{
+              if(err) throw err
+              res.json(data);
+            })
+  }
+  
+
 const register = async (req, res) => {
   const query = `INSERT INTO users (role_id,Fullname, email,password,city,address,RegDate,dob) VALUES (2, ?, ?,?, ?,?,now(),?)`;
   let {  Fullname, email, password, city, address, dob } = req.body;
@@ -21,8 +36,7 @@ const register = async (req, res) => {
     if (err) {
       res.json(email + ` is already register.`);
     }
-    // console.log("RESULT: ", result);
-    // res.json(`Thanks for registration. ${Fullname} Try to login Now`);
+    
     res.json(data)
   });
 };
@@ -76,12 +90,13 @@ const deleteAccount = (req, res) => {
   connection.query(command, arrData, (err, result) => {
     if (err) throw err;
     // console.log('RESULT: ', result);
-    // res.status(200);
+    res.status(200);
     res.json({
       message: "successfully deleted account",
     });
   });
 };
+
 const createPost = async (req, res) => {
   const query = `INSERT INTO post (price,name,
     post_date,category,location,from_date,to_date,img_url)
@@ -94,11 +109,13 @@ const createPost = async (req, res) => {
     res.json(data);
   });
 };
-
 module.exports = {
   getAllUsers,
   register,
   login,
   deleteAccount,
-  createPost
+  createPost,
+  PostAndUsers
 };
+
+
