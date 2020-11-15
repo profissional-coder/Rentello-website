@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+
+import validate from "./handleError";
+
 import validate from "./handleErrorRegister";
+
 import axios from "axios";
 
 const Register = () => {
@@ -25,13 +29,15 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     console.log("aaa", values);
+
     e.preventDefault();
     setErrors(validate(values));
     axios
       // Bath from BE
       .post("http://localhost:5000/register", values)
       .then((result) => {
-        console.log("success");
+         // console.log("result : ",result);
+
       })
       .catch((err) => {
         console.log("ERR : ", err);
@@ -48,7 +54,9 @@ const Register = () => {
           <input
             type="text"
             name="Fullname"
+
             placeholder="enter your Fullname"
+
             value={values.Fullname}
             onChange={handleChange}
           ></input>
@@ -124,7 +132,9 @@ const Register = () => {
           <br />
           <input
             type="date"
-            name="DOB"
+
+            name="dob"
+
             value={values.password}
             onChange={handleChange}
           ></input>

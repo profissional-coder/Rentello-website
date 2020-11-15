@@ -1,12 +1,12 @@
 USE itemrental;
 
+
 CREATE TABLE roles (
     role_id INT AUTO_INCREMENT NOT NULL,
     type VARCHAR(50) NOT NULL,
     PRIMARY KEY (role_id)
-
 );
-​
+
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT NOT NULL,
     role_id INT(5),
@@ -28,8 +28,9 @@ CREATE TABLE post (
     user_id INT(5),
     category_id INT (5),
     comment_id INT (5),
+    name VARCHAR (100),
     price INT (100),
-    postdate DATETIME,
+    post_date DATETIME,
     category VARCHAR (100),
     title VARCHAR (100),
     description VARCHAR (100),
@@ -50,3 +51,5 @@ CREATE TABLE category (
      PRIMARY KEY (category_id)
 
 );
+
+
