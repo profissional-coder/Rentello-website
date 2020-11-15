@@ -12,7 +12,7 @@ export default class App extends Component {
       <div>
         <h1>HELLO WORLD</h1>
       </div>
-    );
+    )
   }
 }
 
