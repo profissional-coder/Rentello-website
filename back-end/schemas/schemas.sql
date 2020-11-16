@@ -51,3 +51,21 @@ CREATE TABLE category (
 -- after login to user and use right schema use this 
 ALTER TABLE users
 ADD img_url VARCHAR(255);
+--add this table 
+CREATE TABLE orders (
+    order_id INT AUTO_INCREMENT NOT NULL,
+    user_id INT(5),
+    price INT (100),
+    postdate DATETIME,
+    category VARCHAR (100),
+    title VARCHAR (100),
+    description VARCHAR (100),
+    location VARCHAR (100),
+    fromdate VARCHAR (100),
+    todate VARCHAR (100),
+    name VARCHAR (100),
+    PhoneNumber INT (100),
+    img_url VARCHAR (255),
+    PRIMARY KEY (order_id),
+    FOREIGN KEY (user_id) REFERENCES users (user_id)
+);

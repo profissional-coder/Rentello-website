@@ -38,7 +38,24 @@ const register = async (req, res) => {
     res.json(data)
   });
 };
-
+const updateUser = async (req, res) => {
+  let {user_id,Fullname, email, password, city, address, dob,img_url } = req.body;
+ let newPassword = await bcrypt.hashSync(password, Number(process.env.SALT));
+  const query = `UPDATE users SET Fullname="${Fullname}", password='${newPassword}',city="${city}",
+    address="${address}",dob=${dob},img_url="${img_url}" 
+  WHERE user_id=${user_id}`;
+  // const data = [ Fullname, email, password, city, address, dob,img_url];
+  // console.log(data);
+  connection.query(query,  (err, result) => { 
+    if (err) {
+      // res.json(email + ` is already register.`);
+      res.json(err)
+    }
+    console.log("RESULT: ", result);
+    // res.json(`Thanks for registration. ${Fullname} Try to login Now`);
+    res.json(result)
+  });
+};
 const login = (req, res) => {
   const query = `SELECT * ,roles.type FROM roles INNER JOIN users ON 
   users.role_id=roles.role_id WHERE email=?`;
@@ -101,5 +118,6 @@ module.exports = {
   register,
   login,
   deleteAccount,
-  getUserById
+  getUserById,
+  updateUser
 };
