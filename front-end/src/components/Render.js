@@ -36,7 +36,6 @@ const Render = (props) => {
 
   return (
     <div>
-      <p>show one post</p>
      {/* <button onClick={getlastpost}>get</button> */}
   <div><img src={Img_url}></img></div>
   <p> Category : {Category}</p>
@@ -45,6 +44,7 @@ const Render = (props) => {
   <p> From Date : {From_date}</p>
   <p> To Date : {To_date}</p>
   <p> Location  : {Location}</p>
+  <button>RENT ONLINE</button>
     </div>
   );
 };
