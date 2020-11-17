@@ -82,12 +82,42 @@ import { useHistory } from 'react-router';
                 console.log('RESULT: ', err);
               });
           };
+          const deletePosts =async (infoArgumnt) => {
+            console.log(infoArgumnt)
+            axios
+              .delete(`http://localhost:5000/delete/:${infoArgumnt}`)
+              .then(async (response) => {
+                console.log("response",response)
+                alert(response)
+                getPosts()
+              })
+              .catch((err) => {
+                console.log('RESULT: ', err);
+              });
+          };
         const userId = (e)=>{
           setId(e.target.value)
         }
+        const updatePosts =async (infoArgumnt) => {
+          console.log(infoArgumnt)
+          const arrData = [post_id,name,price,post_date,category,location,from_date,to_date,img_url,post_id];
+          axios
+            .put(`http://localhost:5000/posts/update`,arrData)
+            .then(async (response) => {
+              console.log("response",response)
+              alert(response)
+              getPosts()
+            })
+            .catch((err) => {
+              console.log('RESULT: ', err);
+            });
+        };
+      const userId = (e)=>{
+        setId(e.target.value)
+      }
         const newArr = infoPosts.map((elem,index)=><li  num={index+1} key={index}>
           <div className="postTitle" >Post {index+1} || {elem.name} || posted at : {elem.postdate}</div>
-          <div>Title : {elem.title}</div>
+          <div>Title : {elem.title}  <button onClick={deletePosts(elem.post_id)} >D</button> <button onClick={updatePosts(elem.post_id)}>U</button>   </div>
           <div>Category : {elem.category}</div>
           <div> <img src={elem.img_url} alt="post image" ></img>{elem.img_url}</div>
           <div>Location : {elem.location}</div>
@@ -96,7 +126,6 @@ import { useHistory } from 'react-router';
           <div>StartDate : {elem.fromdate}</div>
           <div>EndDate : {elem.todate}</div>
           <div>Description : ||{elem.description}||</div>
-          <button></button>
           </li> )
     
       return (
