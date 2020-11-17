@@ -107,13 +107,8 @@ const createPost = async (req, res) => {
   connection.query( await query, data, (err, result) => {
     if (err) throw err
     // console.log('data',data);
-    //new command
-    // const query2=`SELECT post_id FROM post WHERE name="${data[1]}" `
-  const query2=` SELECT LAST_INSERT_ID();`
-    connection.query( query2, (err, result) => {
-      if (err) throw err
-      res.json({post_id:result,data:data});
-    })
+  
+  
   });
 };
 
