@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   Route,
   BrowserRouter as Router,
@@ -22,17 +23,34 @@ import inforationTow from './components/InformationTwo'
 
 
 const App = () => {
+ 
   const [post, setPost] = useState([]);
+  const [name, setName] = useState("")
   const [price, setprice] = useState(0)
-  const [Category, setCategory] = useState('')
-  const [Title, setTitle] = useState('')
-  const [Description, setDescription] = useState('')
-  const [Location, setLocation] = useState('')
+  const [category, setcategory] = useState('')
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [location, setLocation] = useState('')
   const [IMG, setIMG] = useState('')
-  const [StartDate, setStartDate] = useState('')
-  const [EndDate, setEndDate] = useState('')
-  const [Name, setName] = useState('')
-  const [PhoneNumber, setPhoneNumber] = useState(0)
+  const [fromdate, setStartDate] = useState('')
+  const [todate, setEndDate] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState(0)
+  const [img_url, setimag]=useState('')
+  useEffect(() => {
+    console.log('========= USEEFFECT CALLED =========');
+    getAll();
+  }, []);
+  const getAll = () => {
+    axios
+      .get('http://localhost:5000/post/get')
+      .then((response) => {
+        console.log('DATA: ', response.data);
+        setPost(response.data);
+      })
+      .catch((err) => {
+        console.log('RESULT: ', err);
+      });
+  };
   return (
 
     <Router>
@@ -81,7 +99,7 @@ const App = () => {
           <Contact />
         </Route>
         <Route path='/AllPost'>
-             <Infone/>
+             <Infone npost={post}/>
         </Route>
         
       </div>

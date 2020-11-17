@@ -96,25 +96,37 @@ const deleteAccount = (req, res) => {
     });
   });
 };
+const getAllpost = (req, res) => {
+  const command = `SELECT * FROM post `;
+  connection.query(command, (err, result) => {
+    if (err) throw err;
+    console.log("RESULT: ", result);
+    res.json(result);
+  });
+};
+
 
 const createPost = async (req, res) => {
   const query = `INSERT INTO post (name,price,
     post_date,category,title,description,location,fromdate,todate,phoneNumber,img_url)
     VALUES (?,?,now(),?,?,?,?,?,?,?,?)`;
   let {name,price,category,title,description,location,fromdate,todate,PhoneNumber,img_url}= req.body;
-  const data = [name,price,category,,title,,description,location,fromdate,todate,PhoneNumber,img_url];
+  const data = [name,price,category,title,description,location,fromdate,todate,PhoneNumber,img_url];
   connection.query(query, data, (err, result) => {
     if (err) throw err
     // console.log("RESULT: ", result);
     res.json(data);
   });
 };
+
+
 module.exports = {
   getAllUsers,
   register,
   login,
   deleteAccount,
   createPost,
+  getAllpost,
   PostAndUsers
 };
 

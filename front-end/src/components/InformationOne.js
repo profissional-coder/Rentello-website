@@ -2,21 +2,17 @@ import React from 'react'
 
 import InformationTow from './InformationTwo'
 
-const InformationOne =(props)=>{
-    
+const Information_1 =(props)=>{
+    const newpost=props.npost.map((ele)=>{
+        return <InformationTow onepost={ele} />
+    })
         return (
-            <div className='AllPost'>
-                <div className='Title'>
-                   <p>Title</p>
-                   <p>location</p>
-               </div>
-               <div className='img'>
-                  <img src='https://www.w3schools.com/css/paris.jpg'></img>
-                  <p>10000</p>
-               </div>
+            <div>
+               
+                {newpost}
             </div>
                 
         )
     
 }
-export default InformationOne
+export default Information_1
