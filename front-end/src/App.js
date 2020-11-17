@@ -15,12 +15,14 @@ import Additem from "./components/Additem";
 import Render from "./components/Render";
 import Header2 from "./components/Header2";
 import Contact from "./components/Contact";
-
+import Updateinfo from "./components/Updateinfo"
+import Userprofile from './components/Userprofile';
 
 
 
 const App = () => {
- 
+  const [post, setPost] = useState([]);
+  
   return (
 
     <Router>
@@ -36,12 +38,12 @@ const App = () => {
 
         <Route path="/add">
           <Header2 />
-          <Additem />
+          <Additem data={post}/>
         </Route>
 
         <Route path="/showpost">
           <Header2 />
-          <Render />
+          <Render datashow={post}/>
         </Route>
 
         <Route path="/items">
@@ -66,6 +68,14 @@ const App = () => {
         <Route path="/Contact">
           <Header2 />
           <Contact />
+        </Route>
+        <Route path="/userprofile">
+          <Header2 />
+         <Userprofile/>
+        </Route>
+        <Route path="/update">
+          <Header2 />
+         <Updateinfo/>
         </Route>
       </div>
     </Router>

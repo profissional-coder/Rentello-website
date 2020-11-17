@@ -100,22 +100,45 @@ const deleteAccount = (req, res) => {
 const createPost = async (req, res) => {
   const query = `INSERT INTO post (price,name,
     post_date,category,location,from_date,to_date,img_url)
-    VALUES (?,?,now(),?,?,?,?,?)`;
+    VALUES (?,?,now(),?,?,?,?,?) `;
+    
   let {price,name,category,location,from_date,to_date,img_url}= req.body;
   const data = [price,name,category,location,from_date,to_date,img_url];
-  connection.query(query, data, (err, result) => {
+  connection.query( await query, data, (err, result) => {
     if (err) throw err
-    // console.log("RESULT: ", result);
-    res.json(data);
+    // console.log('data',data);
+    //new command
+    // const query2=`SELECT post_id FROM post WHERE name="${data[1]}" `
+  const query2=` SELECT LAST_INSERT_ID();`
+    connection.query( query2, (err, result) => {
+      if (err) throw err
+      res.json({post_id:result,data:data});
+    })
   });
 };
+
+const getLastPost=(req,res)=>{
+  // const query2=` SELECT MAX(post_id) FROM  post;`
+  const query2= `SELECT post_id FROM post ORDER BY post_id DESC LIMIT 1`
+  connection.query( query2, (err, result) => {
+    if (err) throw err
+    // console.log('result : ',result[0].post_id);
+    const query2=` SELECT * FROM post WHERE post_id=${result[0].post_id};`
+    connection.query( query2, (err, result) => {
+      if (err) throw err
+      res.json(result);
+    })
+  });
+
+}
 module.exports = {
   getAllUsers,
   register,
   login,
   deleteAccount,
   createPost,
-  PostAndUsers
+  PostAndUsers,
+  getLastPost
 };
 
 
