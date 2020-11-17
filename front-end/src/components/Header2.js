@@ -31,14 +31,17 @@ const Header2 = () => {
               </Link>
             </li>
             {"    "}
-            {
+            
               <li>
+              <Link className="link" to="/userprofile">
+
                 <img
                   className="user_icon"
                   src="https://img.icons8.com/bubbles/50/000000/user-male.png"
                 />
+                </Link>
               </li>
-            }
+            
           </ul>
         </nav>
       </header>
