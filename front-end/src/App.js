@@ -15,12 +15,24 @@ import Additem from "./components/Additem";
 import Render from "./components/Render";
 import Header2 from "./components/Header2";
 import Contact from "./components/Contact";
-
+import posts from './components/Post'
+import Infone  from './components/InformationOne'
+import inforationTow from './components/InformationTwo'
 
 
 
 const App = () => {
- 
+  const [post, setPost] = useState([]);
+  const [price, setprice] = useState(0)
+  const [Category, setCategory] = useState('')
+  const [Title, setTitle] = useState('')
+  const [Description, setDescription] = useState('')
+  const [Location, setLocation] = useState('')
+  const [IMG, setIMG] = useState('')
+  const [StartDate, setStartDate] = useState('')
+  const [EndDate, setEndDate] = useState('')
+  const [Name, setName] = useState('')
+  const [PhoneNumber, setPhoneNumber] = useState(0)
   return (
 
     <Router>
@@ -32,8 +44,9 @@ const App = () => {
         <Route path="/home">
           <Header />
           <Home />
+          
         </Route>
-
+        
         <Route path="/add">
           <Header2 />
           <Additem />
@@ -67,6 +80,10 @@ const App = () => {
           <Header2 />
           <Contact />
         </Route>
+        <Route path='/AllPost'>
+             <Infone/>
+        </Route>
+        
       </div>
     </Router>
   );

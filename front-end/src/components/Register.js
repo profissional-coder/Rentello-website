@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import validate from "./handleError";
+
 
 import validate from "./handleErrorRegister";
 

@@ -98,11 +98,11 @@ const deleteAccount = (req, res) => {
 };
 
 const createPost = async (req, res) => {
-  const query = `INSERT INTO post (price,name,
-    post_date,category,location,from_date,to_date,img_url)
-    VALUES (?,?,now(),?,?,?,?,?)`;
-  let {price,name,category,location,from_date,to_date,img_url}= req.body;
-  const data = [price,name,category,location,from_date,to_date,img_url];
+  const query = `INSERT INTO post (name,price,
+    post_date,category,title,description,location,fromdate,todate,phoneNumber,img_url)
+    VALUES (?,?,now(),?,?,?,?,?,?,?,?)`;
+  let {name,price,category,title,description,location,fromdate,todate,PhoneNumber,img_url}= req.body;
+  const data = [name,price,category,,title,,description,location,fromdate,todate,PhoneNumber,img_url];
   connection.query(query, data, (err, result) => {
     if (err) throw err
     // console.log("RESULT: ", result);

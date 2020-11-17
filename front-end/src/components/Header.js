@@ -36,6 +36,11 @@ const Header = () => {
                 Login
               </Link>
             </li>
+            <li>
+              <Link className="link" to="/AllPost">
+                All Post
+              </Link>
+            </li>
           </ul>
         </nav>
       </header>
