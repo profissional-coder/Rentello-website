@@ -87,15 +87,16 @@ import { useHistory } from 'react-router';
         }
         const newArr = infoPosts.map((elem,index)=><li  num={index+1} key={index}>
           <div className="postTitle" >Post {index+1} || {elem.name} || posted at : {elem.postdate}</div>
-          <div>Title : {elem.Title}</div>
+          <div>Title : {elem.title}</div>
           <div>Category : {elem.category}</div>
-          <div> {elem.img_url}</div>
+          <div> <img src={elem.img_url} alt="post image" ></img>{elem.img_url}</div>
           <div>Location : {elem.location}</div>
           <div>PhoneNumber :{elem.PhoneNumber}</div>
           <div>Price :{elem.price}</div>
           <div>StartDate : {elem.fromdate}</div>
           <div>EndDate : {elem.todate}</div>
           <div>Description : ||{elem.description}||</div>
+          <button></button>
           </li> )
     
       return (

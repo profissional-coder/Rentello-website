@@ -18,7 +18,7 @@ mainRouter.get("/orders", getOrders);
 
 /*************************************************************/
 mainRouter.get("/users", getAllUsers);
-mainRouter.put("/users/update", updateUser);
+mainRouter.put("/users/update", updateUser); 
 mainRouter.get("/user/:user_id", getUserById);
 mainRouter.post("/register", register);
 mainRouter.post("/login",login);

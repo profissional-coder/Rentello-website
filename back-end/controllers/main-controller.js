@@ -24,7 +24,7 @@ const createPost = async (req, res) => {
     res.json(`successfully create post`);
   });
 }; 
-//******************order part */
+//****************************malek add  */
 const createOrder = async (req, res) => {
   const query = `INSERT INTO orders (price,name,PhoneNumber,title,
     postdate,category,location,fromdate,todate,description,img_url)
@@ -33,7 +33,6 @@ const createOrder = async (req, res) => {
   const data = [price,name,PhoneNumber,title,category,location,fromdate,todate,description,img_url];
   connection.query(query, data, (err, result) => {
     if (err) throw err
-    // console.log("RESULT: ", result);
     res.json(`successfully create order`);
   });
 }; 
@@ -41,7 +40,6 @@ const getOrders = (req, res) => {
   const command = `SELECT * FROM orders `;
   connection.query(command,(err, result) => {
     if (err) throw err;
-    // console.log('RESULT: ', result);
     res.status(200);
     res.json({
       message: result,
@@ -53,7 +51,6 @@ const deleteOrder = (req, res) => {
   const arrData = [req.params.order_id];
   connection.query(command, arrData, (err, result) => {
     if (err) throw err;
-    // console.log('RESULT: ', result);
     res.status(200);
     res.json({
       message: result,

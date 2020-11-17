@@ -65,6 +65,7 @@ body{
      transition-duration: 0.9s;
      background:rgba(91, 157, 214, 0.76);
     }
+    /*  profile css here */
     .profile{
       position: absolute;
       top: 0; right: 0; bottom: 0; left: 0;
@@ -115,3 +116,4 @@ body{
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+        /*  profile css end */
