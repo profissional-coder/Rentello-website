@@ -124,8 +124,16 @@ const getLastPost=(req,res)=>{
       res.json(result);
     })
   });
-
 }
+
+const getAllpost = (req, res) => {
+  const command = `SELECT * FROM post `;
+  connection.query(command, (err, result) => {
+    if (err) throw err;
+    console.log("RESULT: ", result);
+    res.json(result);
+  });
+};
 module.exports = {
   getAllUsers,
   register,
@@ -133,7 +141,8 @@ module.exports = {
   deleteAccount,
   createPost,
   PostAndUsers,
-  getLastPost
+  getLastPost,
+  getAllpost
 };
 
 

@@ -68,7 +68,7 @@ body{
     }
     
 
-=======
+
 .Register-container {
   background-color: aqua;
   display: flex;
@@ -89,3 +89,35 @@ body{
   color: red;
   font-size: larger;
 }
+.profile{
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  display: grid;
+   background-image:  radial-gradient(rgb(47, 163, 172), rgb(5, 39, 83), rgb(8, 5, 194));
+  grid-template-areas: "nav nav" "a b" " a b" ;
+  grid-template-columns: 25% 75% ;
+  margin-top: 30px;
+  border-bottom: solid gray 30px;
+  height: fit-content;
+  
+}
+.pPic{grid-area: nav; max-width: 200px;height:100px;  border: 8px solid rgba(21, 7, 61, 0.452);
+border-radius: 300px; }
+.pPosts{ grid-area: b; border-left: solid gray 30px ; padding-top: 16px;
+}
+.pPostsList{ border-top: grey solid 8px; list-style: lower-roman;}
+.pPostsList li{ border-bottom: grey solid 8px;}
+.pInfo{ grid-area: a;max-width: 400px; }
+.postTitle{background-color: rgba(0, 0, 0, 0.473);}
+.pNav{grid-area: nav;   
+height: auto;
+grid-template-rows: 30px;
+ text-transform: capitalize;  
+    font-size: 60px;
+    border-bottom: solid gray 30px
+}
+  .img{
+    width:100px;
+    height: 100px;
+  } 
+

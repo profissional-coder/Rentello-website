@@ -17,7 +17,8 @@ import Header2 from "./components/Header2";
 import Contact from "./components/Contact";
 import Updateinfo from "./components/Updateinfo"
 import Userprofile from './components/Userprofile';
-
+import Renderall from "./components/Renderall"
+import Rent from './components/Rent';
 
 
 const App = () => {
@@ -64,6 +65,19 @@ const App = () => {
           <Header />
           <Login />
         </Route>
+
+        <Route exact path="/user/profile" >
+				<Renderall />
+        </Route>
+
+    
+        
+        {/* <Route  path="/rent">
+         <Rent/>
+        </Route> */}
+        <Route  path='/rent'
+render={props => <Rent {...props} />}/>
+
 
         <Route path="/Contact">
           <Header2 />

@@ -44,7 +44,7 @@ const Render = (props) => {
   <p> From Date : {From_date}</p>
   <p> To Date : {To_date}</p>
   <p> Location  : {Location}</p>
-  <button>RENT ONLINE</button>
+  <button>Delete</button>
     </div>
   );
 };
