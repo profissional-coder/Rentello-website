@@ -99,6 +99,7 @@ const App = () => {
           <Contact />
         </Route>
         <Route path='/AllPost'>
+        <Header2 />
              <Infone npost={post}/>
         </Route>
         

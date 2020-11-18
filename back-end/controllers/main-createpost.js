@@ -9,18 +9,7 @@ const getAllpost = (req, res) => {
     res.json(result);
   });
 };
-const createPost = async (req, res) => {
-  const query = `INSERT INTO post (price,name,
-    post_date,category,location,from_date,to_date,img_url)
-    VALUES (?,?,now(),?,?,?,?,?)`;
-  let {price,name,category,location,from_date,to_date,img_url}= req.body;
-  const data = [price,name,category,location,from_date,to_date,img_url];
-  connection.query(query, data, (err, result) => {
-    if (err) throw err
-    // console.log("RESULT: ", result);
-    res.json(`successfully create post`);
-  });
-};
+
 
 const deleteALL = (req, res) => {
   const command = `delete from post WHARE`;

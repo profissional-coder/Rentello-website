@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-
-
-
 import validate from "./handleErrorRegister";
-
 import axios from "axios";
 
 const Register = () => {
@@ -49,12 +45,9 @@ const Register = () => {
       <form onSubmit={handleSubmit}>
         <h1>Register User</h1>
         <div className="form-input">
-          <label>Username </label>
-          <br />
           <input
             type="text"
             name="Fullname"
-
             placeholder="enter your Fullname"
 
             value={values.Fullname}
@@ -62,10 +55,7 @@ const Register = () => {
           ></input>
           {errors.Fullname && <p> {errors.Fullname} </p>}
         </div>
-        <br />
         <div className="form-input">
-          <label>Email </label>
-          <br />
           <input
             type="email"
             name="email"
@@ -75,10 +65,8 @@ const Register = () => {
           ></input>
           {errors.email && <p> {errors.email} </p>}
         </div>
-        <br />
+        
         <div className="form-input">
-          <label>Password </label>
-          <br />
           <input
             type="password"
             name="password"
@@ -88,10 +76,8 @@ const Register = () => {
           ></input>
           {errors.password && <p> {errors.password} </p>}
         </div>
-        <br />
         <div className="form-input">
-          <label>Confirm Password </label>
-          <br />
+          
           <input
             type="password"
             name="password2"
@@ -101,10 +87,8 @@ const Register = () => {
           ></input>
           {errors.password2 && <p> {errors.password2} </p>}
         </div>
-        <br />
         <div className="form-input">
-          <label>City </label>
-          <br />
+      
           <input
             type="text"
             name="city"
@@ -114,10 +98,9 @@ const Register = () => {
           ></input>
           {errors.city && <p> {errors.city} </p>}
         </div>
-        <br />
         <div className="form-input">
-          <label>Address </label>
-          <br />
+          
+          
           <input
             type="text"
             name="address"
@@ -126,20 +109,17 @@ const Register = () => {
             onChange={handleChange}
           ></input>
         </div>
-        <br />
+
         <div className="form-input">
-          <label>Date Of Birth </label>
-          <br />
+          
           <input
             type="date"
-
             name="dob"
-
             value={values.password}
             onChange={handleChange}
           ></input>
         </div>
-        <br />
+        
         <button type="submit">Register</button>
       </form>
     </div>

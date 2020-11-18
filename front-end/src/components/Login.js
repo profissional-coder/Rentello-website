@@ -41,10 +41,9 @@ const Login = () => {
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        <h2>Login</h2>
         <div className="form-input">
-          <label>Email </label>
-          <br />
+          
           <input
             type="email"
             name="email"
@@ -54,10 +53,9 @@ const Login = () => {
           ></input>
           {errors.email && <p> {errors.email} </p>}
         </div>
-        <br />
+        
         <div className="form-input">
-          <label>Password </label>
-          <br />
+          
           <input
             type="password"
             name="password"
@@ -67,7 +65,7 @@ const Login = () => {
           ></input>
           {errors.password && <p> {errors.password} </p>}
         </div>
-        <br />
+        
         <button type="submit">Login</button>
       </form>
     </div>

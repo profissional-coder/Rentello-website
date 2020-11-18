@@ -1,24 +1,39 @@
-.header {
-  background-color: rgb(94, 152, 206);
-  color: aliceblue;
-  height: 10vh;
-  padding: 10px;
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
+.header {
+  color: aliceblue;
+  height: 10vh;
+  padding: 2px 0px 8px;
+}
+
+
 .main-nav {
-  list-style-type: none;
-  text-align: center;
-  margin: 5px;
+  color: #ffffff;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+    float: left;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    -moz-transition: 0.5s all;
 }
 .main-nav li {
   display: inline-block;
+  padding: 0px 9px;
 }
-.link {
+.link{
   color: #f2f2f2;
   text-decoration: none;
+  font-size: 6px;
 }
 .link:hover {
-  color: black;
+  color: red;
 }
 
 #students {
@@ -60,27 +75,29 @@
 }
 .search {
   margin-top: 40px;
-  margin-left: 40px;
+  margin-left: 100px;
+  width: 69%;
 }
 .div_img {
   text-align: center;
+  padding: 20px;
 }
 .img {
-  width: 100px;
-  height: 50px;
+  border-radius: 50%;
+  width: 150px;
+  height: 69px;
   margin-top: 10px;
   margin-left: 20px;
+}
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+  transform: scaleX(-1);
 }
 .btn {
   display: block;
   margin: 10px auto;
 }
-body {
-  text-align: center;
-  background-image: url("https://image.freepik.com/free-vector/leaves-background-color-year_23-2148380575.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-}
+
 
 .design {
   width: 36%;

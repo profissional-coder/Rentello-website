@@ -42,6 +42,7 @@ const Header2 = () => {
           </ul>
         </nav>
       </header>
+      
     </div>
   );
 };
