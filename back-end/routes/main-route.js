@@ -1,7 +1,8 @@
 
 const express = require("express");
 const mainRouter = express.Router();
-const { getAllUsers, register,login,deleteAccount,createPost ,updateUser,PostAndUsers,getLastPost,getAllpost,getpost} = require("../controllers/main-controller");
+const { getAllUsers, register,login,deleteAccount,createPost ,updateUser,
+    PostAndUsers,getLastPost,getAllpost,getpost,createOrder,getOrders} = require("../controllers/main-controller");
 
 mainRouter.post('/userAndPost', PostAndUsers);
 mainRouter.get("/user", getAllUsers);
@@ -14,5 +15,7 @@ mainRouter.get("/getlastpost",getLastPost)
 mainRouter.get("/getlastpost",getLastPost)
 mainRouter.get("/posts", getAllpost);
 mainRouter.get("/post/:post_id",getpost);
+mainRouter.post("/orders/create", createOrder);
+mainRouter.get("/orders/:user_id", getOrders);
 
 module.exports = mainRouter;

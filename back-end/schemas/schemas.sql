@@ -51,5 +51,14 @@ CREATE TABLE category (
      PRIMARY KEY (category_id)
 
 );
-
-
+-- my table 
+CREATE TABLE orders ( 
+order_id INT AUTO_INCREMENT NOT NULL,
+ user_id INT(5),
+  post_id INT(5),
+   fromdate VARCHAR (100),
+    todate VARCHAR (100),
+    PRIMARY KEY (order_id),
+    FOREIGN KEY (user_id) REFERENCES users (user_id),
+     FOREIGN KEY (post_id) REFERENCES post (post_id)
+)
