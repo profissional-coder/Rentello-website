@@ -153,7 +153,7 @@ const getAllpost = (req, res) => {
 };
 
 const getpost = (req, res) => {
- console.log('req.params',req.params.post_id);
+//  console.log('req.params',req.params.post_id);
  
   const command = `SELECT * FROM post WHERE post_id = ${req.params.post_id}`;
   connection.query(command, (err, result) => {
