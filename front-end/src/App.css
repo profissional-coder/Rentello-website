@@ -80,6 +80,9 @@ body{
   }
   .pPic{grid-area: nav; max-width: 360px;height:250px;  border: 8px solid rgba(21, 7, 61, 0.452);
     border-radius: 300px; }
+    .postPic{grid-area: nav; max-width: 360px;height:250px;  border: 8px solid rgba(21, 7, 61, 0.452);
+      border-radius: 300px; }
+    
   .pPosts{ grid-area: b; border-left: solid gray 30px ; padding-top: 16px;
   }
   .pPostsList{ border-top: grey solid 8px; list-style: lower-roman;}

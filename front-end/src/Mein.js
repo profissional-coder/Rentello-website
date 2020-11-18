@@ -1,8 +1,8 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useState ,useEffect} from 'react'
 import axios from 'axios';
 import { useHistory } from 'react-router';
 
-    const Profile = () => { 
+    const Mein = () => { 
       const [info, setInfo] = useState([]);
       const [infoPosts, setInfoPosts] = useState([]);
       const [userPic, setUserPic] = useState("");
@@ -145,11 +145,13 @@ import { useHistory } from 'react-router';
       const userId = (e)=>{
         setId(e.target.value)
       }
+      useEffect(()=>getPosts())
         const newArr = infoPosts.map((elem,index)=><li  num={index+1} key={index}>
           <div className="postTitle" >Post {index+1} || {elem.name} || posted at : {elem.postdate}</div>
-          <div>Title : {elem.title}  <button onClick={()=>deletePosts(elem.post_id)} >D</button>
-           <button onClick={()=>{ setUpdating(true) 
-            updatePosts(elem.post_id)}}>U</button>   </div>
+          <div>Title : {elem.title}</div> 
+          {/* <button onClick={()=>deletePosts(elem.post_id)} >D</button> */ }
+           {/* <button onClick={()=>{ setUpdating(true)  */}
+            {/* updatePosts(elem.post_id)}}>U</button>   </div> */}
           <div>Category : {elem.category}</div>
           <div> <img src={elem.img_url} alt="post image" className="postPic" ></img>pic</div>
           <div>Location : {elem.location}</div>
@@ -162,54 +164,12 @@ import { useHistory } from 'react-router';
     
       return (
      <div className="profile">
-       <img src={userPic} alt="profile pic"  className="pPic"></img>
-<nav className="pNav" >{Fullname} Profile</nav >
-<div className='pPosts'>
-  {Fullname} posts    <button onClick={()=>getPosts()} >get posts info</button> 
- update post <input onChange={UTitle} placeholder="new title" />
- <input onChange={uNum} placeholder=" Num" />
- <input type="date" onChange={uStart} placeholder="new Start date" />
- <input  type="date" onChange={uEnd} placeholder="new End date" />
- {/* <input onChange={uLocation} placeholder="new Location" /> */}
- {/* <input onChange={uCategory} placeholder="new Category" /> */}
- <select onChange={uCategory} placeholder="Select Category">
-                            catagory
-                            <option>select catagory</option>
-                            <option>Cars</option>
-                            <option>Mobile Tablet</option>
-                            <option>tools</option>
-                    </select>
- <select onChange={setLocation}>
-     <option value='0'>Select Country:</option>
-     <option value='1'>Amman</option>
-     <option >Zarqa</option>
-     <option>Irbid</option>
-     <option>Karak</option>
-    <option>Tafila</option>
- </select>
- <input onChange={u_img_url} placeholder="new img_url" />
- <input onChange={uName} placeholder="new Name" />
- <input onChange={uPrice} placeholder="new Price" />
-<ul className='pPostsList'>
+      <ul className='pPostsList'>
+      {/* <button onClick={()=>getPosts()} >get posts info</button>  */}
 {newArr} 
-</ul>
-<button onClick >POST</button>
-</div>
-<div className="pInfo">
-
-<p>userInfo</p>
-<input onChange={userId}/>
-
-    <button onClick={()=>getUser(id)} >get user info</button> 
-{loading?(<div class="loader"></div>):(<div className="userInfo" >
-    <p>user name : {Fullname}</p>
-    <p>birthday :{dob} </p>
-    <p>address :{address} </p>
-    <p> email :{email}</p>
-    </div> )}
-    </div>
+</ul> 
   </div>
     )
 }
 
-export default Profile
+export default Mein

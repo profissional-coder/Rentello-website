@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 // import { route } from '../../back-end/routes/main-route';
 import Profile from './Profile';
+import Mein from './Mein';
 
 const App = () => {
   // const [post, setPost] = useState([]);
@@ -48,6 +49,9 @@ const App = () => {
 			<div class="mail-form-agile">
 <Route path="/user/profile" >
 				<Profile/>
+        </Route>
+        <Route path="/posts" >
+				<Mein/>
         </Route>
              {/* <input onChange={(e) =>{setTitle(e.target.value)}} type='text' placeholder="Write Post Title Here"></input>
 
