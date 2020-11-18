@@ -13,10 +13,10 @@ const Header2 = () => {
               </Link>
             </li>
 
-            {/* {'    '}
+            {'    '}
               <li>
-                <Link className="link" to="">Category</Link>
-              </li> */}
+                <Link className="link" to="/user/profile">All Post</Link>
+              </li>
 
             {"   "}
             <li>

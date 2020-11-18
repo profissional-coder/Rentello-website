@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Route,
   BrowserRouter as Router,
@@ -15,20 +14,21 @@ import Additem from "./components/Additem";
 import Render from "./components/Render";
 import Header2 from "./components/Header2";
 import Contact from "./components/Contact";
-import Updateinfo from "./components/Updateinfo"
-import Userprofile from './components/Userprofile';
-
-
+import Updateinfo from "./components/Updateinfo";
+import Userprofile from "./components/Userprofile";
+import Renderall from "./components/Renderall";
+import Rent from "./components/Rent";
+import Profile from "./components/Profile";
 
 const App = () => {
   const [post, setPost] = useState([]);
-  
-  return (
 
+  return (
     <Router>
       <div className="App">
         <Route exact path="/">
           <Header />
+          <Home />
         </Route>
 
         <Route path="/home">
@@ -38,12 +38,12 @@ const App = () => {
 
         <Route path="/add">
           <Header2 />
-          <Additem data={post}/>
+          <Additem data={post} />
         </Route>
 
         <Route path="/showpost">
           <Header2 />
-          <Render datashow={post}/>
+          <Render datashow={post} />
         </Route>
 
         <Route path="/items">
@@ -65,17 +65,24 @@ const App = () => {
           <Login />
         </Route>
 
+        <Route exact path="/user/profile">
+          <Header2 />
+          <Renderall />
+        </Route>
+
+        <Route path="/rent" render={(props) => <Rent {...props} />}/>
+
         <Route path="/Contact">
           <Header2 />
           <Contact />
         </Route>
         <Route path="/userprofile">
           <Header2 />
-         <Userprofile/>
+          <Profile />
         </Route>
         <Route path="/update">
           <Header2 />
-         <Updateinfo/>
+          <Updateinfo />
         </Route>
       </div>
     </Router>
@@ -83,7 +90,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
-
