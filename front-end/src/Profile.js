@@ -14,11 +14,6 @@ import { useHistory } from 'react-router';
       const [loading, setLoading] = useState(false);
       const [id, setId] = useState("");
       const [updating, setUpdating] = useState(false);
-      const [arr,setArr] =useState([
-        {Name:"user2",Title:"post1",Description:" Neque porro quisquam est qui dolorem ipsum quia dolor sit amet"
-      ,Location:"jordan",StartDate:"2/2/2009",EndDate:"2/2/2009",PhoneNumber:"0793872819"},
-      {Name:"user2",Title:"post1",Description:" Neque porro quisquam est qui dolorem ipsum quia dolor sit amet"
-      ,Location:"jordan",StartDate:"2/2/2009",EndDate:"2/2/20091",PhoneNumber:"0793872819"}])
       const [Name, setName] = useState("");
       const [Title, setTitle] = useState("");
       const [Description, setDescription] = useState("");
@@ -61,27 +56,16 @@ import { useHistory } from 'react-router';
           const getPosts =async (infoArgumnt) => {
             console.log(infoArgumnt)
             axios
-              .get(`http://localhost:5000/posts`)
+              .get(`http://localhost:5000/posts/${id}`)
               .then(async (response) => {
                 console.log("response",response)
-                // alert(response)
                 setLoading(true)
                  setInfoPosts(response.data)
-                //  setLocation(response.data)
-                //  setTitle(response.data)
-                //  setPhoneNumber(response.data)
-                //  setPostdate(response.data)
-                //  setStartDate(response.data)
-                //  setEndDate(response.data)
-                //  setCategory(response.data)
-                //  setDescription(response.data)
                 if(infoPosts.length===[]){
                   setLoading(false)
                   alert("no posts found")
                 }
-                
                 setLoading(false)
-
               })
               .catch((err) => {
                 console.log('RESULT: ', err);
@@ -129,13 +113,15 @@ import { useHistory } from 'react-router';
         }
         const updatePosts =async (infoArgumnt) => {
           console.log(infoArgumnt)
-          const arrData = {name:Name,price:Price,category:Category,location:Location,from_date:StartDate,
-            to_date:EndDate,img_url:postImage,post_id:infoArgumnt};          
+          const arrData = [{name:Name,price:Price,category:Category,location:Location,from_date:StartDate,
+            to_date:EndDate,img_url:postImage,post_id:infoArgumnt}];          
+            console.log("arrData:",arrData[0]);
             axios
-            .put(`http://localhost:5000/posts/update`,arrData)
+            .put(`http://localhost:5000/posts/update`,arrData[0])
             .then(async (response) => {
               console.log("response",response)
-              alert(response)
+              alert("one post update")
+              console.log(response);
               getPosts()
             }) 
             .catch((err) => {
@@ -148,7 +134,7 @@ import { useHistory } from 'react-router';
         const newArr = infoPosts.map((elem,index)=><li  num={index+1} key={index}>
           <div className="postTitle" >Post {index+1} || {elem.name} || posted at : {elem.postdate}</div>
           <div>Title : {elem.title}  <button onClick={()=>deletePosts(elem.post_id)} >D</button>
-           <button onClick={()=>{ setUpdating(true) 
+           <button onClick={()=>{  
             updatePosts(elem.post_id)}}>U</button>   </div>
           <div>Category : {elem.category}</div>
           <div> <img src={elem.img_url} alt="post image" className="postPic" ></img>pic</div>
@@ -158,8 +144,8 @@ import { useHistory } from 'react-router';
           <div>StartDate : {elem.fromdate}</div>
           <div>EndDate : {elem.todate}</div>
           <div>Description : ||{elem.description}||</div>
-          </li> )
-    
+          </li> )      
+       
       return (
      <div className="profile">
        <img src={userPic} alt="profile pic"  className="pPic"></img>
@@ -179,9 +165,10 @@ import { useHistory } from 'react-router';
                             <option>Mobile Tablet</option>
                             <option>tools</option>
                     </select>
- <select onChange={setLocation}>
-     <option value='0'>Select Country:</option>
-     <option value='1'>Amman</option>
+ {/* <input onChange={setLocation} placeholder="Select city"/> */}
+ <select onChange={uLocation}>
+     <option >Select Country:</option>
+     <option >Amman</option>
      <option >Zarqa</option>
      <option>Irbid</option>
      <option>Karak</option>

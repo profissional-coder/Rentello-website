@@ -1,12 +1,13 @@
 const express = require("express");
 const mainRouter = express.Router();
 const { getAllUsers,getUserById, register,login,deleteAccount,updateUser } = require("../controllers/user-controller");
-const { getAllpost, createPost,deleteALL,getpost ,deletePost,updatePost,createOrder,getOrders,
+const { getAllpost, createPost,deleteALL,getpost ,getUserPost,deletePost,updatePost,createOrder,getOrders,
     deleteOrder} = require("../controllers/main-controller");
 
 mainRouter.post("/posts/create", createPost);
 mainRouter.get("/posts", getAllpost);
 mainRouter.get("/post/:name",getpost);
+mainRouter.get("/posts/:user_id",getUserPost);
 mainRouter.delete("/posts/delete-all",deleteALL);
 mainRouter.delete("/delete/:post_id",deletePost);
 mainRouter.put("/posts/update",updatePost);

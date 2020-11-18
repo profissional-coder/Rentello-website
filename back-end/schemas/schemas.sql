@@ -39,10 +39,10 @@ CREATE TABLE post (
     PhoneNumber INT (100),
     img_url VARCHAR (255),
     PRIMARY KEY (post_id),
-    FOREIGN KEY (user_id) REFERENCES users (user_id),
+​    FOREIGN KEY (user_id) REFERENCES users (user_id),
     FOREIGN KEY (category_id) REFERENCES category (category_id)
 );
-​
+
 CREATE TABLE category (
     category_id INT AUTO_INCREMENT NOT NULL,
     nameCategory VARCHAR (100),
@@ -51,6 +51,7 @@ CREATE TABLE category (
 -- after login to user and use right schema use this 
 ALTER TABLE users
 ADD img_url VARCHAR(255);
+
 --add this table 
 CREATE TABLE orders (
     order_id INT AUTO_INCREMENT NOT NULL,
