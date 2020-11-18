@@ -18,6 +18,7 @@ import Updateinfo from "./components/Updateinfo";
 import Userprofile from "./components/Userprofile";
 import Renderall from "./components/Renderall";
 import Rent from "./components/Rent";
+import Profile from "./components/Profile";
 
 const App = () => {
   const [post, setPost] = useState([]);
@@ -77,7 +78,7 @@ const App = () => {
         </Route>
         <Route path="/userprofile">
           <Header2 />
-          <Userprofile />
+          <Profile />
         </Route>
         <Route path="/update">
           <Header2 />

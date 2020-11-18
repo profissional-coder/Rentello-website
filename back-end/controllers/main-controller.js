@@ -70,7 +70,15 @@ const login = (req, res) => {
     // console.log("result :", result[0]);
     if (result.length) {
       if (await bcrypt.compare(password, result[0].password)) {
-        const { user_id,type, email, Fullname, city, address, dob } = result[0];
+        const {
+          user_id,
+          type,
+          email,
+          Fullname,
+          city,
+          address,
+          dob,
+        } = result[0];
         const payload = {
           user_id,
           type,
@@ -184,22 +192,20 @@ const getpost = (req, res) => {
     res.json(result);
   });
 };
-//rama and malak create same function 
+//rama and malak create same function
 const createOrder = async (req, res) => {
   const query = `INSERT INTO orders (user_id,post_id,
     fromdate,todate) VALUES (?,?,?,?)`;
-  let {user_id,post_id,
-    fromdate,todate}= req.body;
-  const data = [user_id,post_id,
-    fromdate,todate];
+  let { user_id, post_id, fromdate, todate } = req.body;
+  const data = [user_id, post_id, fromdate, todate];
   connection.query(query, data, (err, result) => {
-    if (err) throw err
-  
-res.json(result)
-  });
-}; 
+    if (err) throw err;
 
-//rama and malek create same function 
+    res.json(result);
+  });
+};
+
+//rama and malek create same function
 const getOrders = (req, res) => {
   const command = `select users.Fullname,users.city,users.address,post.name,
   post.price,post.location,post.category,post.img_url,
@@ -207,11 +213,76 @@ const getOrders = (req, res) => {
   inner join users on orders.user_id = users.user_id 
   inner join post on orders.post_id = post.post_id 
   WHERE orders.user_id=${req.params.user_id}`;
-  connection.query(command,(err, result) => {
+  connection.query(command, (err, result) => {
     if (err) throw err;
-    res.json(result)
+    res.json(result);
   });
 };
+const deleteOrder = (req, res) => {
+  const command = `DELETE FROM orders WHERE order_id=?`;
+  const arrData = [req.params.order_id];
+  connection.query(command, arrData, (err, result) => {
+    if (err) throw err;
+    res.status(200);
+    res.json({
+      message: result,
+    });
+  });
+};
+
+const getUserPost = (req, res) => {
+  const command = `SELECT * FROM post WHERE user_id = ?`;
+  const arrData = [req.params.user_id];
+  connection.query(command, arrData, (err, result) => {
+    if (err) throw err;
+    // console.log('RESULT: ', result);
+    res.status(200);
+    res.json(result);
+  });
+};
+const deletePost = (req, res) => {
+  const command = `DELETE FROM post WHERE post_id=?`;
+  const arrData = [req.params.post_id];
+  connection.query(command, arrData, (err, result) => {
+    if (err) throw err;
+    // console.log('RESULT: ', result);
+    res.status(200);
+    res.json({
+      message: result,
+    });
+  });    
+};  
+//change fromdate and todate to ...
+const updatePost=(req,res)=>{
+  const command = `UPDATE post 
+  SET name=? ,price=?,
+  category=?,location=?,
+  from_date= ?,to_date=?,
+  img_url=? 
+  WHERE  
+  post_id=?`;
+  const{name,price,category,location,from_date,to_date,img_url,post_id}=req.body
+  const arrData = [name,price,category,location,from_date,to_date,img_url,post_id];
+  console.log(arrData);
+  connection.query(command, arrData, (err, result) => {
+    if (err) throw err;
+    // console.log('RESULT: ', result);
+    res.status(200);
+    res.json({
+      message: result,
+    });
+  }); 
+}
+const getUserById = (req, res) => {
+  const command = `SELECT * FROM users WHERE user_id="${req.params.user_id}"`;
+  connection.query(command, (err, result) => {
+    if (err) throw err;
+    console.log("RESULT: ", result);
+    res.json(result);
+    
+  });
+};
+
 
 
 
@@ -228,5 +299,9 @@ module.exports = {
   getpost,
   createOrder,
   getOrders,
- 
+  deleteOrder,
+  getUserPost,
+  deletePost,
+  updatePost,
+  getUserById
 };

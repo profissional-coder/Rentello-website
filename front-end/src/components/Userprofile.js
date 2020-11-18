@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-
+import Profile from "./Profile"
 const Userprofile = () => {
   const [orders, setOrders] = useState([]);
 
@@ -29,7 +29,6 @@ const Userprofile = () => {
         <img className="img" src={elem.img_url} alt="post image"></img>
       </div>
       <div>Name : {elem.Fullname}</div>
-
       <div>Location : {elem.location}</div>
       <div>Price :{elem.price}</div>
       <div>StartDate : {elem.fromdate}</div>
@@ -39,7 +38,8 @@ const Userprofile = () => {
 
   return (
     <div>
-      <p>malik </p>
+     {/* <p>Malik</p> */}
+   {/* <div ><Profile/></div>   */}
       <Link className="link" to="/update">
         <button>Update</button>
       </Link>

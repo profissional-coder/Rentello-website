@@ -2,7 +2,8 @@
   background-color: rgb(94, 152, 206);
   color: aliceblue;
   height: 10vh;
-  padding: 10px;
+    /* padding: 10px; */
+margin-top: 0;
 }
 
 .main-nav {
@@ -149,4 +150,57 @@ textarea {
 .user_icon {
   width: 20px;
   padding-left: 100px;
+}
+.profile{
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  display: grid;
+   background-image:  radial-gradient(rgb(47, 163, 172), rgb(5, 39, 83), rgb(8, 5, 194));
+  grid-template-areas: "nav nav" "a b" " a b" ;
+  grid-template-columns: 25% 75% ;
+  margin-top: 80px;
+  border-bottom: solid gray 30px;
+  height: fit-content;
+  
+}
+.pPic{grid-area: nav; max-width: 360px;height:250px;  border: 8px solid rgba(21, 7, 61, 0.452);
+border-radius: 300px; }
+.postPic{grid-area: nav; max-width: 360px;height:250px;  border: 8px solid rgba(21, 7, 61, 0.452);
+  border-radius: 300px; }
+
+.pPosts{ grid-area: b; border-left: solid gray 30px ; padding-top: 16px;
+}
+.pPostsList{ border-top: grey solid 8px; list-style: lower-roman;}
+.pPostsList li{ border-bottom: grey solid 8px;}
+.pInfo{ grid-area: a;max-width: 400px; }
+.postTitle{background-color: rgba(0, 0, 0, 0.473);}
+.pNav{grid-area: nav;   
+height: auto;
+grid-template-rows: 30px;
+ text-transform: capitalize;  
+    font-size: 60px;
+    border-bottom: solid gray 30px
+}
+   
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  border-left: 16px solid pink;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
