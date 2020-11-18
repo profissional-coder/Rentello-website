@@ -125,7 +125,24 @@ const getLastPost=(req,res)=>{
     })
   });
 }
-
+const updateUser = async (req, res) => {
+  let {email,Fullname, password, city, address, dob,img_url } = req.body;
+ let newPassword = await bcrypt.hashSync(password, Number(process.env.SALT));
+  const query = `UPDATE users SET Fullname="${Fullname}", password='${newPassword}',city="${city}",
+    address="${address}",dob=${dob},img_url="${img_url}" 
+  WHERE email="${email}"`;
+  // const data = [ Fullname, email, password, city, address, dob,img_url];
+  // console.log(data);
+  connection.query(query,  (err, result) => { 
+    if (err) {
+      // res.json(email + ` is already register.`);
+      res.json(err)
+    }
+    console.log("RESULT: ", result);
+    // res.json(`Thanks for registration. ${Fullname} Try to login Now`);
+    res.json(result)
+  });
+};
 const getAllpost = (req, res) => {
   const command = `SELECT * FROM post `;
   connection.query(command, (err, result) => {
@@ -134,6 +151,21 @@ const getAllpost = (req, res) => {
     res.json(result);
   });
 };
+
+const getpost = (req, res) => {
+ console.log('req.params',req.params.post_id);
+ 
+  const command = `SELECT * FROM post WHERE post_id = ${req.params.post_id}`;
+  connection.query(command, (err, result) => {
+    if (err) throw err;
+    // console.log('RESULT: ', result);
+    // res.status(200);
+    res.json(
+      result
+    );
+  });
+};
+
 module.exports = {
   getAllUsers,
   register,
@@ -141,8 +173,10 @@ module.exports = {
   deleteAccount,
   createPost,
   PostAndUsers,
+  updateUser,
   getLastPost,
-  getAllpost
+  getAllpost,
+  getpost
 };
 
 

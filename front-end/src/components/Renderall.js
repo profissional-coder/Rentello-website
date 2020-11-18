@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
 import {
@@ -20,12 +20,18 @@ const Renderall = () => {
   const [dob, doBset] = useState("");
   const [email, setEmail] = useState("");
 
-  const getPosts = async (infoArgumnt) => {
-    console.log(infoArgumnt);
+  useEffect(() => {
+    getPosts()
+  });
+  
+  
+  
+  const getPosts = async () => {
+ 
     axios
       .get(`http://localhost:5000/posts`)
       .then(async (response) => {
-        console.log("response", response);
+        // console.log("response", response);
 
         setInfoPosts(response.data);
         
@@ -57,17 +63,17 @@ const Renderall = () => {
         <div className="postTitle">
           Post {index + 1} || {elem.name} || posted at : {elem.postdate}
         </div>
-        <div>Category : {elem.location}</div>
+        <div>Category : {elem.category}</div>
         <div>
           {" "}
           <img className="img" src={elem.img_url} alt="post image"></img>
         </div>
         <div>Location : {elem.location}</div>
-        <div>PhoneNumber :{elem.PhoneNumber}</div>
+        {/* <div>PhoneNumber :{elem.PhoneNumber}</div> */}
         <div>Price :{elem.price}</div>
-        <div>StartDate : {elem.fromdate}</div>
+        {/* <div>StartDate : {elem.fromdate}</div>
         <div>EndDate : {elem.todate}</div>
-        <div>Description : ||{elem.description}||</div>
+        <div>Description : ||{elem.description}||</div> */}
         </Link> 
     </li>
   ));
