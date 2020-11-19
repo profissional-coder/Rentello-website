@@ -5,7 +5,8 @@ import {
   Redirect,
   Link,
 } from "react-router-dom";
-import "./App.css";
+// import "./App.css";
+import "./css/_base.css";
 import Header from "./components/Header";
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -70,7 +71,7 @@ const App = () => {
           <Renderall />
         </Route>
 
-        <Route path="/rent" render={(props) => <Rent {...props} />}/>
+        <Route path="/rent" render={(props) => <Rent {...props} />} />
 
         <Route path="/Contact">
           <Header2 />

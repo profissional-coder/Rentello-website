@@ -1,0 +1,9 @@
+.main-nav {
+  width: 100%;
+  background-color: red;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,6 @@
+@import "./_reset.css";
+@import "./components/home.css";
+@import "./components/header.css";
+body {
+  background-color: #f7fff7;
+}

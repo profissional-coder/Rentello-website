@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link,BrowserRouter as Router,Redirect,Route } from "react-router-dom";
+import {
+  Link,
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+} from "react-router-dom";
 import axios from "axios";
-import "./App.css";
-import Render from "./Render"
+// import "./App.css";
+import Render from "./Render";
 const Additem = () => {
   const [post, setPost] = useState([]);
   const [Name, setName] = useState("");
@@ -16,16 +21,11 @@ const Additem = () => {
   const [EndDate, setEndDate] = useState("");
   const [PhoneNumber, setPhoneNumber] = useState(0);
 
-  const render=(data)=>{
-  
-    console.log('data :',data);
+  const render = (data) => {
+    console.log("data :", data);
 
-// return   <Redirect to ="/showpost"/>
-  }
-  
-  
-
-
+    // return   <Redirect to ="/showpost"/>
+  };
 
   const CreateAllPost = (infoArgumnt) => {
     console.log(infoArgumnt);
@@ -36,18 +36,16 @@ const Additem = () => {
         const newArray = [...post];
         newArray.push(response.data);
         setPost(newArray);
-        render(response.data)
-       
-         })
+        render(response.data);
+      })
       .catch((err) => {
         console.log("RESULT: ", err);
       });
-    
   };
 
   const SavePost = () => {
     CreateAllPost({
-      name:Name,
+      name: Name,
       price: price,
       category: Category,
       title: Title,
@@ -60,9 +58,7 @@ const Additem = () => {
     });
   };
   return (
-
-
-   <div className="padding-all">
+    <div className="padding-all">
       <div className="design">
         <div className="mail-form-agile">
           <input
@@ -143,22 +139,25 @@ const Additem = () => {
             type="file"
             name="image"
           ></input>
-         <Link className="link" to="/showpost">
-            <input 
-            onClick={(e) => {
-             SavePost()
-            }}
-            
-            type="submit" {...Name}  value="Save" ></input>
-       </Link>
+          <Link className="link" to="/showpost">
+            <input
+              onClick={(e) => {
+                SavePost();
+              }}
+              type="submit"
+              {...Name}
+              value="Save"
+            ></input>
+          </Link>
         </div>
-        
+
         <div className="clear"> </div>
       </div>
     </div>
-  
   );
 };
 export default Additem;
 
-{/* <Link className="link" to="/showpost"> </Link> */}
+{
+  /* <Link className="link" to="/showpost"> </Link> */
+}

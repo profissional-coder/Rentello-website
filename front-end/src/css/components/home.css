@@ -1,0 +1,24 @@
+.category-container {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.category {
+  display: flex;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 50px;
+  overflow: hidden;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+}
+
+.category .category-img {
+  width: 5rem;
+}
+
+.category .border {
+  width: 1px;
+  background-color: gray;
+}
