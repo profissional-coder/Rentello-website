@@ -2,16 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [Token, setToken] = useState("true");
-
-  const createNewItem = () => {
-    //  console.log('localStorage.setItem',localStorage.getItem("token"));
-    if (!!localStorage.getItem("token")) {
-      setToken("true");
-    } else {
-      setToken("false");
-    }
-  };
+  // localStorage.setItem("token", "");
+  
 
   return (
     <div className="container">
@@ -30,7 +22,7 @@ const Home = () => {
           src="https://cdn.al-ain.com/images/2020/2/16/102-103623-a-new-nikon-camer_700x400.jpg"
         />
         <Link className="link" to="/add">
-          <button className="btn" onClick={createNewItem}>
+          <button className="btn" >
             Add item
           </button>
         </Link>

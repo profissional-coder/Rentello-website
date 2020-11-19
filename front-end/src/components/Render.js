@@ -36,7 +36,6 @@ const Render = (props) => {
 
   return (
     <div>
-     {/* <button onClick={getlastpost}>get</button> */}
   <div><img src={Img_url}></img></div>
   <p> Category : {Category}</p>
   <p> Name : {Name}</p>

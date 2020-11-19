@@ -143,8 +143,8 @@ import { Link } from "react-router-dom";
           <div>Location : {elem.location}</div>
           <div>PhoneNumber :{elem.PhoneNumber}</div>
           <div>Price :{elem.price}</div>
-          <div>StartDate : {elem.fromdate}</div>
-          <div>EndDate : {elem.todate}</div>
+          <div>StartDate : {elem.from_date}</div>
+          <div>EndDate : {elem.to_date}</div>
           <div>Description : ||{elem.description}||</div>
           </li> )      
        
@@ -154,18 +154,15 @@ import { Link } from "react-router-dom";
 <nav className="pNav" >{Fullname} Profile</nav >
 <div className='pPosts'>
   {Fullname} posts    <button onClick={()=>getPosts()} >get posts info</button> 
+
 <p>update post </p> 
- new title
- <input onChange={UTitle} placeholder="new title" />
- Phone Number
+{/************************************ */}
+<button  onClick={()=>updating?(setUpdating(false)):(setUpdating(true))}>update post</button> 
+ {updating?(<div>
+   <input onChange={UTitle} placeholder="new title" />
  <input onChange={uNum} placeholder=" Num" />
- new Start date
  <input type="date" onChange={uStart} placeholder="new Start date" />
- new End date
  <input  type="date" onChange={uEnd} placeholder="new End date" />
- {/* <input onChange={uLocation} placeholder="new Location" /> */}
- {/* <input onChange={uCategory} placeholder="new Category" /> */}
- catagory
  <select onChange={uCategory} placeholder="Select Category">
                             catagory
                             <option>select catagory</option>
@@ -173,7 +170,6 @@ import { Link } from "react-router-dom";
                             <option>Mobile Tablet</option>
                             <option>tools</option>
                     </select>
- {/* <input onChange={setLocation} placeholder="Select city"/> */}
  <select onChange={uLocation}>
      <option >Select Country:</option>
      <option >Amman</option>
@@ -182,12 +178,11 @@ import { Link } from "react-router-dom";
      <option>Karak</option>
     <option>Tafila</option>
  </select>
- new img_url
- <input type="text" onChange={u_img_url} placeholder="new img_url" />
- new Name
+ <input onChange={u_img_url} placeholder="new img_url" />
  <input onChange={uName} placeholder="new Name" />
- new Price
- <input onChange={uPrice} placeholder="new Price" />
+ <input onChange={uPrice} placeholder="new Price" /></div>):(<div></div> )}
+ {/***************************************************************** */}
+
 <ul className='pPostsList'>
 {newArr} 
 </ul>

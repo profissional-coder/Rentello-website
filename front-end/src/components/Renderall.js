@@ -8,9 +8,6 @@ import {
   Link,
 } from "react-router-dom";
 
-
-
-
 const Renderall = () => {
   const [info, setInfo] = useState([]);
   const [infoPosts, setInfoPosts] = useState([]);
@@ -53,7 +50,6 @@ const Renderall = () => {
 
   const newArr = infoPosts.map((elem, index) => (
     <li num={index + 1} key={index}>
-      {/* <Link className="link" to="/rent" state={ {infoPosts}} > */}
         
       <Link className="link" to={{
   pathname: '/rent',
