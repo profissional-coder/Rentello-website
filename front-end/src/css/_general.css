@@ -14,11 +14,16 @@ body {
 input[type="text"],
 input[type="email"],
 input[type="date"],
-input[type="password"] {
+input[type="password"],
+input[type="tel"],
+select,
+textarea,
+input {
   padding: 0.5rem;
   border-radius: 2.5px;
   border: 1px solid gray;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .form {
@@ -32,10 +37,6 @@ input[type="password"] {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.form input {
-  width: 100%;
 }
 
 .form .input-error {

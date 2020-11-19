@@ -124,7 +124,7 @@ const Register = () => {
         <input
           type="date"
           name="dob"
-          value={values.password}
+          value={values.dob}
           onChange={handleChange}
         ></input>
       </section>

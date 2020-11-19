@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
 import {
@@ -7,9 +7,6 @@ import {
   Redirect,
   Link,
 } from "react-router-dom";
-
-
-
 
 const Renderall = () => {
   const [info, setInfo] = useState([]);
@@ -21,20 +18,17 @@ const Renderall = () => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    getPosts()
+    getPosts();
   });
-  
-  
-  
+
   const getPosts = async () => {
- 
     axios
       .get(`http://localhost:5000/posts`)
       .then(async (response) => {
         // console.log("response", response);
 
         setInfoPosts(response.data);
-        
+
         //  setTitle(response.data)
         //  setPhoneNumber(response.data)
         //  setPostdate(response.data)
@@ -52,14 +46,16 @@ const Renderall = () => {
   };
 
   const newArr = infoPosts.map((elem, index) => (
-    <li num={index + 1} key={index}>
+    <li num={index + 1} key={index} className="post">
       {/* <Link className="link" to="/rent" state={ {infoPosts}} > */}
-        
-      <Link className="link" to={{
-  pathname: '/rent',
-  state: elem.post_id
-}}>
-      
+
+      <Link
+        className="link"
+        to={{
+          pathname: "/rent",
+          state: elem.post_id,
+        }}
+      >
         <div className="postTitle">
           Post {index + 1} || {elem.name} || posted at : {elem.postdate}
         </div>
@@ -74,23 +70,18 @@ const Renderall = () => {
         {/* <div>StartDate : {elem.fromdate}</div>
         <div>EndDate : {elem.todate}</div>
         <div>Description : ||{elem.description}||</div> */}
-        </Link> 
+      </Link>
     </li>
   ));
+
   return (
-   
     <div>
-    
-     
       <div className="pPosts">
         <button onClick={() => getPosts()}>get posts info</button>
 
-        <ul className="pPostsList">
-          {newArr}</ul>
+        <ul className="post-container">{newArr}</ul>
       </div>
     </div>
- 
   );
- 
 };
 export default Renderall;
