@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import validate from "./handleErrorRegister";
 import axios from 'axios';
 const Post =()=>{
 
@@ -15,7 +16,7 @@ const Post =()=>{
     const [Name, setName] = useState('')
     const [PhoneNumber, setPhoneNumber] = useState(0)
   
-  
+    const [errors, setErrors] = useState({});
     useEffect(() => {
       console.log('========= USEEFFECT CALLED =========');
       getAll();
@@ -50,7 +51,6 @@ const Post =()=>{
         });
     };
   
-  
     const SavePost= () => {
       
       CreateAllPost({price:price, category:Category,title:Title,description:Description,location:Location,fromdate:StartDate,todate:EndDate,name:Name,PhoneNumber:PhoneNumber,img_url:IMG})
@@ -61,9 +61,9 @@ const Post =()=>{
       <div class="padding-all">
           <div class="design">
               <div class="mail-form-agile">
-               <input onChange={(e) =>{setTitle(e.target.value)}} type='text' placeholder="Write Post Title Here"></input>
-  
-               <input onChange={(e) => {setprice(e.target.value)}} type="Number" placeholder="Price"></input>
+                <form post='submit'>              
+                   <input onChange={(e) =>{setTitle(e.target.value)}} type='text' placeholder="Write Post Title Here" required=''></input>
+                   <input onChange={(e) => {setprice(e.target.value)}} type="Number" placeholder="Price" required></input>
                <select onChange={(e) => {setCategory(e.target.value)}} placeholder="Select Category">
                               <option>Cars</option>
                               <option>Mobile Tablet</option>
@@ -84,6 +84,7 @@ const Post =()=>{
                <textarea placeholder='Description' onChange={(e) => {setDescription(e.target.value)}}></textarea>
                <input onChange={(e) => {setIMG(e.target.value)}}  type="file" name="image"></input>
                        <input onClick={SavePost} type="submit" value='Save'></input>
+                       </form>
         </div>
           
             <div class="clear"> </div>

@@ -56,7 +56,7 @@ const Additem = () => {
             }}
             type="text"
             placeholder="Write Post Title Here"
-          ></input>
+             required=''></input>
 
           <input
             onChange={(e) => {

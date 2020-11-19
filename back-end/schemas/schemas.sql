@@ -50,10 +50,13 @@ CREATE TABLE category (
      PRIMARY KEY (category_id)
 
 );
-CREATE TABLE category (
-    category_id INT AUTO_INCREMENT NOT NULL,
-    nameCategory VARCHAR (100),
-     PRIMARY KEY (category_id)
+CREATE TABLE contact (
+    contact_id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR (100),
+    subject VARCHAR (100),
+    email VARCHAR (100),
+    Message VARCHAR (100),
+     PRIMARY KEY (contact_id)
 
 );
 

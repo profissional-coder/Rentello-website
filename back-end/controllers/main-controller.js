@@ -118,6 +118,18 @@ const createPost = async (req, res) => {
     res.json(data);
   });
 };
+const contact = async (req, res) => {
+  const query = `INSERT INTO contact (name,subject,email,Message)
+    VALUES (?,?,?,?)`;
+  let {name,subject,email,Message}= req.body;
+  const data = [name,subject,email,Message];
+  connection.query(query, data, (err, result) => {
+    if (err) throw err
+    // console.log("RESULT: ", result);
+    res.json(data);
+  });
+};
+
 
 
 module.exports = {
@@ -127,7 +139,8 @@ module.exports = {
   deleteAccount,
   createPost,
   getAllpost,
-  PostAndUsers
+  PostAndUsers,
+  contact
 };
 
 

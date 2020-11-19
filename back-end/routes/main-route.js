@@ -1,7 +1,7 @@
 
 const express = require("express");
 const mainRouter = express.Router();
-const { getAllUsers, register,login,deleteAccount,createPost ,getAllpost,PostAndUsers} = require("../controllers/main-controller");
+const { getAllUsers, register,login,deleteAccount,createPost ,getAllpost,PostAndUsers,contact} = require("../controllers/main-controller");
 
 mainRouter.post('/userAndPost', PostAndUsers);
 mainRouter.get("/user", getAllUsers);
@@ -10,4 +10,5 @@ mainRouter.post("/login",login);
 mainRouter.delete("/delete/:user_id",deleteAccount);
 mainRouter.post('/post/create', createPost);
 mainRouter.get('/post/get', getAllpost);
+mainRouter.get('/contact',contact)
 module.exports = mainRouter;

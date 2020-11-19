@@ -169,7 +169,13 @@ textarea {
 }
 
 /*Contact*/
-.Contact input[type='text']{
+.Contact{
+  display: unset;
+}
+.con{
+  padding: 10px;
+}
+.Contact input[type='text'], .Contact input[type='email']{
   padding: 13px 10px;
   padding-bottom:5px;
   width: 50.5%;
@@ -182,4 +188,19 @@ textarea {
   font-family: 'Open Sans', sans-serif;
   letter-spacing:1.6px;
   color:#fff;
+}
+.con button{
+  font-size: 18px;
+  padding: 4px 20px;
+  letter-spacing: 1.2px;
+  border: none;
+  text-transform: capitalize;
+  outline: none;
+  background: #03a9f4;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px 0px 0px 0px;
+  font-family: "Open Sans", sans-serif;
+  -webkit-transition-duration: 0.9s;
+  transition-duration: 0.9s;
 }
