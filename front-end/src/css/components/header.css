@@ -1,9 +1,29 @@
 .main-nav {
   width: 100%;
-  background-color: red;
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+  padding: 1.5rem 1rem;
   margin: 0;
   list-style: none;
   display: flex;
-  justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  gap: 1rem;
 }
+
+.main-nav .auth {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+}
+
+.main-nav .link {
+  text-decoration: none;
+}
+
+/* .main-nav .auth .link {
+  color: white;
+  background-color: #4ecdc4;
+  padding: 0.5rem 1rem;
+  border-radius: 2.5px;
+} */

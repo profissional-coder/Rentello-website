@@ -40,39 +40,39 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <div className="form-input">
-          <label>Email </label>
-          <br />
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your Email"
-            value={values.email}
-            onChange={handleChange}
-          ></input>
-          {errors.email && <p> {errors.email} </p>}
-        </div>
+    <form onSubmit={handleSubmit} className="form">
+      <h1>Login</h1>
+      <section className="form-input">
+        <label>Email </label>
         <br />
-        <div className="form-input">
-          <label>Password </label>
-          <br />
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter your Password"
-            value={values.password}
-            onChange={handleChange}
-          ></input>
-          {errors.password && <p> {errors.password} </p>}
-        </div>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your Email"
+          value={values.email}
+          onChange={handleChange}
+        ></input>
+        {errors.email && <p> {errors.email} </p>}
+      </section>
+      <br />
+      <section className="form-input">
+        <label>Password </label>
         <br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter your Password"
+          value={values.password}
+          onChange={handleChange}
+        ></input>
+        {errors.password && <p> {errors.password} </p>}
+      </section>
+      <br />
 
-        <button type="submit">Login</button>
-      </form>
-    </div>
+      <button className="btn" type="submit">
+        Login
+      </button>
+    </form>
   );
 };
 

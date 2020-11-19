@@ -1,6 +1,5 @@
 @import "./_reset.css";
+@import "./_general.css";
 @import "./components/home.css";
 @import "./components/header.css";
-body {
-  background-color: #f7fff7;
-}
+@import "./components/search.css";

@@ -27,13 +27,13 @@ const Header = () => {
             {"   "}
             <div className="auth">
               <li>
-                <Link className="link" to="/register">
+                <Link className="link btn" to="/register">
                   Register
                 </Link>
               </li>
               {"    "}
               <li>
-                <Link className="link" to="/login">
+                <Link className="link btn" to="/login">
                   Login
                 </Link>
               </li>

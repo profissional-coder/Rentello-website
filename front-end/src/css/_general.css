@@ -1,0 +1,44 @@
+body {
+  background-color: #f7fff7;
+}
+
+.btn {
+  color: white;
+  background-color: #4ecdc4;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2.5px;
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"] {
+  padding: 0.5rem;
+  border-radius: 2.5px;
+  border: 1px solid gray;
+  box-sizing: border-box;
+}
+
+.form {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 25px;
+  padding: 2rem;
+  margin: 2rem auto;
+  width: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form input {
+  width: 100%;
+}
+
+.form section {
+  margin: 0.5rem 0;
+  width: 100%;
+}
