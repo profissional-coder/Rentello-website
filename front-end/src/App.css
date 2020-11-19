@@ -28,7 +28,8 @@ body{
 }
 input[type="email"],input[type="password"],input[type="password"],input[type="text"],input[type="date"]{
   padding: 13px 10px;
-  width: 101.5%;
+  padding-bottom:5px;
+  width: 100.5%;
     font-size: 8px;
   outline: none;
   background:transparent;

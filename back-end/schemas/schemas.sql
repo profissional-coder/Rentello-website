@@ -50,5 +50,11 @@ CREATE TABLE category (
      PRIMARY KEY (category_id)
 
 );
+CREATE TABLE category (
+    category_id INT AUTO_INCREMENT NOT NULL,
+    nameCategory VARCHAR (100),
+     PRIMARY KEY (category_id)
+
+);
 
 

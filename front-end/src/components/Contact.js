@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 const Contact = () => {
   return (
-    <div>
-      <p> contact page</p>
+    <div className='Contact'>
+      <input type='text' placeholder='Name'></input>
     </div>
   );
 };
