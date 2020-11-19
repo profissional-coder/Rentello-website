@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link,BrowserRouter as Router,Redirect,Route } from "react-router-dom";
+import { Link,BrowserRouter as Router,Redirect,Route,useHistory } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 import Render from "./Render"
@@ -15,15 +15,15 @@ const Additem = () => {
   const [StartDate, setStartDate] = useState("");
   const [EndDate, setEndDate] = useState("");
   const [PhoneNumber, setPhoneNumber] = useState(0);
+  const [Token, setToken] = useState("true");
+  const history = useHistory();
 
-  const render=(data)=>{
   
-    console.log('data :',data);
-
-// return   <Redirect to ="/showpost"/>
-  }
-  
-  
+  // if (!!localStorage.getItem("token")) {
+  //   setToken("true");
+  // } else {
+  //   setToken("false");
+  // }
 
 
 
@@ -35,9 +35,7 @@ const Additem = () => {
         console.log("response", response);
         const newArray = [...post];
         newArray.push(response.data);
-        setPost(newArray);
-        render(response.data)
-       
+        setPost(newArray);       
          })
       .catch((err) => {
         console.log("RESULT: ", err);
@@ -61,8 +59,9 @@ const Additem = () => {
   };
   return (
 
-
    <div className="padding-all">
+         {!!localStorage.getItem("token")?(history.push("/add")):(history.push("/login"))}
+
       <div className="design">
         <div className="mail-form-agile">
           <input
@@ -161,4 +160,3 @@ const Additem = () => {
 };
 export default Additem;
 
-{/* <Link className="link" to="/showpost"> </Link> */}

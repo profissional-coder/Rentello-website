@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import validate from "./handleErrorLogin";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect,useHistory } from "react-router-dom";
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -10,7 +10,12 @@ const Login = () => {
   });
   const [islogin, setIslogin] = useState(false);
   const [errors, setErrors] = useState({});
+  const history = useHistory();
 
+  
+ 
+  
+  
   const handleChange = (e) => {
     console.log(e);
     setValues({
@@ -20,6 +25,7 @@ const Login = () => {
   };
 
   const handleSubmit = (e) => {
+
     console.log("aaa", values);
     e.preventDefault();
     setErrors(validate(values));
@@ -27,20 +33,23 @@ const Login = () => {
       // Bath from BE
       .post("http://localhost:5000/login", values)
       .then((result) => {
-        console.log(result);
-        if (result.data) {
-          localStorage.setItem("token", result.data);
-        } else {
-          setErrors({ errors: "Invalid Email or Password" });
-        }
+        // console.log(result);
+        setIslogin(true)
+        localStorage.setItem("token", result.data);
+
       })
       .catch((err) => {
         console.log("ERR : ", err);
       });
+      
+      
   };
 
+ 
   return (
     <div className="login-container">
+  {islogin?(history.push("/user/profile")):(history.push("/login"))}
+
       <form onSubmit={handleSubmit}>
         <h1>Login</h1>
         <div className="form-input">
@@ -69,11 +78,10 @@ const Login = () => {
           {errors.password && <p> {errors.password} </p>}
         </div>
         <br />
-
-        <button type="submit">Login</button>
+        <button type="submit" >Login</button>
       </form>
     </div>
   );
-};
+}
 
 export default Login;

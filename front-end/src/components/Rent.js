@@ -62,8 +62,7 @@ const Rent = (props) => {
 
   return (
     <div>
-      {/* <button onClick={getPost}>show</button> */}
-      {/* <p> name: {Name}</p> */}
+     
       {newArr}
       <button onClick={createOrder}> RENT ONLINE </button>
     </div>
