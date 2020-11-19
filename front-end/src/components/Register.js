@@ -51,7 +51,7 @@ const Register = () => {
           value={values.Fullname}
           onChange={handleChange}
         ></input>
-        {errors.Fullname && <p> {errors.Fullname} </p>}
+        {errors.Fullname && <p className="input-error"> {errors.Fullname} </p>}
       </section>
       <section className="form-input">
         <label>Email </label>
@@ -62,7 +62,7 @@ const Register = () => {
           value={values.email}
           onChange={handleChange}
         ></input>
-        {errors.email && <p> {errors.email} </p>}
+        {errors.email && <p className="input-error"> {errors.email} </p>}
       </section>
 
       <section className="form-input">
@@ -75,7 +75,7 @@ const Register = () => {
           value={values.password}
           onChange={handleChange}
         ></input>
-        {errors.password && <p> {errors.password} </p>}
+        {errors.password && <p className="input-error"> {errors.password} </p>}
       </section>
 
       <section className="form-input">
@@ -88,7 +88,9 @@ const Register = () => {
           value={values.password2}
           onChange={handleChange}
         ></input>
-        {errors.password2 && <p> {errors.password2} </p>}
+        {errors.password2 && (
+          <p className="input-error"> {errors.password2} </p>
+        )}
       </section>
 
       <section className="form-input">
@@ -101,7 +103,7 @@ const Register = () => {
           value={values.city}
           onChange={handleChange}
         ></input>
-        {errors.city && <p> {errors.city} </p>}
+        {errors.city && <p className="input-error"> {errors.city} </p>}
       </section>
 
       <section className="form-input">

@@ -1,6 +1,6 @@
 .main-nav {
   width: 100%;
-  background-color: white;
+  background-color: #1a535c;
   border-bottom: 1px solid lightgray;
   padding: 1.5rem 1rem;
   margin: 0;
@@ -9,16 +9,24 @@
   align-items: center;
   box-sizing: border-box;
   gap: 1rem;
+  height: 4rem;
 }
 
 .main-nav .auth {
   margin-left: auto;
   display: flex;
   gap: 1rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-nav .link {
   text-decoration: none;
+  color: white;
+}
+
+.main-nav .btn {
+  color: #1a535c;
 }
 
 /* .main-nav .auth .link {

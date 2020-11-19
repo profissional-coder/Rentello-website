@@ -52,7 +52,7 @@ const Login = () => {
           value={values.email}
           onChange={handleChange}
         ></input>
-        {errors.email && <p> {errors.email} </p>}
+        {errors.email && <p className="input-error"> {errors.email} </p>}
       </section>
       <br />
       <section className="form-input">
@@ -65,7 +65,7 @@ const Login = () => {
           value={values.password}
           onChange={handleChange}
         ></input>
-        {errors.password && <p> {errors.password} </p>}
+        {errors.password && <p className="input-error"> {errors.password} </p>}
       </section>
       <br />
 
