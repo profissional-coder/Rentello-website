@@ -6,6 +6,7 @@ const PostsSearch = ({ allItems, filter, props }) => {
   useEffect(() => {
     // setSearchData({ ...searchData, items: allItems });
     setFilterdItems(allItems);
+    applyCategoryFilter();
   }, [allItems]);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const PostsSearch = ({ allItems, filter, props }) => {
         },
       });
     }
-  }, [props.location.preCategory]);
+  }, [props]);
 
   const [searchData, setSearchData] = useState({
     filter: {
