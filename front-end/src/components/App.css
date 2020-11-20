@@ -204,3 +204,10 @@ textarea {
   -webkit-transition-duration: 0.9s;
   transition-duration: 0.9s;
 }
+
+.message {
+    width: 80%;
+    left: 10%;
+    color: ivory;
+    font-size: 10px;
+}

@@ -16,6 +16,7 @@ import Additem from "./components/Additem";
 import Render from "./components/Render";
 import Header2 from "./components/Header2";
 import Contact from "./components/Contact";
+import About from './components/About'
 import posts from './components/Post'
 import Infone  from './components/InformationOne'
 import inforationTow from './components/InformationTwo'
@@ -24,33 +25,6 @@ import inforationTow from './components/InformationTwo'
 
 const App = () => {
  
-  const [post, setPost] = useState([]);
-  const [name, setName] = useState("")
-  const [price, setprice] = useState(0)
-  const [category, setcategory] = useState('')
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [location, setLocation] = useState('')
-  const [IMG, setIMG] = useState('')
-  const [fromdate, setStartDate] = useState('')
-  const [todate, setEndDate] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState(0)
-  const [img_url, setimag]=useState('')
-  useEffect(() => {
-    console.log('========= USEEFFECT CALLED =========');
-    getAll();
-  }, []);
-  const getAll = () => {
-    axios
-      .get('http://localhost:5000/post/get')
-      .then((response) => {
-        console.log('DATA: ', response.data);
-        setPost(response.data);
-      })
-      .catch((err) => {
-        console.log('RESULT: ', err);
-      });
-  };
   return (
 
     <Router>
@@ -63,6 +37,10 @@ const App = () => {
           <Header />
           <Home />
           
+        </Route>
+        <Route path="/About">
+          <Header />
+          <About />
         </Route>
         
         <Route path="/add">
@@ -100,7 +78,7 @@ const App = () => {
         </Route>
         <Route path='/AllPost'>
         <Header2 />
-             <Infone npost={post}/>
+             <Infone />
         </Route>
         
       </div>
