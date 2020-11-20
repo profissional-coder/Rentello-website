@@ -67,22 +67,30 @@ const App = () => {
         </Route>
 
         <Route exact path="/user/profile">
-          <Header2 />
+          <Header />
           <Renderall />
         </Route>
 
-        <Route path="/rent" render={(props) => <Rent {...props} />} />
+        <Route
+          path="/rent"
+          render={(props) => (
+            <>
+              <Header />
+              <Rent {...props} />
+            </>
+          )}
+        />
 
         <Route path="/Contact">
-          <Header2 />
+          <Header />
           <Contact />
         </Route>
         <Route path="/userprofile">
-          <Header2 />
+          <Header />
           <Profile />
         </Route>
         <Route path="/update">
-          <Header2 />
+          <Header />
           <Updateinfo />
         </Route>
       </div>

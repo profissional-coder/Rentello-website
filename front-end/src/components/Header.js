@@ -9,35 +9,29 @@ const Header = () => {
       <header className="header">
         <nav>
           <ul className="main-nav">
-            <li>
-              <Link className="link" to="/home">
-                Home
-              </Link>
-            </li>
-            {logedIn && (
+            {logedIn ? (
               <>
+                <li>
+                  <Link className="link" to="/home">
+                    Home
+                  </Link>
+                </li>
                 <li>
                   <Link className="link" to="/user/profile">
                     All Post
                   </Link>
                 </li>
-
-                {"   "}
-                <li>
+                {/* <li>
                   <Link className="link" to="/items">
                     Items
                   </Link>
+                </li> */}
+                <li>
+                  <Link className="link" to="/Contact">
+                    Contact us
+                  </Link>
                 </li>
-              </>
-            )}
-            <li>
-              <Link className="link" to="/Contact">
-                Contact us
-              </Link>
-            </li>
-            <div className="auth">
-              {!logedIn ? (
-                <>
+                <div className="auth">
                   <li>
                     <Link className="link btn" to="/register">
                       Register
@@ -48,15 +42,36 @@ const Header = () => {
                       Login
                     </Link>
                   </li>
-                </>
-              ) : (
-                <>
+                </div>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link className="link" to="/home">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link className="link" to="/user/profile">
+                    All Post
+                  </Link>
+                </li>
+                {/* <li>
+                  <Link className="link" to="/items">
+                    Items
+                  </Link>
+                </li> */}
+                <li>
+                  <Link className="link" to="/Contact">
+                    Contact us
+                  </Link>
+                </li>
+                <div className="auth">
                   <li>
                     <Link className="link btn" to="/home">
                       logout
                     </Link>
                   </li>
-
                   <li>
                     <Link className="link" to="/userprofile">
                       <img
@@ -65,9 +80,9 @@ const Header = () => {
                       />
                     </Link>
                   </li>
-                </>
-              )}
-            </div>
+                </div>
+              </>
+            )}
           </ul>
         </nav>
       </header>

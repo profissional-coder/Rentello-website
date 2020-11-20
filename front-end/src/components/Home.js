@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const Home = () => {
   const [Token, setToken] = useState("true");
+  const [searchName, setSearchName] = useState("");
 
   const createNewItem = () => {
     //  console.log('localStorage.setItem',localStorage.getItem("token"));
@@ -13,12 +14,26 @@ const Home = () => {
     }
   };
 
+  const searchItems = (e) => {
+    // <Redirect
+    //   to={{
+    //     pathname: "/user/profile",
+    //     state: { filter: { name: searchName } },
+    //   }}
+    // />;
+  };
+
   return (
     <div className="container">
-      <div className="search ">
-        <input type="text" placeholder="search" />
+      <form className="search" onSubmit={searchItems}>
+        <input
+          type="text"
+          placeholder="search"
+          value={searchName}
+          onChange={(e) => setSearchName(e.target.value)}
+        />
         <input className="btn" type="submit" />
-      </div>
+      </form>
 
       <div className="add-item">
         <Link className="link" to="/add">

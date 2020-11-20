@@ -7,27 +7,30 @@ import {
   Redirect,
   Link,
 } from "react-router-dom";
+import PostsSearch from "./PostsSearch";
 
 const Renderall = () => {
-  const [info, setInfo] = useState([]);
-  const [infoPosts, setInfoPosts] = useState([]);
-  const [postPic, setPostPic] = useState("");
-  const [address, setAddress] = useState("");
-  const [Fullname, setFullname] = useState("");
-  const [dob, doBset] = useState("");
-  const [email, setEmail] = useState("");
+  // const [info, setInfo] = useState([]);
+  // const [infoPosts, setInfoPosts] = useState([]);
+  // const [postPic, setPostPic] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [Fullname, setFullname] = useState("");
+  // const [dob, doBset] = useState("");
+  // const [email, setEmail] = useState("");
+  const [allPosts, setAllPosts] = useState([]);
 
   useEffect(() => {
     getPosts();
-  });
+  }, []);
 
   const getPosts = async () => {
     axios
       .get(`http://localhost:5000/posts`)
-      .then(async (response) => {
+      .then((response) => {
         // console.log("response", response);
 
-        setInfoPosts(response.data);
+        // setInfoPosts(response.data);
+        setAllPosts(response.data);
 
         //  setTitle(response.data)
         //  setPhoneNumber(response.data)
@@ -36,50 +39,52 @@ const Renderall = () => {
         //  setEndDate(response.data)
         //  setCategory(response.data)
         //  setDescription(response.data)
-        if (infoPosts.length === []) {
-          alert("no posts found");
-        }
+        // if (infoPosts.length === []) {
+        //   alert("no posts found");
+        // }
       })
       .catch((err) => {
         console.log("RESULT: ", err);
       });
   };
 
-  const newArr = infoPosts.map((elem, index) => (
-    <li num={index + 1} key={index} className="post">
-      {/* <Link className="link" to="/rent" state={ {infoPosts}} > */}
-
-      <Link
-        className="link"
-        to={{
-          pathname: "/rent",
-          state: elem.post_id,
-        }}
-      >
-        <div className="postTitle">
-          Post {index + 1} || {elem.name} || posted at : {elem.postdate}
-        </div>
-        <div>Category : {elem.category}</div>
-        <div>
-          {" "}
-          <img className="img" src={elem.img_url} alt="post image"></img>
-        </div>
-        <div>Location : {elem.location}</div>
-        {/* <div>PhoneNumber :{elem.PhoneNumber}</div> */}
-        <div>Price :{elem.price}</div>
-        {/* <div>StartDate : {elem.fromdate}</div>
-        <div>EndDate : {elem.todate}</div>
-        <div>Description : ||{elem.description}||</div> */}
-      </Link>
-    </li>
-  ));
+  // const newArr = infoPosts.map((elem, index) => (
+  // <Link
+  //   className="link"
+  //   to={{
+  //     pathname: "/rent",
+  //     state: elem.post_id,
+  //   }}
+  //   style={{ textDecoration: "none" }}
+  // >
+  //   <li num={index + 1} key={index} className="post-item">
+  //     {/* <Link className="link" to="/rent" state={ {infoPosts}} > */}
+  //     <div className="post-info">
+  //       <h2 className="post-title">
+  //         {elem.name}
+  //         <span>
+  //           Post {index + 1} || posted at: {elem.postdate}
+  //         </span>
+  //       </h2>
+  //       <span>Category: {elem.category}</span>
+  //       <span>Location: {elem.location}</span>
+  //       {/* <div>PhoneNumber :{elem.PhoneNumber}</div> */}
+  //       <span>Price: {elem.price}</span>
+  //       {/* <div>StartDate : {elem.fromdate}</div>
+  //     <div>EndDate : {elem.todate}</div>
+  //     <div>Description : ||{elem.description}||</div> */}
+  //     </div>
+  //     <img className="img" src={elem.img_url} alt="post image" />
+  //   </li>
+  // </Link>
+  // ));
 
   return (
     <div>
       <div className="pPosts">
-        <button onClick={() => getPosts()}>get posts info</button>
-
-        <ul className="post-container">{newArr}</ul>
+        {/* <button onClick={() => getPosts()}>get posts info</button> */}
+        <PostsSearch allItems={allPosts} />
+        {/* <ul className="post-container">{newArr}</ul> */}
       </div>
     </div>
   );
