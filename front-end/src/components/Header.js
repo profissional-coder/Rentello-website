@@ -1,8 +1,19 @@
 import React from "react";
 // import "./App.css";
-import { Link } from "react-router-dom";
-const Header = () => {
-  const logedIn = false;
+import { Link, withRouter } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+const Header = (props) => {
+  let logedIn = true;
+  if (!localStorage.getItem("token")) {
+    logedIn = true;
+  } else {
+    logedIn = false;
+  }
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    props.history.push("/");
+  };
 
   return (
     <div>
@@ -68,9 +79,9 @@ const Header = () => {
                 </li>
                 <div className="auth">
                   <li>
-                    <Link className="link btn" to="/home">
+                    <button className="link btn" to="/home" onClick={logout}>
                       logout
-                    </Link>
+                    </button>
                   </li>
                   <li>
                     <Link className="link" to="/userprofile">
@@ -90,4 +101,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);

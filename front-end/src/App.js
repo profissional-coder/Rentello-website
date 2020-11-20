@@ -38,17 +38,17 @@ const App = () => {
         </Route>
 
         <Route path="/add">
-          <Header2 />
+          <Header />
           <Additem data={post} />
         </Route>
 
         <Route path="/showpost">
-          <Header2 />
+          <Header />
           <Render datashow={post} />
         </Route>
 
         <Route path="/items">
-          <Header2 />
+          <Header />
 
           <p>Safely profit from all items you own</p>
           <Link className="link" to="/add">

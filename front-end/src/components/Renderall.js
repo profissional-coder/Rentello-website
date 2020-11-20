@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory } from "react-router";
+import { useHistory, withRouter } from "react-router";
 import {
   Route,
   BrowserRouter as Router,
@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import PostsSearch from "./PostsSearch";
 
-const Renderall = () => {
+const Renderall = (props) => {
   // const [info, setInfo] = useState([]);
   // const [infoPosts, setInfoPosts] = useState([]);
   // const [postPic, setPostPic] = useState("");
@@ -83,10 +83,10 @@ const Renderall = () => {
     <div>
       <div className="pPosts">
         {/* <button onClick={() => getPosts()}>get posts info</button> */}
-        <PostsSearch allItems={allPosts} />
+        <PostsSearch allItems={allPosts} props={props} />
         {/* <ul className="post-container">{newArr}</ul> */}
       </div>
     </div>
   );
 };
-export default Renderall;
+export default withRouter(Renderall);

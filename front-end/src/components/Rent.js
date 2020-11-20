@@ -14,8 +14,8 @@ const Rent = (props) => {
     const data = {
       post_id: props.location.state,
       user_id: decoded.user_id,
-      from_date: "12-3-2020",
-      to_date: "13-12-2020",
+      from_date: "2020-11-11",
+      to_date: "2020-11-11",
     };
     console.log("data :", data);
 
@@ -51,8 +51,8 @@ const Rent = (props) => {
         <div>Location: {elem.location}</div>
         <div>Phone Number:{elem.PhoneNumber}</div>
         <div>Price: {elem.price}</div>
-        <div>StartDate: {elem.fromdate}</div>
-        <div>EndDate: {elem.todate}</div>
+        <div>StartDate: {elem.from_date}</div>
+        <div>EndDate: {elem.to_date}</div>
         <div>Description: {elem.description}</div>
         <button onClick={createOrder} className="rent-btn btn">
           RENT ONLINE

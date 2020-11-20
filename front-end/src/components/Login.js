@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import validate from "./handleErrorLogin";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
-  const [islogin, setIslogin] = useState(false);
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -28,10 +27,11 @@ const Login = () => {
       .post("http://localhost:5000/login", values)
       .then((result) => {
         console.log(result);
-        if (result.data) {
+        if (!result.data.error) {
           localStorage.setItem("token", result.data);
+          props.history.push("/");
         } else {
-          setErrors({ errors: "Invalid Email or Password" });
+          setErrors({ ...errors, validation: "Invalid Email or Password" });
         }
       })
       .catch((err) => {
@@ -41,6 +41,8 @@ const Login = () => {
 
   return (
     <form onSubmit={handleSubmit} className="form">
+      {/* {islogin ? <Redirect to="/user/profile" /> : <Redirect to="/login" />} */}
+
       <h1>Login</h1>
       <section className="form-input">
         <label>Email </label>
@@ -68,7 +70,7 @@ const Login = () => {
         {errors.password && <p className="input-error"> {errors.password} </p>}
       </section>
       <br />
-
+      {errors.validation && <p className="input-error">{errors.validation}</p>}
       <button className="btn" type="submit">
         Login
       </button>
@@ -76,4 +78,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

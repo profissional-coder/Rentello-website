@@ -1,8 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory } from "react-router";
 import Userprofile from "./Userprofile";
-import { Link } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 const Profile = () => {
   const [info, setInfo] = useState([]);
   const [infoPosts, setInfoPosts] = useState([]);
@@ -27,12 +26,18 @@ const Profile = () => {
   const [Price, setPrice] = useState("");
   const [postImage, setPostImage] = useState("");
 
-  const getUser = async (infoArgumnt) => {
-    console.log(infoArgumnt);
+  useEffect(() => {
+    getUser();
+  }, []);
+  const getUser = async () => {
+    const token = localStorage.getItem("token");
+    const decoded = jwt_decode(token);
+    // console.log(decoded.user_id);
+    const id = decoded.user_id;
     axios
-      .get(`http://localhost:5000/user/${infoArgumnt}`)
+      .get(`http://localhost:5000/user/${id}`)
       .then(async (response) => {
-        console.log("response", response);
+        // console.log("response",response)
         // alert(response)
         setLoading(true);
         setInfo(response.data);
@@ -52,12 +57,15 @@ const Profile = () => {
         console.log("RESULT: ", err);
       });
   };
-  const getPosts = async (infoArgumnt) => {
-    console.log(infoArgumnt);
+  const getPosts = async () => {
+    const token = localStorage.getItem("token");
+    const decoded = jwt_decode(token);
+    // console.log(decoded.user_id);
+    const id = decoded.user_id;
     axios
       .get(`http://localhost:5000/posts/${id}`)
       .then(async (response) => {
-        console.log("response", response);
+        // console.log("response",response)
         setLoading(true);
         setInfoPosts(response.data);
         if (infoPosts.length === []) {
@@ -73,11 +81,11 @@ const Profile = () => {
   const deletePosts = async (infoArgumnt) => {
     console.log(infoArgumnt);
     axios
-      .delete(`http://localhost:5000/delete/${infoArgumnt}`)
+      .delete(`http://localhost:5000/deletepost/${infoArgumnt}`)
       .then(async (response) => {
-        console.log("response", response);
-        alert("one post deleted");
-        getPosts();
+        console.log("response", response.data);
+        // alert("one post deleted")
+        // getPosts()
       })
       .catch((err) => {
         console.log("RESULT: ", err);
@@ -124,117 +132,116 @@ const Profile = () => {
         post_id: infoArgumnt,
       },
     ];
-    console.log("arrData:", arrData[0]);
+    // console.log("arrData:",arrData[0]);
     axios
       .put(`http://localhost:5000/posts/update`, arrData[0])
       .then(async (response) => {
-        console.log("response", response);
+        // console.log("response",response)
         alert("one post update");
-        console.log(response);
+        // console.log(response);
         getPosts();
       })
       .catch((err) => {
-        console.log("RESULT: ", err);
+        // console.log('RESULT: ', err);
       });
   };
-  const userId = (e) => {
-    setId(e.target.value);
-  };
+
   const newArr = infoPosts.map((elem, index) => (
-    <li num={index + 1} key={index}>
-      <div className="postTitle">
-        Post {index + 1} || {elem.name} || posted at : {elem.postdate}
-      </div>
-      <div>
-        Title : {elem.title}{" "}
-        <button onClick={() => deletePosts(elem.post_id)}>D</button>
+    <div num={index + 1} key={index} className="post-item">
+      <div className="post-info">
+        <h2>{elem.name} </h2>
+        <span>
+          Post {index + 1} || posted at : {elem.postdate}
+        </span>
+        <span>Location : {elem.location}</span>
+        <span>PhoneNumber :{elem.PhoneNumber}</span>
+        <span>Price :{elem.price}</span>
+        <span>StartDate : {elem.from_date}</span>
+        <span>EndDate : {elem.to_date}</span>
+        <span>Description : ||{elem.description}||</span>
+        <span>Category : {elem.category}</span>
+        <div>
+          {/* <button onClick={() => deletePosts(elem.post_id)}>D</button>
         <button
           onClick={() => {
             updatePosts(elem.post_id);
           }}
         >
           U
-        </button>{" "}
+        </button> */}
+          <button className="btn">Delete</button>
+          <button className="btn">Update</button>
+        </div>
       </div>
-      <div>Category : {elem.category}</div>
-      <div>
-        {" "}
-        <img src={elem.img_url} alt="post image" className="postPic"></img>pic
-      </div>
-      <div>Location : {elem.location}</div>
-      <div>PhoneNumber :{elem.PhoneNumber}</div>
-      <div>Price :{elem.price}</div>
-      <div>StartDate : {elem.fromdate}</div>
-      <div>EndDate : {elem.todate}</div>
-      <div>Description : ||{elem.description}||</div>
-    </li>
+      <img src={elem.img_url} alt="post image" className="postPic"></img>
+    </div>
   ));
 
   return (
-    <div className="profile">
-      <img src={userPic} alt="profile pic" className="pPic"></img>
-      <nav className="pNav">{Fullname} Profile</nav>
-      <div className="pPosts">
-        {Fullname} posts{" "}
-        <button onClick={() => getPosts()}>get posts info</button>
-        <p>update post </p>
-        <button
-          onClick={() => (updating ? setUpdating(false) : setUpdating(true))}
-        >
-          update post
-        </button>
-        {updating ? (
-          <div>
-            <input onChange={UTitle} placeholder="new title" />
-            <input onChange={uNum} placeholder=" Num" />
-            <input type="date" onChange={uStart} placeholder="new Start date" />
-            <input type="date" onChange={uEnd} placeholder="new End date" />
-            <select onChange={uCategory} placeholder="Select Category">
-              catagory
-              <option>select catagory</option>
-              <option>Cars</option>
-              <option>Mobile Tablet</option>
-              <option>tools</option>
-            </select>
-            <select onChange={uLocation}>
-              <option>Select Country:</option>
-              <option>Amman</option>
-              <option>Zarqa</option>
-              <option>Irbid</option>
-              <option>Karak</option>
-              <option>Tafila</option>
-            </select>
-            <input onChange={u_img_url} placeholder="new img_url" />
-            <input onChange={uName} placeholder="new Name" />
-            <input onChange={uPrice} placeholder="new Price" />
-          </div>
-        ) : (
-          <div></div>
-        )}
-        <ul className="pPostsList">{newArr}</ul>
-        <Link className="link" to="/add">
-          <button>ADD ITEM TO RENT</button>
-        </Link>
-      </div>
-      <div className="pInfo">
-        <p>userInfo</p>
-        <input onChange={userId} />
-
-        <button onClick={() => getUser(id)}>get user info</button>
+    <div className="profile-container">
+      <div className="user-data">
+        <img
+          src="https://i.ibb.co/3pyy17V/pngkey-com-avatar-png-1149878.png"
+          alt="profile pic"
+          className="profile-image"
+        ></img>
         {loading ? (
-          <div class="loader"></div>
+          <div class=""></div>
         ) : (
-          <div className="userInfo">
+          <div className="">
             <p>user name : {Fullname}</p>
             <p>birthday :{dob} </p>
             <p>address :{address} </p>
             <p> email :{email}</p>
-            <Userprofile />
           </div>
         )}
+        <button className="btn" onClick={() => getPosts()}>
+          get your post
+        </button>
       </div>
+      <div className="post-container">{newArr}</div>
+      <Userprofile />
     </div>
   );
 };
 
+/*
+<div className="test">
+ <p>update post </p> 
+ <button
+  className="btn"
+  onClick={() => (updating ? setUpdating(false) : setUpdating(true))}
+>
+  update post
+</button> 
+{updating ? (
+  <div>
+    <input onChange={UTitle} placeholder="new title" />
+    <input onChange={uNum} placeholder=" Num" />
+    <input type="date" onChange={uStart} placeholder="new Start date" />
+    <input type="date" onChange={uEnd} placeholder="new End date" />
+    <select onChange={uCategory} placeholder="Select Category">
+      catagory
+      <option>select catagory</option>
+      <option>Cars</option>
+      <option>Mobile Tablet</option>
+      <option>tools</option>
+    </select>
+    <select onChange={uLocation}>
+      <option>Select Country:</option>
+      <option>Amman</option>
+      <option>Zarqa</option>
+      <option>Irbid</option>
+      <option>Karak</option>
+      <option>Tafila</option>
+    </select>
+    <input onChange={u_img_url} placeholder="new img_url" />
+    <input onChange={uName} placeholder="new Name" />
+    <input onChange={uPrice} placeholder="new Price" />
+  </div>
+) : (
+  <div></div>
+)}
+</div>
+*/
 export default Profile;

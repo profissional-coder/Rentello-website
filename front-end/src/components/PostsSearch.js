@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-const PostsSearch = ({ allItems, filter }) => {
+const PostsSearch = ({ allItems, filter, props }) => {
   useEffect(() => {
-    setSearchData({ ...searchData, items: allItems });
+    // setSearchData({ ...searchData, items: allItems });
+    setFilterdItems(allItems);
   }, [allItems]);
 
   useEffect(() => {
@@ -14,8 +15,19 @@ const PostsSearch = ({ allItems, filter }) => {
     });
   }, [filter]);
 
+  useEffect(() => {
+    if (props.location.preCategory !== "") {
+      setSearchData({
+        ...searchData,
+        filter: {
+          ...searchData.filter,
+          category: props.location.preCategory,
+        },
+      });
+    }
+  }, [props.location.preCategory]);
+
   const [searchData, setSearchData] = useState({
-    items: [],
     filter: {
       searchText: "",
       location: "",
@@ -27,8 +39,27 @@ const PostsSearch = ({ allItems, filter }) => {
     },
   });
 
+  const [filterdItems, setFilterdItems] = useState([]);
+
+  const applyCategoryFilter = () => {
+    if (allItems.length === 0) {
+      return;
+    }
+
+    let items = allItems;
+    console.log(items);
+    // Filter by category
+    items = items.filter((item) => {
+      return item.category === "Device";
+    });
+
+    setFilterdItems(items);
+  };
+
   const search = (e) => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
 
     let items = allItems;
     const {
@@ -40,7 +71,6 @@ const PostsSearch = ({ allItems, filter }) => {
       endPrice,
       location,
     } = searchData.filter;
-    console.log(searchText);
 
     // Filter by Title
     // items = items.filter((item) => {
@@ -59,13 +89,6 @@ const PostsSearch = ({ allItems, filter }) => {
       });
     }
 
-    // Filter by date
-    if (startDate !== "" && endDate !== "") {
-      items = items.filter((item) => {
-        return item.post_date > startDate && item.to_date > endDate;
-      });
-    }
-
     //Filter by price
     if (startPrice != 0) {
       items = items.filter((item) => {
@@ -78,15 +101,17 @@ const PostsSearch = ({ allItems, filter }) => {
       });
     }
 
-    setSearchData({
-      ...searchData,
-      items: items,
-    });
+    // setSearchData({
+    //   ...searchData,
+    //   items: items,
+    // });
+
+    setFilterdItems(items);
   };
 
   return (
     <>
-      <form onSubmit={search} className="form">
+      <form onSubmit={search} className="search-form">
         <section>
           <label>Title: </label>
           <input
@@ -130,33 +155,8 @@ const PostsSearch = ({ allItems, filter }) => {
             <option value="all">all</option>
             <option value="flate">flate</option>
             <option value="appliances">appliances</option>
+            <option value="Device">Device</option>
           </select>
-        </section>
-        <section>
-          <label>Start date: </label>
-          <input
-            type="date"
-            name="trip-start"
-            value={searchData.filter.startDate}
-            onChange={(e) => {
-              setSearchData({
-                ...searchData,
-                filter: { ...searchData.filter, startDate: e.target.value },
-              });
-            }}
-          />
-          <label>End date: </label>
-          <input
-            type="date"
-            name="trip-start"
-            value={searchData.filter.endDate}
-            onChange={(e) => {
-              setSearchData({
-                ...searchData,
-                filter: { ...searchData.filter, endDate: e.target.value },
-              });
-            }}
-          />
         </section>
         <section>
           <label>Start price: </label>
@@ -170,6 +170,8 @@ const PostsSearch = ({ allItems, filter }) => {
               });
             }}
           />
+        </section>
+        <section>
           <label>End price: </label>
           <input
             type="number"
@@ -186,8 +188,8 @@ const PostsSearch = ({ allItems, filter }) => {
       </form>
 
       <div className="post-container">
-        {searchData.items.length !== 0 ? (
-          searchData.items.map((item, index) => {
+        {filterdItems.length !== 0 ? (
+          filterdItems.map((item, index) => {
             return (
               <Link
                 key={index}
@@ -222,4 +224,4 @@ const PostsSearch = ({ allItems, filter }) => {
     </>
   );
 };
-export default PostsSearch;
+export default withRouter(PostsSearch);

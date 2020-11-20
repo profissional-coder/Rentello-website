@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import validate from "./handleErrorRegister";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
-const Register = () => {
+const Register = (props) => {
   const [values, setValues] = useState({
     Fullname: "",
     email: "",
@@ -33,6 +34,7 @@ const Register = () => {
       .post("http://localhost:5000/register", values)
       .then((result) => {
         // console.log("result : ",result);
+        props.history.push("/");
       })
       .catch((err) => {
         console.log("ERR : ", err);
@@ -136,4 +138,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default withRouter(Register);

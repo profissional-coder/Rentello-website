@@ -1,6 +1,6 @@
 .category-container {
   display: flex;
-  gap: 1rem;
+  gap: 5rem;
   margin: 1rem;
   flex-wrap: wrap;
   justify-content: center;
@@ -9,6 +9,8 @@
 
 .category {
   display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   border: 1px solid lightgray;
   border-radius: 50px;
@@ -16,10 +18,11 @@
   padding: 1rem 1.5rem;
   gap: 1rem;
   color: #1a535c;
+  height: 10rem;
 }
 
 .category .category-img {
-  width: 5rem;
+  width: 15rem;
 }
 
 .category .border {
@@ -35,9 +38,11 @@
   margin-bottom: 4rem;
   text-decoration: none;
   gap: 0.5rem;
+  margin: 5rem 0;
+  font-size: 2rem;
 }
 
 .add-item span {
   color: #ff6b6b;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }

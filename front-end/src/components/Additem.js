@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import jwt_decode from "jwt-decode";
+
 import {
   Link,
   BrowserRouter as Router,
@@ -38,7 +40,11 @@ const Additem = () => {
   };
 
   const SavePost = () => {
+    const token = localStorage.getItem("token");
+    const decoded = jwt_decode(token);
+    const id = decoded.user_id;
     CreateAllPost({
+      user_id: id,
       price: price,
       category: category,
       name: name,
@@ -50,6 +56,7 @@ const Additem = () => {
       img_url: IMG,
     });
   };
+
   return (
     <form className="form">
       <section>

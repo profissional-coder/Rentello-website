@@ -3,6 +3,9 @@
 @import "./_general.css";
 @import "./components/home.css";
 @import "./components/header.css";
-@import "./components/search.css";
+/* @import "./components/search.css"; */
 @import "./components/render-all.css";
 @import "./components/rent.css";
+@import "./components/search-form.css";
+@import "./components/contact-us.css";
+@import "./components/profile.css";
