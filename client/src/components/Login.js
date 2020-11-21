@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState , useEffect,useHistory} from "react";
 import validate from "./handleErrorLogin";
 import axios from "axios";
 import { Redirect, withRouter } from "react-router-dom";
@@ -7,10 +7,9 @@ import { Redirect, withRouter } from "react-router-dom";
 const Login = (props) => {
   const [values, setValues] = useState({
     email: "",
-    password: "",
+    password: ""
   });
   const [errors, setErrors] = useState({});
-  const history = useHistory();
 
   
  
