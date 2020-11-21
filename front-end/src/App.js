@@ -5,7 +5,8 @@ import {
   Redirect,
   Link,
 } from "react-router-dom";
-import "./App.css";
+// import "./App.css";
+import "./css/_base.css";
 import Header from "./components/Header";
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -37,17 +38,17 @@ const App = () => {
         </Route>
 
         <Route path="/add">
-          <Header2 />
+          <Header />
           <Additem data={post} />
         </Route>
 
         <Route path="/showpost">
-          <Header2 />
+          <Header />
           <Render datashow={post} />
         </Route>
 
         <Route path="/items">
-          <Header2 />
+          <Header />
 
           <p>Safely profit from all items you own</p>
           <Link className="link" to="/add">
@@ -66,22 +67,30 @@ const App = () => {
         </Route>
 
         <Route exact path="/user/profile">
-          <Header2 />
+          <Header />
           <Renderall />
         </Route>
 
-        <Route path="/rent" render={(props) => <Rent {...props} />}/>
+        <Route
+          path="/rent"
+          render={(props) => (
+            <>
+              <Header />
+              <Rent {...props} />
+            </>
+          )}
+        />
 
         <Route path="/Contact">
-          <Header2 />
+          <Header />
           <Contact />
         </Route>
         <Route path="/userprofile">
-          <Header2 />
+          <Header />
           <Profile />
         </Route>
         <Route path="/update">
-          <Header2 />
+          <Header />
           <Updateinfo />
         </Route>
       </div>

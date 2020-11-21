@@ -1,162 +1,203 @@
 import React, { useState, useEffect } from "react";
-import { Link,BrowserRouter as Router,Redirect,Route,useHistory } from "react-router-dom";
+
+import jwt_decode from "jwt-decode";
+
+import {
+  Link,
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+} from "react-router-dom";
+
 import axios from "axios";
-import "./App.css";
-import Render from "./Render"
+// import "./App.css";
+import Render from "./Render";
+
 const Additem = () => {
   const [post, setPost] = useState([]);
-  const [Name, setName] = useState("");
-  const [price, setprice] = useState(0);
-  const [Category, setCategory] = useState("");
-  const [Title, setTitle] = useState("");
-  const [Description, setDescription] = useState("");
-  const [Location, setLocation] = useState("");
+  const [price, setPrice] = useState(0);
+  const [category, setCategory] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
   const [IMG, setIMG] = useState("");
-  const [StartDate, setStartDate] = useState("");
-  const [EndDate, setEndDate] = useState("");
-  const [PhoneNumber, setPhoneNumber] = useState(0);
-  const [Token, setToken] = useState("true");
-  const history = useHistory();
 
-  
-  // if (!!localStorage.getItem("token")) {
-  //   setToken("true");
-  // } else {
-  //   setToken("false");
-  // }
-
+  const [from_date, setStartDate] = useState("");
+  const [to_date, setEndDate] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
 
   const CreateAllPost = (infoArgumnt) => {
     console.log(infoArgumnt);
+
     axios
       .post("http://localhost:5000/post/create", infoArgumnt)
       .then((response) => {
         console.log("response", response);
         const newArray = [...post];
         newArray.push(response.data);
-        setPost(newArray);       
-         })
+
+        setPost(newArray);
+      })
+
       .catch((err) => {
         console.log("RESULT: ", err);
       });
-    
   };
 
   const SavePost = () => {
+    const token = localStorage.getItem("token");
+    const decoded = jwt_decode(token);
+    const id = decoded.user_id;
     CreateAllPost({
-      name:Name,
+      user_id: id,
       price: price,
-      category: Category,
-      title: Title,
-      description: Description,
-      location: Location,
-      fromdate: StartDate,
-      todate: EndDate,
-      PhoneNumber: PhoneNumber,
+      category: category,
+      name: name,
+      description: description,
+      location: location,
+      from_date: from_date,
+      to_date: to_date,
+      PhoneNumber: phoneNumber,
       img_url: IMG,
     });
   };
+
   return (
+    <form className="form">
+      <section>
+        <label>Name</label>
+        <input
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          value={name}
+          type="text"
+          placeholder="Name What are you renting"
+        ></input>
+      </section>
 
-   <div className="padding-all">
-         {!!localStorage.getItem("token")?(history.push("/add")):(history.push("/login"))}
+      <section>
+        <label>Price</label>
+        <input
+          onChange={(e) => {
+            setPrice(e.target.value);
+          }}
+          type="Number"
+          value={price}
+          placeholder="Price"
+        ></input>
+      </section>
 
-      <div className="design">
-        <div className="mail-form-agile">
-          <input
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-            type="text"
-            placeholder="Write Post Title Here"
-          ></input>
+      <section>
+        <label>Category</label>
+        <select
+          onChange={(e) => {
+            setCategory(e.target.value);
+          }}
+          value={category}
+          placeholder="Select Category"
+        >
+          <option value="Motors-Bicycles">Motors / Bicycles</option>
+          <option value="Cars">Cars</option>
+          <option value="Sports">Sports</option>
+          <option value="VR-Gaming">VR Gaming</option>
+          <option value="Camping">Camping</option>
+          <option value="Heavy-Machines">Heavy Machines</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Places">Places</option>
+        </select>
+      </section>
 
-          <input
-            onChange={(e) => {
-              setprice(e.target.value);
-            }}
-            type="Number"
-            placeholder="Price"
-          ></input>
-          <select
-            onChange={(e) => {
-              setCategory(e.target.value);
-            }}
-            placeholder="Select Category"
-          >
-            <option>Cars</option>
-            <option>Mobile Tablet</option>
-          </select>
-          <select
-            onChange={(e) => {
-              setLocation(e.target.value);
-            }}
-          >
-            <option value="0">Select Country:</option>
-            <option value="1">Amman</option>
-            <option>Zarqa</option>
-            <option>Irbid</option>
-            <option>Karak</option>
-            <option>Tafila</option>
-          </select>
+      <section>
+        <label>Location</label>
+        <select
+          onChange={(e) => {
+            setLocation(e.target.value);
+          }}
+        >
+          <option value="0">Select City:</option>
+          <option value="amman">Amman</option>
+          <option value="zarqa">Zarqa</option>
+          <option value="irbid">Irbid</option>
+          <option value="karak">Karak</option>
+          <option value="tafila">Tafila</option>
+        </select>
+      </section>
 
-          <span>Start Date</span>
-          <input
-            onChange={(e) => {
-              setStartDate(e.target.value);
-            }}
-            type="datetime-local"
-          ></input>
-          <span>End Date</span>
-          <input
-            onChange={(e) => {
-              setEndDate(e.target.value);
-            }}
-            type="datetime-local"
-          ></input>
-          <input
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-            type="text"
-            placeholder="Name"
-          ></input>
-          <input
-            onChange={(e) => {
-              setPhoneNumber(e.target.value);
-            }}
-            type="tel"
-            placeholder="Phone Number"
-          ></input>
-          <textarea
-            placeholder="Description"
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-          ></textarea>
-          <input
-            onChange={(e) => {
-              setIMG(e.target.value);
-            }}
-            type="file"
-            name="image"
-          ></input>
-         <Link className="link" to="/showpost">
-            <input 
-            onClick={(e) => {
-             SavePost()
-            }}
-            
-            type="submit" {...Name}  value="Save" ></input>
-       </Link>
-        </div>
-        
-        <div className="clear"> </div>
-      </div>
-    </div>
-  
+      <section>
+        <label>Start Date</label>
+        <input
+          onChange={(e) => {
+            setStartDate(e.target.value);
+          }}
+          type="Date"
+          value={from_date}
+        ></input>
+      </section>
+
+      <section>
+        <label>End Date</label>
+        <input
+          onChange={(e) => {
+            setEndDate(e.target.value);
+          }}
+          type="Date"
+          value={to_date}
+        ></input>
+      </section>
+
+      <section>
+        <label>Phone number</label>
+        <input
+          onChange={(e) => {
+            setPhoneNumber(e.target.value);
+          }}
+          type="tel"
+          value={phoneNumber}
+          placeholder="Phone Number"
+        ></input>
+      </section>
+
+      <section>
+        <label>Description</label>
+        <textarea
+          placeholder="Description"
+          onChange={(e) => {
+            setDescription(e.target.value);
+          }}
+          value={description}
+        ></textarea>
+      </section>
+
+      <section>
+        <label>Add image</label>
+        <input
+          onChange={(e) => {
+            setIMG(e.target.value);
+          }}
+          value={IMG}
+          type="text"
+          placeholder="Your Image Link"
+        ></input>
+
+        {/* <input
+          onChange={(e) => {
+            setIMG(e.target.value);
+          }}
+          type="file"
+          name="image"
+          value={IMG}
+        ></input> */}
+      </section>
+
+      <Link className="link" to="/showpost">
+        <input onClick={SavePost} type="submit" value="Save" className="btn" />
+      </Link>
+    </form>
+
   );
 };
 export default Additem;
+
 

@@ -17,7 +17,7 @@ const {
   getUserPost,
   deletePost,
   updatePost,
-  getUserById
+  getUserById,
 } = require("../controllers/main-controller");
 
 mainRouter.post("/userAndPost", PostAndUsers);

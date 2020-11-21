@@ -8,7 +8,7 @@ const getAllUsers = (req, res) => {
   const command = `SELECT * FROM users WHERE is_deleted=0`;
   connection.query(command, (err, result) => {
     if (err) throw err;
-    console.log("RESULT: ", result);
+    // console.log("RESULT: ", result);
     res.json(result);
   });
 };
@@ -46,19 +46,35 @@ const PostAndUsers = (req, res) => {
   });
 };
 
+// const register = async (req, res) => {
+//   const query = `INSERT INTO users (role_id,Fullname, email,password,city,address,RegDate,dob) VALUES (2, ?, ?,?, ?,?,now(),?)`;
+//   let { Fullname, email, password, city, address, dob } = await req.body;
+//   password = bcrypt.hashSync(password, Number("salt"));
+//   const data = [Fullname, email, password, city, address, dob];
+//   console.log("data", data);
+//   connection.query(query, data, (err, result) => {
+//     if (err) {
+//       res.json(email + ` is already register.`);
+//     }
+
+//     res.json(data);
+//   });
+//   console.log("xxxxxxxxxxxx");
+// };
+
 const register = async (req, res) => {
-  const query = `INSERT INTO users (role_id,Fullname, email,password,city,address,RegDate,dob) VALUES (2, ?, ?,?, ?,?,now(),?)`;
+  const query = `INSERT INTO users (role_id,Fullname, email,password,city,address,RegDate,dob)
+    VALUES (2,?,?,?,?,?,now(),?)`;
   let { Fullname, email, password, city, address, dob } = req.body;
-  password = await bcrypt.hashSync(password, Number(process.env.SALT));
+  password = bcrypt.hashSync(password, Number("salt"));
   const data = [Fullname, email, password, city, address, dob];
   connection.query(query, data, (err, result) => {
-    if (err) {
-      res.json(email + ` is already register.`);
-    }
-
-    res.json(data);
+    res.json({ status: "User registerd!" });
+    if (err) throw err;
+    // console.log("data", data);
   });
 };
+
 //add user_id in payload
 const login = (req, res) => {
   const query = `SELECT * ,roles.type FROM roles INNER JOIN users ON 
@@ -97,11 +113,11 @@ const login = (req, res) => {
         res.json(token);
       } else {
         // res.status(422);
-        res.json("Invalid login check your password");
+        res.json({ error: "Invalid login check your password" });
       }
     } else {
       // res.status(404);
-      res.json("Invalid login check your email");
+      res.json({ error: "Invalid login check your email" });
     }
   });
 };
@@ -122,11 +138,12 @@ const deleteAccount = (req, res) => {
 };
 
 const createPost = async (req, res) => {
-  const query = `INSERT INTO post (price,name,
-    post_date,category,location,from_date,to_date,img_url)
-    VALUES (?,?,now(),?,?,?,?,?) `;
+  const query = `INSERT INTO post (user_id,name,price,
+    post_date,category,location,from_date,to_date,img_url,description,phoneNumber)
+    VALUES (?,?,?,now(),?,?,?,?,?,?,?) `;
 
   let {
+    user_id,
     price,
     name,
     category,
@@ -134,8 +151,22 @@ const createPost = async (req, res) => {
     from_date,
     to_date,
     img_url,
+    description,
+    PhoneNumber,
   } = req.body;
-  const data = [price, name, category, location, from_date, to_date, img_url];
+  // console.log("name :", name);
+  const data = [
+    user_id,
+    name,
+    price,
+    category,
+    location,
+    from_date,
+    to_date,
+    img_url,
+    description,
+    PhoneNumber,
+  ];
   connection.query(await query, data, (err, result) => {
     if (err) throw err;
     // console.log('data',data);
@@ -168,7 +199,7 @@ const updateUser = async (req, res) => {
       // res.json(email + ` is already register.`);
       res.json(err);
     }
-    console.log("RESULT: ", result);
+    // console.log("RESULT: ", result);
     // res.json(`Thanks for registration. ${Fullname} Try to login Now`);
     res.json(result);
   });
@@ -177,7 +208,7 @@ const getAllpost = (req, res) => {
   const command = `SELECT * FROM post `;
   connection.query(command, (err, result) => {
     if (err) throw err;
-    console.log("RESULT: ", result);
+    // console.log("RESULT: ", result);
     res.json(result);
   });
 };
@@ -195,9 +226,9 @@ const getpost = (req, res) => {
 //rama and malak create same function
 const createOrder = async (req, res) => {
   const query = `INSERT INTO orders (user_id,post_id,
-    fromdate,todate) VALUES (?,?,?,?)`;
-  let { user_id, post_id, fromdate, todate } = req.body;
-  const data = [user_id, post_id, fromdate, todate];
+    from_date,to_date) VALUES (?,?,?,?)`;
+  let { user_id, post_id, from_date, to_date } = req.body;
+  const data = [user_id, post_id, from_date, to_date];
   connection.query(query, data, (err, result) => {
     if (err) throw err;
 
@@ -209,7 +240,7 @@ const createOrder = async (req, res) => {
 const getOrders = (req, res) => {
   const command = `select users.Fullname,users.city,users.address,post.name,
   post.price,post.location,post.category,post.img_url,
-  orders.fromdate,orders.todate from orders 
+  orders.from_date,orders.to_date from orders 
   inner join users on orders.user_id = users.user_id 
   inner join post on orders.post_id = post.post_id 
   WHERE orders.user_id=${req.params.user_id}`;
@@ -250,10 +281,10 @@ const deletePost = (req, res) => {
     res.json({
       message: result,
     });
-  });    
-};  
+  });
+};
 //change fromdate and todate to ...
-const updatePost=(req,res)=>{
+const updatePost = (req, res) => {
   const command = `UPDATE post 
   SET name=? ,price=?,
   category=?,location=?,
@@ -261,9 +292,27 @@ const updatePost=(req,res)=>{
   img_url=? 
   WHERE  
   post_id=?`;
-  const{name,price,category,location,from_date,to_date,img_url,post_id}=req.body
-  const arrData = [name,price,category,location,from_date,to_date,img_url,post_id];
-  console.log(arrData);
+  const {
+    name,
+    price,
+    category,
+    location,
+    from_date,
+    to_date,
+    img_url,
+    post_id,
+  } = req.body;
+  const arrData = [
+    name,
+    price,
+    category,
+    location,
+    from_date,
+    to_date,
+    img_url,
+    post_id,
+  ];
+  // console.log(arrData);
   connection.query(command, arrData, (err, result) => {
     if (err) throw err;
     // console.log('RESULT: ', result);
@@ -271,20 +320,16 @@ const updatePost=(req,res)=>{
     res.json({
       message: result,
     });
-  }); 
-}
+  });
+};
 const getUserById = (req, res) => {
   const command = `SELECT * FROM users WHERE user_id="${req.params.user_id}"`;
   connection.query(command, (err, result) => {
     if (err) throw err;
-    console.log("RESULT: ", result);
+    // console.log("RESULT: ", result);
     res.json(result);
-    
   });
 };
-
-
-
 
 module.exports = {
   getAllUsers,
@@ -303,5 +348,5 @@ module.exports = {
   getUserPost,
   deletePost,
   updatePost,
-  getUserById
+  getUserById,
 };

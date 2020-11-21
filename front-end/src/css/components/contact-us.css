@@ -1,0 +1,18 @@
+.contact-us {
+  width: 40vw;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+.contact-us p {
+  font-size: 2rem;
+}
+
+.contact-us ul {
+  list-style: none;
+}
+
+.contact-us a {
+  color: darkblue;
+  font-size: 1.5rem;
+}

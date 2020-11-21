@@ -14,8 +14,8 @@ const Rent = (props) => {
     const data = {
       post_id: props.location.state,
       user_id: decoded.user_id,
-      fromdate: "12-3-2020",
-      todate: "13-12-2020",
+      from_date: "2020-11-11",
+      to_date: "2020-11-11",
     };
     console.log("data :", data);
 
@@ -45,26 +45,27 @@ const Rent = (props) => {
       .catch((err) => {});
   };
   const newArr = infoPost.map((elem, index) => (
-    <li num={index + 1} key={index}>
-      <div>Category : {elem.category}</div>
-      <div>
-        {" "}
-        <img className="img" src={elem.img_url} alt="post image"></img>
+    <div num={index + 1} key={index} className="post">
+      <div className="post-info">
+        <div>Category: {elem.category}</div>
+        <div>Location: {elem.location}</div>
+        <div>Phone Number:{elem.PhoneNumber}</div>
+        <div>Price: {elem.price}</div>
+        <div>StartDate: {elem.from_date}</div>
+        <div>EndDate: {elem.to_date}</div>
+        <div>Description: {elem.description}</div>
+        <button onClick={createOrder} className="rent-btn btn">
+          RENT ONLINE
+        </button>
       </div>
-      <div>Location : {elem.location}</div>
-      <div>PhoneNumber :{elem.PhoneNumber}</div>
-      <div>Price :{elem.price}</div>
-      <div>StartDate : {elem.fromdate}</div>
-      <div>EndDate : {elem.todate}</div>
-      <div>Description : ||{elem.description}||</div>
-    </li>
+      <img className="img" src={elem.img_url} alt="post image"></img>
+    </div>
   ));
 
   return (
     <div>
      
       {newArr}
-      <button onClick={createOrder}> RENT ONLINE </button>
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import validate from "./handleErrorRegister";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
-const Register = () => {
+const Register = (props) => {
   const [values, setValues] = useState({
     Fullname: "",
     email: "",
@@ -32,8 +33,8 @@ const Register = () => {
       // Bath from BE
       .post("http://localhost:5000/register", values)
       .then((result) => {
-         // console.log("result : ",result);
-
+        // console.log("result : ",result);
+        props.history.push("/");
       })
       .catch((err) => {
         console.log("ERR : ", err);
@@ -41,105 +42,100 @@ const Register = () => {
   };
 
   return (
-    <div className="Register-container">
-      <form onSubmit={handleSubmit}>
-        <h1>Register User</h1>
-        <div className="form-input">
-          <label>Username </label>
-          <br />
-          <input
-            type="text"
-            name="Fullname"
+    <form onSubmit={handleSubmit} className="form">
+      <h1>Register User</h1>
+      <section className="form-input">
+        <label>Username </label>
+        <input
+          type="text"
+          name="Fullname"
+          placeholder="enter your Fullname"
+          value={values.Fullname}
+          onChange={handleChange}
+        ></input>
+        {errors.Fullname && <p className="input-error"> {errors.Fullname} </p>}
+      </section>
+      <section className="form-input">
+        <label>Email </label>
+        <input
+          type="email"
+          name="email"
+          placeholder="enter your email"
+          value={values.email}
+          onChange={handleChange}
+        ></input>
+        {errors.email && <p className="input-error"> {errors.email} </p>}
+      </section>
 
-            placeholder="enter your Fullname"
+      <section className="form-input">
+        <label>Password </label>
 
-            value={values.Fullname}
-            onChange={handleChange}
-          ></input>
-          {errors.Fullname && <p> {errors.Fullname} </p>}
-        </div>
-        <br />
-        <div className="form-input">
-          <label>Email </label>
-          <br />
-          <input
-            type="email"
-            name="email"
-            placeholder="enter your email"
-            value={values.email}
-            onChange={handleChange}
-          ></input>
-          {errors.email && <p> {errors.email} </p>}
-        </div>
-        <br />
-        <div className="form-input">
-          <label>Password </label>
-          <br />
-          <input
-            type="password"
-            name="password"
-            placeholder="enter password"
-            value={values.password}
-            onChange={handleChange}
-          ></input>
-          {errors.password && <p> {errors.password} </p>}
-        </div>
-        <br />
-        <div className="form-input">
-          <label>Confirm Password </label>
-          <br />
-          <input
-            type="password"
-            name="password2"
-            placeholder="confirm password"
-            value={values.password2}
-            onChange={handleChange}
-          ></input>
-          {errors.password2 && <p> {errors.password2} </p>}
-        </div>
-        <br />
-        <div className="form-input">
-          <label>City </label>
-          <br />
-          <input
-            type="text"
-            name="city"
-            placeholder="your City"
-            value={values.city}
-            onChange={handleChange}
-          ></input>
-          {errors.city && <p> {errors.city} </p>}
-        </div>
-        <br />
-        <div className="form-input">
-          <label>Address </label>
-          <br />
-          <input
-            type="text"
-            name="address"
-            placeholder="your address"
-            value={values.address}
-            onChange={handleChange}
-          ></input>
-        </div>
-        <br />
-        <div className="form-input">
-          <label>Date Of Birth </label>
-          <br />
-          <input
-            type="date"
+        <input
+          type="password"
+          name="password"
+          placeholder="enter password"
+          value={values.password}
+          onChange={handleChange}
+        ></input>
+        {errors.password && <p className="input-error"> {errors.password} </p>}
+      </section>
 
-            name="dob"
+      <section className="form-input">
+        <label>Confirm Password </label>
 
-            value={values.password}
-            onChange={handleChange}
-          ></input>
-        </div>
-        <br />
-        <button type="submit">Register</button>
-      </form>
-    </div>
+        <input
+          type="password"
+          name="password2"
+          placeholder="confirm password"
+          value={values.password2}
+          onChange={handleChange}
+        ></input>
+        {errors.password2 && (
+          <p className="input-error"> {errors.password2} </p>
+        )}
+      </section>
+
+      <section className="form-input">
+        <label>City </label>
+
+        <input
+          type="text"
+          name="city"
+          placeholder="your City"
+          value={values.city}
+          onChange={handleChange}
+        ></input>
+        {errors.city && <p className="input-error"> {errors.city} </p>}
+      </section>
+
+      <section className="form-input">
+        <label>Address </label>
+
+        <input
+          type="text"
+          name="address"
+          placeholder="your address"
+          value={values.address}
+          onChange={handleChange}
+        ></input>
+      </section>
+
+      <section className="form-input">
+        <label>Date Of Birth </label>
+
+        <input
+          type="date"
+          name="dob"
+          value={values.dob}
+          onChange={handleChange}
+        ></input>
+      </section>
+
+      <button type="submit" className="btn">
+        Register
+      </button>
+    </form>
   );
 };
 
-export default Register;
+export default withRouter(Register);

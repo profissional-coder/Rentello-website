@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+// import "./App.css";
 import { Link } from "react-router-dom";
 const Header2 = () => {
   return (
@@ -13,10 +13,12 @@ const Header2 = () => {
               </Link>
             </li>
 
-            {'    '}
-              <li>
-                <Link className="link" to="/user/profile">All Post</Link>
-              </li>
+            {"    "}
+            <li>
+              <Link className="link" to="/user/profile">
+                All Post
+              </Link>
+            </li>
 
             {"   "}
             <li>
@@ -26,22 +28,21 @@ const Header2 = () => {
             </li>
             {"   "}
             <li>
-              <Link className="link" to="/login">
-              logout
+              <Link className="link" to="/home">
+                logout
+
               </Link>
             </li>
             {"    "}
-            
-              <li>
-              <Link className="link" to="/userprofile">
 
+            <li>
+              <Link className="link" to="/userprofile">
                 <img
                   className="user_icon"
                   src="https://img.icons8.com/bubbles/50/000000/user-male.png"
                 />
-                </Link>
-              </li>
-            
+              </Link>
+            </li>
           </ul>
         </nav>
       </header>

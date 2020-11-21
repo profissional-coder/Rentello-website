@@ -1,0 +1,36 @@
+.profile-container {
+  width: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+.profile-container .user-data {
+  /* background-color: red; */
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-container .profile-image {
+  width: 12rem;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile-actions .btn {
+  margin: 1rem;
+}

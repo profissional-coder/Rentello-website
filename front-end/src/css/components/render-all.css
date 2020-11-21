@@ -1,0 +1,49 @@
+.post-container {
+  width: 40vw;
+  margin: 6rem auto;
+  list-style: none;
+}
+
+.post-container .post-item {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 1rem 3rem;
+  margin: 2rem 0;
+  display: flex;
+  color: black;
+}
+
+.post-container .post-item .post-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+}
+
+.post-container .post-item .post-title {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.post-container .post-item .post-title span {
+  font-size: 0.9rem;
+  color: gray;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+}
+
+.post-container .post-item span {
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-container .post-item img {
+  width: 30%;
+  padding: 1rem 0;
+  /* margin: 2rem auto; */
+}
