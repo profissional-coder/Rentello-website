@@ -3,26 +3,19 @@ import React, { Component } from "react";
 const Contact = () => {
   return (
     <div className="contact-us">
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint ipsum
-        eligendi minima fuga unde exercitationem possimus! Alias, modi odio
-        reprehenderit et vel labore voluptate atque esse inventore repudiandae,
-        est nobis? Accusantium at, ex eum, aut vitae, praesentium ea voluptas
-        vel sequi voluptates id numquam fugit molestias! Perspiciatis mollitia
-        libero cumque.
-      </p>
+      <p>We Would Love To Hear From YOU !</p>
       <ul>
         <li>
-          <a href="#">test</a>
+          <a href="rabi.abdelrahman@gmail.com">test</a>
         </li>
         <li>
-          <a href="#">test</a>
+          <a href="rama.qndeel@gmail.com">test</a>
         </li>
         <li>
-          <a href="#">test</a>
+          <a href="jmzomalek@gmail.com">test</a>
         </li>
         <li>
-          <a href="#">test</a>
+          <a href="osama.moh.salem@gmail.com">test</a>
         </li>
       </ul>
     </div>

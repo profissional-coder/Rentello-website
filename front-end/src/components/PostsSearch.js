@@ -43,7 +43,8 @@ const PostsSearch = ({ allItems, filter, props }) => {
   const [filterdItems, setFilterdItems] = useState([]);
 
   const applyCategoryFilter = () => {
-    if (allItems.length === 0) {
+    console.log(props.location.preCategory);
+    if (!props.location.preCategory) {
       return;
     }
 
@@ -51,7 +52,7 @@ const PostsSearch = ({ allItems, filter, props }) => {
     console.log(items);
     // Filter by category
     items = items.filter((item) => {
-      return item.category === "Device";
+      return item.category === props.location.preCategory;
     });
 
     setFilterdItems(items);
@@ -127,7 +128,31 @@ const PostsSearch = ({ allItems, filter, props }) => {
             }}
           />
         </section>
+        {/* TEST */}
+
         <section>
+          <label>Location: </label>
+          <select
+            value={searchData.filter.location}
+            name="location"
+            onChange={(e) => {
+              setSearchData({
+                ...searchData,
+                filter: { ...searchData.filter, location: e.target.value },
+              });
+            }}
+          >
+            <option value="all">all</option>
+            <option value="amman">Amman</option>
+            <option value="zarqa">Zarqa</option>
+            <option value="irbid">Irbid</option>
+            <option value="karak">Karak</option>
+            <option value="tafila">Tafila</option>
+          </select>
+        </section>
+
+        {/* below delete */}
+        {/* <section>
           <label>Location: </label>
           <input
             type="text"
@@ -140,7 +165,8 @@ const PostsSearch = ({ allItems, filter, props }) => {
               });
             }}
           />
-        </section>
+        </section> */}
+        {/* TEST */}
         <section>
           <label>Category: </label>
           <select
@@ -154,13 +180,18 @@ const PostsSearch = ({ allItems, filter, props }) => {
             }}
           >
             <option value="all">all</option>
-            <option value="flate">flate</option>
-            <option value="appliances">appliances</option>
-            <option value="Device">Device</option>
+            <option value="Motors-Bicycles">Motors / Bicycles</option>
+            <option value="Cars">Cars</option>
+            <option value="Sports">Sports</option>
+            <option value="VR-Gaming">VR Gaming</option>
+            <option value="Camping">Camping</option>
+            <option value="Heavy-Machines">Heavy Machines</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Places">Places</option>
           </select>
         </section>
         <section>
-          <label>Start price: </label>
+          <label>Min: </label>
           <input
             type="number"
             value={searchData.filter.startPrice}
@@ -173,7 +204,7 @@ const PostsSearch = ({ allItems, filter, props }) => {
           />
         </section>
         <section>
-          <label>End price: </label>
+          <label>Max: </label>
           <input
             type="number"
             value={searchData.filter.endPrice}

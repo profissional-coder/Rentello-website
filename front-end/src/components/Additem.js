@@ -92,11 +92,14 @@ const Additem = () => {
           value={category}
           placeholder="Select Category"
         >
-          <option value="tools">Tools</option>
-          <option value="device">Device</option>
-          <option value="electrical-machines">Electrical Machines</option>
-          <option value="instrument">Instrument</option>
-          <option value="apparatus">apparatus</option>
+          <option value="Motors-Bicycles">Motors / Bicycles</option>
+          <option value="Cars">Cars</option>
+          <option value="Sports">Sports</option>
+          <option value="VR-Gaming">VR Gaming</option>
+          <option value="Camping">Camping</option>
+          <option value="Heavy-Machines">Heavy Machines</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Places">Places</option>
         </select>
       </section>
 
@@ -162,15 +165,24 @@ const Additem = () => {
       </section>
 
       <section>
-        <label>Description</label>
+        <label>Add image</label>
         <input
+          onChange={(e) => {
+            setIMG(e.target.value);
+          }}
+          value={IMG}
+          type="text"
+          placeholder="Your Image Link"
+        ></input>
+
+        {/* <input
           onChange={(e) => {
             setIMG(e.target.value);
           }}
           type="file"
           name="image"
           value={IMG}
-        ></input>
+        ></input> */}
       </section>
 
       <Link className="link" to="/showpost">
