@@ -6,15 +6,15 @@ const connection = mysql.createPool({
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
 });
-connection.connect((err) => {
-  if (err) {
-    console.error("CONNECTION ERROR: ", err.stack);
-    return;
-  }
-  console.log("CONNECTION ID: ", connection.threadId);
-});
+// connection.connect((err) => {
+//   if (err) {
+//     console.error("CONNECTION ERROR: ", err.stack);
+//     return;
+//   }
+//   console.log("CONNECTION ID: ", connection.threadId);
+// });
 
-module.exports = connection;
+// module.exports = connection;
 
 /*
 CREATE TABLE roles (
