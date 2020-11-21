@@ -10,16 +10,8 @@ import catHeavyMachines from "../img/catHeavyMachines.jpg";
 import catPlaces from "../img/catPlaces.jpg";
 
 const Home = () => {
-  const [Token, setToken] = useState("true");
-
-  const createNewItem = () => {
-    //  console.log('localStorage.setItem',localStorage.getItem("token"));
-    if (!!localStorage.getItem("token")) {
-      setToken("true");
-    } else {
-      setToken("false");
-    }
-  };
+  // localStorage.setItem("token", "");
+  
 
   return (
     <div className="container">
@@ -30,7 +22,7 @@ const Home = () => {
 
       <div className="add-item">
         <Link className="link" to="/add">
-          <button className="btn" onClick={createNewItem}>
+          <button className="btn" >
             Add item
           </button>
         </Link>

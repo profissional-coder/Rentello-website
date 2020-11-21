@@ -45,6 +45,7 @@ const Render = (props) => {
         <p>Location: {Location}</p>
       </div>
       <button>Delete</button>
+
     </div>
   );
 };

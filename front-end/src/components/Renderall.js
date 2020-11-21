@@ -19,6 +19,7 @@ const Renderall = (props) => {
   // const [email, setEmail] = useState("");
   const [allPosts, setAllPosts] = useState([]);
 
+
   useEffect(() => {
     getPosts();
   }, []);
@@ -78,6 +79,7 @@ const Renderall = (props) => {
   //   </li>
   // </Link>
   // ));
+
 
   return (
     <div>

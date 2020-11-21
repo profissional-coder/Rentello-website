@@ -51,6 +51,7 @@ const Profile = () => {
         setEmail(response.data[0].email);
         setUserPic(response.data[0].img_url);
 
+
         setLoading(false);
       })
       .catch((err) => {

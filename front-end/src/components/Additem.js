@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import jwt_decode from "jwt-decode";
 
 import {
@@ -7,6 +8,7 @@ import {
   Redirect,
   Route,
 } from "react-router-dom";
+
 import axios from "axios";
 // import "./App.css";
 import Render from "./Render";
@@ -19,9 +21,11 @@ const Additem = () => {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [IMG, setIMG] = useState("");
+
   const [from_date, setStartDate] = useState("");
   const [to_date, setEndDate] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+
 
   const CreateAllPost = (infoArgumnt) => {
     console.log(infoArgumnt);
@@ -32,8 +36,10 @@ const Additem = () => {
         console.log("response", response);
         const newArray = [...post];
         newArray.push(response.data);
+
         setPost(newArray);
       })
+
       .catch((err) => {
         console.log("RESULT: ", err);
       });
@@ -189,10 +195,9 @@ const Additem = () => {
         <input onClick={SavePost} type="submit" value="Save" className="btn" />
       </Link>
     </form>
+
   );
 };
 export default Additem;
 
-{
-  /* <Link className="link" to="/showpost"> </Link> */
-}
+

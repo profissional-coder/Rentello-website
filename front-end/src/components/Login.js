@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import validate from "./handleErrorLogin";
 import axios from "axios";
 import { Redirect, withRouter } from "react-router-dom";
+
 
 const Login = (props) => {
   const [values, setValues] = useState({
@@ -9,7 +10,12 @@ const Login = (props) => {
     password: "",
   });
   const [errors, setErrors] = useState({});
+  const history = useHistory();
 
+  
+ 
+  
+  
   const handleChange = (e) => {
     console.log(e);
     setValues({
@@ -19,6 +25,7 @@ const Login = (props) => {
   };
 
   const handleSubmit = (e) => {
+
     console.log("aaa", values);
     e.preventDefault();
     setErrors(validate(values));
@@ -33,12 +40,16 @@ const Login = (props) => {
         } else {
           setErrors({ ...errors, validation: "Invalid Email or Password" });
         }
+
       })
       .catch((err) => {
         console.log("ERR : ", err);
       });
+      
+      
   };
 
+ 
   return (
     <form onSubmit={handleSubmit} className="form">
       {/* {islogin ? <Redirect to="/user/profile" /> : <Redirect to="/login" />} */}
@@ -46,6 +57,7 @@ const Login = (props) => {
       <h1>Login</h1>
       <section className="form-input">
         <label>Email </label>
+
         <br />
         <input
           type="email"
@@ -75,7 +87,8 @@ const Login = (props) => {
         Login
       </button>
     </form>
+
   );
-};
+}
 
 export default withRouter(Login);

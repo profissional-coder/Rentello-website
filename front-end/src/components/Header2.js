@@ -30,6 +30,7 @@ const Header2 = () => {
             <li>
               <Link className="link" to="/home">
                 logout
+
               </Link>
             </li>
             {"    "}
