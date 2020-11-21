@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a3e173a9.chunk.css",
+    "main.js": "/static/js/main.124fc845.chunk.js",
+    "main.js.map": "/static/js/main.124fc845.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e327d292.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e327d292.js.map",
+    "static/js/2.e7c4784c.chunk.js": "/static/js/2.e7c4784c.chunk.js",
+    "static/js/2.e7c4784c.chunk.js.map": "/static/js/2.e7c4784c.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.9aab074532f5c302c4b354ef88e5338e.js": "/precache-manifest.9aab074532f5c302c4b354ef88e5338e.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.a3e173a9.chunk.css.map": "/static/css/main.a3e173a9.chunk.css.map",
+    "static/js/2.e7c4784c.chunk.js.LICENSE.txt": "/static/js/2.e7c4784c.chunk.js.LICENSE.txt",
+    "static/media/catCamping.jpg": "/static/media/catCamping.7179d507.jpg",
+    "static/media/catCars.jpeg": "/static/media/catCars.5a344b08.jpeg",
+    "static/media/catElectronics.jpg": "/static/media/catElectronics.b0f702ce.jpg",
+    "static/media/catHeavyMachines.jpg": "/static/media/catHeavyMachines.965ea1c8.jpg",
+    "static/media/catMotors.jpg": "/static/media/catMotors.bffe6881.jpg",
+    "static/media/catPlaces.jpg": "/static/media/catPlaces.992a8f8b.jpg",
+    "static/media/catSports.jpg": "/static/media/catSports.dda60377.jpg",
+    "static/media/catVrgaming.jpg": "/static/media/catVrgaming.9b7e0d84.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e327d292.js",
+    "static/js/2.e7c4784c.chunk.js",
+    "static/css/main.a3e173a9.chunk.css",
+    "static/js/main.124fc845.chunk.js"
+  ]
+}
