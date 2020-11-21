@@ -20,6 +20,10 @@ const {
   getUserById,
 } = require("../controllers/main-controller");
 
+mainRouter.get("/test", (req, res) => {
+  res.json("Hello World Server");
+});
+
 mainRouter.post("/userAndPost", PostAndUsers);
 mainRouter.get("/user", getAllUsers);
 mainRouter.post("/register", register);

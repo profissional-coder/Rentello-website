@@ -33,19 +33,20 @@ const Render = (props) => {
   };
 
   return (
-    <div className="post">
-      {/* <button onClick={getlastpost}>get</button> */}
-      <img src={Img_url} className="post-img"></img>
-      <div className="post-info">
-        <p>Category: {Category}</p>
-        <p>Name: {Name}</p>
-        <p>price:{Price}</p>
-        <p>From Date: {From_date}</p>
-        <p>To Date: {To_date}</p>
-        <p>Location: {Location}</p>
+    <div className="post-page">
+      <div className="post">
+        {/* <button onClick={getlastpost}>get</button> */}
+        <img src={Img_url} className="post-img"></img>
+        <div className="post-info">
+          <p>Category: {Category}</p>
+          <p>Name: {Name}</p>
+          <p>price:{Price}</p>
+          <p>From Date: {From_date}</p>
+          <p>To Date: {To_date}</p>
+          <p>Location: {Location}</p>
+          <button className="btn">Delete</button>
+        </div>
       </div>
-      <button>Delete</button>
-
     </div>
   );
 };

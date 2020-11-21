@@ -1,0 +1,21 @@
+.post-page .post {
+  width: 50vw;
+  height: 25rem;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 7rem auto;
+  gap: 2rem;
+}
+
+.post-page .post > * {
+  width: 50%;
+}
+
+.post-page .post .post-img {
+  /* overflow: hidden; */
+  height: 100%;
+}
