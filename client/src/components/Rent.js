@@ -45,7 +45,7 @@ const Rent = (props) => {
       .catch((err) => {});
   };
   const newArr = infoPost.map((elem, index) => (
-    <div num={index + 1} key={index} className="post">
+    <div num={index + 1} key={index} className="rent-post">
       <div className="post-info">
         <div>Category: {elem.category}</div>
         <div>Location: {elem.location}</div>
@@ -62,12 +62,7 @@ const Rent = (props) => {
     </div>
   ));
 
-  return (
-    <div>
-     
-      {newArr}
-    </div>
-  );
+  return <div>{newArr}</div>;
 };
 
 export default Rent;

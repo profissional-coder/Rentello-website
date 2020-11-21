@@ -1,4 +1,4 @@
-.post {
+.rent-post {
   display: flex;
   width: 70vw;
   margin: 7rem auto;
@@ -8,11 +8,11 @@
   border: 1px solid lightgray;
 }
 
-.post * {
+.rent-post * {
   width: 50%;
 }
 
-.post .post-info {
+.rent-post .post-info {
   font-size: 2rem;
   display: flex;
   justify-content: flex-start;
@@ -21,7 +21,7 @@
   gap: 1rem;
 }
 
-.post .post-info .rent-btn {
+.rent-post .post-info .rent-btn {
   margin: 0 auto;
   margin-top: auto;
 }

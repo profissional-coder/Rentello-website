@@ -6,16 +6,19 @@ const Contact = () => {
       <p>We Would Love To Hear From YOU !</p>
       <ul>
         <li>
-          <a href="rabi.abdelrahman@gmail.com">test</a>
+          <a href="rabi.abdelrahman@gmail.com">rabi.abdelrahman@gmail.com</a>
         </li>
+        <br />
         <li>
-          <a href="rama.qndeel@gmail.com">test</a>
+          <a href="rama.qndeel@gmail.com">rama.qndeel@gmail.com</a>
         </li>
+        <br />
         <li>
-          <a href="jmzomalek@gmail.com">test</a>
+          <a href="jmzomalek@gmail.com">jmzomalek@gmail.com</a>
         </li>
+        <br />
         <li>
-          <a href="osama.moh.salem@gmail.com">test</a>
+          <a href="osama.moh.salem@gmail.com">osama.moh.salem@gmail.com</a>
         </li>
       </ul>
     </div>

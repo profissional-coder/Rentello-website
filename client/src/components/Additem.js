@@ -26,7 +26,6 @@ const Additem = () => {
   const [to_date, setEndDate] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
-
   const CreateAllPost = (infoArgumnt) => {
     console.log(infoArgumnt);
 
@@ -195,9 +194,6 @@ const Additem = () => {
         <input onClick={SavePost} type="submit" value="Save" className="btn" />
       </Link>
     </form>
-
   );
 };
 export default Additem;
-
-

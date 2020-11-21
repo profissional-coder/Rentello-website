@@ -11,7 +11,6 @@ import catPlaces from "../img/catPlaces.jpg";
 
 const Home = () => {
   // localStorage.setItem("token", "");
-  
 
   return (
     <div className="container">
@@ -22,9 +21,7 @@ const Home = () => {
 
       <div className="add-item">
         <Link className="link" to="/add">
-          <button className="btn" >
-            Add item
-          </button>
+          <button className="btn">Add item</button>
         </Link>
         <br />
         <span> Rent Everything Here.</span>
@@ -37,36 +34,32 @@ const Home = () => {
 
       <div className="category-container">
         <Link
-          to={{ pathname: "/user/profile", preCategory: "Motors/Bicycles" }}
+          to={{ pathname: "/user/profile", preCategory: "Motors-Bicycles" }}
         >
           <div className="category">
             <img className="category-img" src={catMotors} />
             <h3 className="category-title">Motors/Bicycles</h3>
           </div>
         </Link>
-        <Link to={{ pathname: "/user/profile", state: { category: "Cars" } }}>
+        <Link to={{ pathname: "/user/profile", preCategory: "Cars" }}>
           <div className="category">
             <img className="category-img" src={catCars} />
             <h3 className="category-title">Cars</h3>
           </div>
         </Link>
-        <Link to={{ pathname: "/user/profile", state: { category: "Sports" } }}>
+        <Link to={{ pathname: "/user/profile", preCategory: "Sports" }}>
           <div className="category">
             <img className="category-img" src={catSports} />
             <h3 className="category-title">Sports</h3>
           </div>
         </Link>
-        <Link
-          to={{ pathname: "/user/profile", state: { category: "VR Gaming" } }}
-        >
+        <Link to={{ pathname: "/user/profile", preCategory: "VR-Gaming" }}>
           <div className="category">
             <img className="category-img" src={catVrgaming} />
             <h3 className="category-title">VR Gaming</h3>
           </div>
         </Link>
-        <Link
-          to={{ pathname: "/user/profile", state: { category: "Camping" } }}
-        >
+        <Link to={{ pathname: "/user/profile", preCategory: "Camping" }}>
           <div className="category">
             <img className="category-img" src={catCamping} />
             <h3 className="category-title">Camping</h3>
@@ -75,7 +68,7 @@ const Home = () => {
         <Link
           to={{
             pathname: "/user/profile",
-            state: { category: "Heavy Machines" },
+            preCategory: "Heavy-Machines",
           }}
         >
           <div className="category">
@@ -83,15 +76,13 @@ const Home = () => {
             <h3 className="category-title">Heavy Machines</h3>
           </div>
         </Link>
-        <Link
-          to={{ pathname: "/user/profile", state: { category: "Electronics" } }}
-        >
+        <Link to={{ pathname: "/user/profile", preCategory: "Electronics" }}>
           <div className="category">
             <img className="category-img" src={catElectronics} />
             <h3 className="category-title">Electronics</h3>
           </div>
         </Link>
-        <Link to={{ pathname: "/user/profile", state: { category: "Places" } }}>
+        <Link to={{ pathname: "/user/profile", preCategory: "Places" }}>
           <div className="category">
             <img className="category-img" src={catPlaces} />
             <h3 className="category-title">Places</h3>

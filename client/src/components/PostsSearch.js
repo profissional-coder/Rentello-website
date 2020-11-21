@@ -11,27 +11,14 @@ const PostsSearch = ({ allItems, filter, props }) => {
 
   useEffect(() => {
     setSearchData({
-      ...searchData,
       filter: { ...searchData.filter, ...filter },
     });
   }, [filter]);
 
-  useEffect(() => {
-    if (props.location.preCategory !== "") {
-      setSearchData({
-        ...searchData,
-        filter: {
-          ...searchData.filter,
-          category: props.location.preCategory,
-        },
-      });
-    }
-  }, [props]);
-
   const [searchData, setSearchData] = useState({
     filter: {
       searchText: "",
-      location: "",
+      location: "all",
       category: "all",
       startDate: "",
       endDate: "",
@@ -43,18 +30,20 @@ const PostsSearch = ({ allItems, filter, props }) => {
   const [filterdItems, setFilterdItems] = useState([]);
 
   const applyCategoryFilter = () => {
-    console.log(props.location.preCategory);
     if (!props.location.preCategory) {
       return;
     }
 
     let items = allItems;
-    console.log(items);
+
     // Filter by category
     items = items.filter((item) => {
       return item.category === props.location.preCategory;
     });
 
+    setSearchData({
+      filter: { ...searchData.filter, category: props.location.preCategory },
+    });
     setFilterdItems(items);
   };
 
@@ -75,14 +64,16 @@ const PostsSearch = ({ allItems, filter, props }) => {
     } = searchData.filter;
 
     // Filter by Title
-    // items = items.filter((item) => {
-    //   return item.name.toLowerCase().includes(searchText.toLowerCase());
-    // });
+    items = items.filter((item) => {
+      return item.name.toLowerCase().includes(searchText.toLowerCase());
+    });
 
     // Filter by Location
-    items = items.filter((item) => {
-      return item.location.toLowerCase().includes(location.toLowerCase());
-    });
+    if (location !== "all") {
+      items = items.filter((item) => {
+        return item.location.toLowerCase().includes(location.toLowerCase());
+      });
+    }
 
     // Filter by category
     if (category !== "all") {
@@ -122,7 +113,6 @@ const PostsSearch = ({ allItems, filter, props }) => {
             value={searchData.filter.searchText}
             onChange={(e) => {
               setSearchData({
-                ...searchData,
                 filter: { ...searchData.filter, searchText: e.target.value },
               });
             }}
@@ -137,7 +127,6 @@ const PostsSearch = ({ allItems, filter, props }) => {
             name="location"
             onChange={(e) => {
               setSearchData({
-                ...searchData,
                 filter: { ...searchData.filter, location: e.target.value },
               });
             }}
@@ -174,7 +163,6 @@ const PostsSearch = ({ allItems, filter, props }) => {
             name="category"
             onChange={(e) => {
               setSearchData({
-                ...searchData,
                 filter: { ...searchData.filter, category: e.target.value },
               });
             }}
@@ -197,7 +185,6 @@ const PostsSearch = ({ allItems, filter, props }) => {
             value={searchData.filter.startPrice}
             onChange={(e) => {
               setSearchData({
-                ...searchData,
                 filter: { ...searchData.filter, startPrice: e.target.value },
               });
             }}
@@ -210,7 +197,6 @@ const PostsSearch = ({ allItems, filter, props }) => {
             value={searchData.filter.endPrice}
             onChange={(e) => {
               setSearchData({
-                ...searchData,
                 filter: { ...searchData.filter, endPrice: e.target.value },
               });
             }}
