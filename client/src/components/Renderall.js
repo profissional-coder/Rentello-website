@@ -19,14 +19,13 @@ const Renderall = (props) => {
   // const [email, setEmail] = useState("");
   const [allPosts, setAllPosts] = useState([]);
 
-
   useEffect(() => {
     getPosts();
   }, []);
 
   const getPosts = async () => {
     axios
-      .get(`http://localhost:5000/posts`)
+      .get(`/posts`)
       .then((response) => {
         // console.log("response", response);
 
@@ -79,7 +78,6 @@ const Renderall = (props) => {
   //   </li>
   // </Link>
   // ));
-
 
   return (
     <div>

@@ -20,7 +20,7 @@ const Post = () => {
 
   const getAll = () => {
     axios
-      .get("http://localhost:5000/post/get")
+      .get("/post/get")
       .then((response) => {
         console.log("DATA: ", response.data);
         setPost(response.data);
@@ -34,7 +34,7 @@ const Post = () => {
     console.log(infoArgumnt);
 
     axios
-      .post("http://localhost:5000/post/create", infoArgumnt)
+      .post("/post/create", infoArgumnt)
       .then((response) => {
         console.log("response", response);
         const newArray = [...post];

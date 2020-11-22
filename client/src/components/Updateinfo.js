@@ -21,7 +21,7 @@ const Updateinfo = () => {
     };
     console.log("data : ", data);
     axios
-      .put("http://localhost:5000/users/update", data)
+      .put("/users/update", data)
       .then((response) => {
         //   console.log("response", response.data);
       })

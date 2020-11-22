@@ -31,7 +31,7 @@ const Register = (props) => {
     setErrors(validate(values));
     axios
       // Bath from BE
-      .post("http://localhost:5000/register", values)
+      .post("/register", values)
       .then((result) => {
         // console.log("result : ",result);
         props.history.push("/");

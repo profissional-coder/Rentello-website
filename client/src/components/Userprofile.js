@@ -12,7 +12,7 @@ const Userprofile = () => {
     // console.log(decoded.user_id);
     const id = decoded.user_id;
     axios
-      .get(`http://localhost:5000/orders/${id}`)
+      .get(`/orders/${id}`)
       .then((response) => {
         setOrders(response.data);
       })

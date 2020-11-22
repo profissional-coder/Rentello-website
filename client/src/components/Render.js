@@ -15,7 +15,7 @@ const Render = (props) => {
 
   const getlastpost = () => {
     axios
-      .get("http://localhost:5000/getlastpost")
+      .get("/getlastpost")
       .then((response) => {
         console.log("response", response.data);
         setPrice(response.data[0].price);

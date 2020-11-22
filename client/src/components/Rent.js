@@ -20,7 +20,7 @@ const Rent = (props) => {
     console.log("data :", data);
 
     axios
-      .post(`http://localhost:5000/orders/create`, data)
+      .post(`/orders/create`, data)
       .then((response) => {
         // console.log("response",response.data);
         //  setInfoPost(response.data);
@@ -36,7 +36,7 @@ const Rent = (props) => {
   const getPost = async () => {
     // console.log(props.location.state);
     axios
-      .get(`http://localhost:5000/post/${props.location.state}`)
+      .get(`/post/${props.location.state}`)
       .then((response) => {
         // console.log("response",response.data);
         setInfoPost(response.data);

@@ -35,7 +35,7 @@ const Profile = () => {
     // console.log(decoded.user_id);
     const id = decoded.user_id;
     axios
-      .get(`http://localhost:5000/user/${id}`)
+      .get(`/user/${id}`)
       .then(async (response) => {
         // console.log("response",response)
         // alert(response)
@@ -51,7 +51,6 @@ const Profile = () => {
         setEmail(response.data[0].email);
         setUserPic(response.data[0].img_url);
 
-
         setLoading(false);
       })
       .catch((err) => {
@@ -64,7 +63,7 @@ const Profile = () => {
     // console.log(decoded.user_id);
     const id = decoded.user_id;
     axios
-      .get(`http://localhost:5000/posts/${id}`)
+      .get(`/posts/${id}`)
       .then(async (response) => {
         // console.log("response",response)
         setLoading(true);
@@ -82,7 +81,7 @@ const Profile = () => {
   const deletePosts = async (infoArgumnt) => {
     console.log(infoArgumnt);
     axios
-      .delete(`http://localhost:5000/deletepost/${infoArgumnt}`)
+      .delete(`/deletepost/${infoArgumnt}`)
       .then(async (response) => {
         console.log("response", response.data);
         // alert("one post deleted")
@@ -135,7 +134,7 @@ const Profile = () => {
     ];
     // console.log("arrData:",arrData[0]);
     axios
-      .put(`http://localhost:5000/posts/update`, arrData[0])
+      .put(`/posts/update`, arrData[0])
       .then(async (response) => {
         // console.log("response",response)
         alert("one post update");
